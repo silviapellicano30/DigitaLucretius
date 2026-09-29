@@ -170,28 +170,32 @@
         <div class="container edition-frame">
             <a id="center" class="btn btn-secondary btn-md" href="edition.html">Open Edition</a>
         </div>
-        <p class="lead-text">The digital edition combines philological rigor with interactive
-            visualization, allowing readers to move between diplomatic transcription, critical text,
-            and commentary on the proem to Book III.</p>
+        <p class="lead-text">The edition presents Deufert’s critical text of the proem to Book III (vv. 1–93)
+            with its three apparatuses (apparatus criticus, testimonia and loci paralleli) always
+            visible below the text. Readers can switch on further layers: the lemmatization of every
+            word, the philosophical keywords and Slavitt’s English translation.</p>
     </div>
 
     <div class="row justify-content-center subsection-row">
         <div class="col-md-4 subsection-card" id="card-encoding">
             <h3>Encoding</h3>
-            <p>The text has been encoded in TEI XML, marking structural, textual, and apparatus
-                features according to the guidelines of the Text Encoding Initiative.</p>
+            <p>The text is encoded in XML according to the TEI P5 Guidelines, with the critical
+                apparatus in parallel segmentation, every word lemmatized and every siglum and name
+                linked to its witness or scholar. The file is validated against the TEI schema.</p>
             <a class="btn btn-secondary btn-sm" href="documentation.html#encoding">Read more</a>
         </div>
         <div class="col-md-4 subsection-card" id="card-the-website">
             <h3>The Website</h3>
-            <p>Built as a static prototype in HTML, CSS, and JavaScript, the site organizes the
-                edition around a clear navigational structure suited to a single, short text.</p>
+            <p>The edition page is generated from the TEI file with an XSLT 3.0 stylesheet run with
+                Saxon and published as static HTML, together with companion pages for the keywords,
+                the scholars and sources, and an interactive stemma codicum.</p>
             <a class="btn btn-secondary btn-sm" href="documentation.html#the-website">Read more</a>
         </div>
         <div class="col-md-4 subsection-card" id="card-features-limitations">
             <h3>Features &amp; Limitations</h3>
-            <p>As a prototype built for an exam, the edition covers only the proem of Book III and
-                does not yet include a full apparatus criticus or collation tool.</p>
+            <p>The edition colour-codes the evidence and links the text to its sources. As a
+                prototype, it covers only 93 lines, depends on Deufert’s apparatus without an
+                independent collation, and does not yet offer full-text search or a synchronised translation.</p>
             <a class="btn btn-secondary btn-sm" href="documentation.html#features-limitations">Read more</a>
         </div>
     </div>
@@ -203,8 +207,9 @@
 <section class="page-section" id="documentation">
     <div class="col-12 narrow text-center">
         <h1>Repository</h1>
-        <p class="lead-text">For details on the technical development, the encoding choices, and the
-            methodology behind this prototype, see the project documentation and the source repository.</p>
+        <p class="lead-text">The project documentation explains the aims, the encoding choices and the
+            TEI → XSLT → HTML workflow. The GitHub repository holds the TEI source, the stylesheet
+            and the website files, released under a CC BY-NC 4.0 licence.</p>
         <a id="right" class="btn btn-secondary btn-md" href="documentation.html#documentation">Documentation</a>
         <a id="left" class="btn btn-secondary btn-md" href="https://github.com/silviapellicano30/DigitaLucretius" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
@@ -216,8 +221,9 @@
 <section class="page-section" id="bibliography">
     <div class="col-12 narrow text-center">
         <h1>Bibliography</h1>
-        <p class="lead-text">Editions, translations, and critical studies consulted in preparing this
-            prototype are collected in the bibliography, together with the digital resources it builds on.</p>
+        <p class="lead-text">The bibliography lists the editions of <em>De rerum natura</em> and the translation
+            used for the text (primary sources), together with the critical studies, methodological
+            works and technical standards on which the project rests (secondary sources).</p>
         <a class="btn btn-secondary btn-md" href="documentation.html#bibliography">Bibliography</a>
     </div>
 </section>

@@ -624,7 +624,7 @@
               <w lemma="totus">totum</w>
               <w lemma="uideo">uideo</w>
               <w lemma="per">per</w>
-              <term ref="#inane"><w lemma="inanis">inane</w></term>
+              <term ref="#inanis"><w lemma="inanis">inane</w></term>
               <w lemma="gero">geri</w>
               <w lemma="res">res</w>.
             </seg>
@@ -735,7 +735,7 @@
             <w lemma="quicumque">quaecumque</w>
             <w lemma="infra">infra</w>
             <w lemma="per">per</w>
-            <term ref="#inane"><w lemma="inanis">inane</w></term>
+            <term ref="#inanis"><w lemma="inanis">inane</w></term>
             <w lemma="gero">geruntur</w>.
           </l>
 
@@ -1866,8 +1866,8 @@
           </sense>
         </entry>
 
-        <entry xml:id="inane">
-          <form><orth>inane</orth></form>
+        <entry xml:id="inanis">
+          <form><orth>inanis</orth></form>
           <sense>
             <def>The void: one of the two foundational principles of Epicurean atomism alongside solid bodies. An intangible, infinite space through which matter moves, combines, and dissolves unceasingly.</def>
             <cit type="verse"><ref target="#III17">line 17</ref></cit>
