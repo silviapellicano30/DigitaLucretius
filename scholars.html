@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>De rerum natura — Scholars &amp; Ancient Sources</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+  <style>
+    /* Palette and fonts come from assets/theme.css; these are local aliases */
+    :root {
+      --text: var(--ink);
+      --bg: var(--parchment);
+      --accent: var(--burgundy);
+      --link: var(--red);
+      --border: 1px solid #cfc9c0;
+      --muted: #43392e;
+      --card-bg: #fae9d3;
+      --general_font: var(--font-body);
+      --h1_font: var(--font-display);
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--general_font);
+      font-size: 1.2em;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+    }
+    .page-intro { text-align: center; padding: 2.5rem 1rem 1.5rem; }
+    .page-intro h1 { margin: 0; font-size: 3.2rem; color: var(--accent); font-family: var(--h1_font); font-variant: small-caps; }
+    .subtitle { margin: 0.5rem auto 0; max-width: 750px; color: var(--muted); font-size: 1.2rem; font-style: italic; }
+    .section-title { margin: 2.2rem 0 1rem; color: var(--muted); font-size: 1.25rem; font-style: italic; border-bottom: 1px dashed rgba(90, 50, 50, 0.25); padding-bottom: 0.4rem; }
+    .content { width: 100%; max-width: 1000px; margin: 0 auto; padding: 1rem 2vw 3rem; }
+    .cards-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; width: 100%; }
+    .info-card { background: var(--card-bg); border: var(--border); border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.06); overflow: hidden; transition: border-color 0.2s ease; }
+    .info-card[open] { border-color: var(--accent); }
+    .info-card summary { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 1.4rem; cursor: pointer; list-style: none; background: #f3ecdd; color: var(--accent); font-size: 1.25rem; font-weight: 600; font-style: italic; user-select: none; }
+    .info-card summary::-webkit-details-marker { display: none; }
+    .info-card summary::after { content: "▾"; font-size: 1.1rem; font-style: normal; }
+    .info-card[open] summary::after { content: "▴"; }
+    .card-content { padding: 1.2rem 1.5rem; }
+    .card-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem; }
+    .meta-tag { display: inline-block; padding: 0.15rem 0.65rem; border-radius: 16px; background: #ebdcc4; color: var(--accent); font-size: 0.78rem; font-weight: 600; }
+    .card-content p { margin: 0.4rem 0; font-size: 1.05rem; line-height: 1.6; }
+    .cta-wrapper { display: flex; justify-content: center; gap: 1rem; padding: 0 1rem 2.5rem; }
+    .explore-btn-main { display: inline-flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; font-size: 1.05rem; font-weight: 600; padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: background 0.2s ease, transform 0.2s ease; }
+    .explore-btn-main:hover { background: #863838; transform: translateY(-2px); }
+    footer { margin-top: auto; padding: 20px; text-align: center; border-top: var(--border); font-size: 0.85em; }
+    .page-intro {
+  text-align: center;
+  padding: 2.5rem 1rem 1rem;
+}
+
+.intro-nav-wrapper {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+
+/* Mantiene il fondo pergamena chiaro coerente per le pagine secondarie */
+html,
+body,
+.page-intro {
+  background-color: var(--bg, #f3e6c3) !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="site-nav__brand" href="index.html" title="Home — Digital Lucretius"><img src="img/logo-lucretius.svg" alt="Digital Lucretius logo"></a>
+    <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Toggle navigation"><span></span></button>
+    <ul class="site-nav__menu" id="site-nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li class="site-nav__dropdown is-current">
+        <button type="button" aria-expanded="false" aria-controls="site-nav-edition">Edition</button>
+        <ul id="site-nav-edition">
+          <li><a href="edition.html">Text &amp; Apparatus</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="scholars.html" aria-current="page">Scholars &amp; Sources</a></li>
+          <li><a href="witnesses.html">Stemma Codicum</a></li>
+        </ul>
+      </li>
+      <li class="site-nav__dropdown">
+        <button type="button" aria-expanded="false" aria-controls="site-nav-docs">Documentation</button>
+        <ul id="site-nav-docs">
+          <li><a href="documentation.html#project">The Project</a></li>
+          <li><a href="documentation.html#the-work">The Work</a></li>
+          <li><a href="documentation.html#state-of-the-art">State of the Art</a></li>
+          <li><a href="documentation.html#digital-edition">The Digital Edition</a></li>
+          <li><a href="documentation.html#features-limitations">Evaluation</a></li>
+        </ul>
+      </li>
+      <li><a href="documentation.html#bibliography">Bibliography</a></li>
+    </ul>
+  </nav>
+  <section class="page-intro">
+    <h1>Scholars &amp; Ancient Sources</h1>
+    <p class="subtitle">Critical editors, commentators, and indirect ancient testimonies cited in the apparatus of <i>De rerum natura</i></p>
+    <div class="intro-nav-wrapper">
+      <a href="keywords.html" class="explore-btn-main">Explore the Keywords</a>
+      <a href="witnesses.html" class="explore-btn-main">Discover the Witnesses</a>
+    </div>
+  </section>
+
+  <main class="content" id="scholars-content"></main>
+
+  <div class="cta-wrapper">
+    <a href="edition.html" class="explore-btn-main">← Back to the Edition</a>
+  </div>
+
+  <footer>
+    <p>Project created for the course of Digital Scholarly Editing: Theory, Methods and Practice at Alma Mater Studiorum - Università di Bologna.</p>
+  </footer>
+
+  <script>
+    // Percorso del file JSON esterno con i dati di studiosi e fonti antiche
+    const SCHOLARS_JSON_URL = "data/scholars.json";
+
+    // Fallback incorporato: usato solo se il fetch del JSON esterno fallisce
+    // (es. apertura del file in locale senza server, blocco CORS, file mancante)
+    const scholarsFallback = {
+  sections: [
+    {
+      title: "Modern & Humanist Scholars",
+      keywords: [
+        {
+          name: "Marcus Deufert",
+          tags: ["Base Text Editor", "Teubner 2019", "Contemporary"],
+          paragraphs: [
+            "German classical philologist (born 1970), professor at the University of Leipzig.",
+            "Editor of the 2019 Bibliotheca Teubneriana edition of Lucretius, currently the most authoritative critical text.",
+            "His edition features a selective but rigorous apparatus, aiming to reconstruct the archetype with minimal conjectural intervention."
+          ]
+        },
+        {
+          name: "Karl Lachmann",
+          tags: ["1850 Edition", "Archetype Reconstructed", "Stemmatics"],
+          paragraphs: [
+             "German classical and Germanic philologist (1793–1851); established the landmark stemmatic edition and demonstrated the existence and structure of archetype Ω.",
+             "Major critical edition: <i>Titi Lucreti Cari de rerum natura libri sex. Carolus Lachmannus recensuit et emendavit</i>, Berolini 1850.",
+             "Lachmann’s methodological principles still underpin contemporary Lucretian scholarship."
+          ]
+        },
+        {
+          "name": "Sebastiano Timpanaro",
+          tags: ["Italian Philology", "20th Century", "Textual Criticism"],
+          paragraphs: [
+            "Italian classical philologist and textual critic (1923–2000); renowned scholar of classical reception and Latin textual transmission.",
+            "Author of influential studies on the transmission of Latin texts and on Lucretius’ manuscript tradition."
+          ]
+        },
+        {
+          name: "Richard Bentley",
+          tags: ["Early Modern", "Cambridge", "Conjectures"],
+          paragraphs: [
+            "English classical scholar and pioneering textual critic (1662–1742); composed celebrated marginalia and acute conjectures on the text of Lucretius.",
+            "Many of his emendations continue to appear in modern apparatuses as significant alternatives."
+          ]
+        },
+        {
+          name: "Gilbert Wakefield",
+          tags: ["18th Century", "London Edition (1796–1797)", "Textual Critic"],
+          paragraphs: [
+            "English classical scholar and critic (1756–1801); editor of the celebrated edition <i>Titi Lucretii Cari de rerum natura libros sex … longe emendatiores reddidit … Gilbertus Wakefield</i>, published in London in three volumes (1796–1797).",
+            "In Deufert’s apparatus, Wakefield is cited alongside Munro, Müller, and Flores as an authoritative prior editor from whom readings and conjectures preserved in secondary Italian codices (<i>codices Italici</i>) are reported whenever not collated directly by Deufert himself.",
+            "His work represents a fundamental bridge between humanistic editorial traditions and early modern textual criticism."
+          ]
+        },
+        {
+          name: "Johann Caspar von Orelli",
+          tags: ["19th Century", "Swiss Philologist", "Epigraphy"],
+          paragraphs: [
+            "Swiss classical scholar and epigraphist (1787–1849); editor of Latin classical texts and philosophical anthologies.",
+            "Cited for his school anthology of Latin poetry: <i>Eclogae poetarum latinorum in usum gymnasiorum. Edidit Io. Casparus Orellius … Turici 1822</i>.",
+            "Although not a primary editor of the entire poem, his conjectures and lexical notes are cited in modern apparatuses."
+          ]
+        },
+        {
+          name: "Giovanni Pontano",
+          tags: ["Italian Humanism", "15th Century", "Conjectural Emendation"],
+          paragraphs: [
+            "Italian humanist, poet, and statesman (1426–1503), leading figure of Neapolitan humanism and head of the Accademia Pontaniana.",
+            "His emendations to Lucretius were not published in an independent edition, but survive as manuscript notes entered into two copies of the 1495 Venice edition (now in Munich and London), transcribed respectively by Petrus Victorius and Hieronymus Borgius.",
+            "In Deufert’s edition, the siglum Pont. designates conjectures shared by both copies; at III.28, his emendation <i>ibi</i> is adopted to heal the metrically and syntactically clumsy reading <i>ubi</i> transmitted by the archetype Ω."
+          ]
+        },
+        {
+          name: "Michele Marullo Tarcaniota",
+          tags: ["Renaissance Humanism", "15th Century", "Conjectures", "Mar.*"],
+          paragraphs: [
+            "Greek-Italian Renaissance poet and humanist scholar (ca. 1458–1500). Younger than Pontano, he was intimately familiar with Pontano’s critical attempts and advanced them substantially, achieving far more in the emendation of the text.",
+            "The purest source for his conjectures is a second Munich copy of the 1495 Venice edition (Bayer. Staatsbibliothek 4° A lat a 317), which Petrus Victorius collated directly with Marullo's working book. Conjectures uniquely surviving here are designated with the siglum <i>Mar.</i>",
+            "In Deufert's apparatus, the siglum <i>Mar.*</i> designates conjectures where at least two witnesses among <i>D²</i>, <i>I²</i>, <i>Ea</i>, <i>Fa</i>, <i>Da</i>, and the 1512 Giuntina edition by Petrus Candidus agree, since Candidus explicitly followed Marullo’s recension ('Marulli censuram potissimum')."
+          ]
+        },
+        {
+          name: "Richard J. Shackle",
+          tags: ["20th Century", "Conjectures (1921)"],
+          paragraphs: [
+            "British classical scholar (active early 20th century); author of conjectural emendations to classical Latin poets, including Lucretius (1921).",
+            "His work reflects the renewed interest in textual emendation during the early 1900s."
+          ]
+        },
+        {
+  "name": "Dionysius Lambinus",
+  "tags": [
+    "16th Century",
+    "Paris Edition (1563/1564)",
+    "Textual Criticism"
+  ],
+  "paragraphs": [
+    "French Renaissance humanist and classical scholar (1516–1572), professor of Greek and Latin at the Collège Royal in Paris.",
+    "Editor of the seminal Paris edition <i>Titi Lucretii Cari de rerum natura libri sex. A Dionysio Lambino … emendati</i> (1563/1564), accompanied by extensive commentaries and sharp conjectural emendations based on manuscript collations.",
+    "Cited in Deufert's critical apparatus for reporting the variant <i>eiiciuntur</i> at III.58 and proposing the verbal conjecture <i>uidentur</i> at III.66."
+  ]
+},
+{
+  "name": "Richard Heinze",
+  "tags": [
+    "19th–20th Century",
+    "Leipzig Commentary (1897)",
+    "Commentator"
+  ],
+  "paragraphs": [
+    "German classical philologist (1867–1929), professor at the University of Leipzig and renowned commentator on Latin poetry and rhetoric.",
+    "Author of the influential commentary on Book III: <i>T. Lucretius Carus. De rerum natura Buch III. Erklärt von Richard Heinze</i> (Lipsiae 1897), providing penetrating philosophical and textual analysis.",
+    "Cited in the apparatus at III.58 for his tentative conjecture <i>mala re</i> proposed in his commentary notes."
+  ]
+},
+{
+  "name": "Willy Morel",
+  "tags": [
+    "20th Century",
+    "Philologus (1930)",
+    "Textual Critic"
+  ],
+  "paragraphs": [
+    "German classical scholar and textual critic (1894–1973), prominent editor of early Latin poetic fragments.",
+    "Contributed textual studies on Lucretian corruptions in his article <i>Zu Lukrez</i> (Philologus 85, 1930, 227 sq.).",
+    "Cited by Deufert in the apparatus at III.58 for the conjectural reading <i>minaci</i>."
+  ]
+},
+{
+  "name": "Hugh Andrew Johnstone Munro",
+  "tags": [
+    "19th Century",
+    "Cambridge Edition (³1873)",
+    "Editor & Commentator"
+  ],
+  "paragraphs": [
+    "British classical scholar (1819–1885), Fellow of Trinity College and first Kennedy Professor of Latin at the University of Cambridge.",
+    "Editor of the fundamental edition, commentary and prose translation <i>T. Lucreti Cari de rerum natura libri sex</i> (Cambridge 1864; third edition 1873, cited in the apparatus as <i>Munro³</i>), which dominated Anglophone Lucretian scholarship for decades.",
+    "Cited by Deufert at III.82: he posited a lacuna after this line and supplied the verse <i>〈qui miseros homines cogens scelus omne patrare〉</i>, thereby preserving the transmitted <i>suadet</i> at III.84."
+  ]
+},
+{
+  "name": "Konrad Müller",
+  "tags": [
+    "20th Century",
+    "Zürich Edition (1975)",
+    "Textual Critic"
+  ],
+  "paragraphs": [
+    "Swiss classical philologist (1920–2016), professor at the University of Bern, renowned for his critical editions of Latin authors.",
+    "Editor of <i>T. Lucreti Cari de rerum natura libri sex</i> (Zürich 1975), cited in Deufert's apparatus as <i>C. Müller</i>.",
+    "At III.84 he proposed the adverb <i>foede</i> in place of the transmitted <i>suadet</i>, comparing (<i>collato</i>) the internal parallel at I.85 (<i>turparunt sanguine foede</i>)."
+  ]
+},
+{
+  "name": "Cippellarius",
+  "tags": [
+    "Italian Humanism",
+    "Codex Y (1507)",
+    "Scribe & Conjecture"
+  ],
+  "paragraphs": [
+    "Italian humanist copyist of the early 16th century, known through the manuscript of Lucretius he wrote himself.",
+    "In 1507 he copied codex <i>Y</i>, now in Piacenza, Biblioteca Comunale Passerini-Landi, 33 (Deufert: <i>Placentinus Bibl. comm. Land. 33, a Cippellario a. 1507 exaratus</i>). While transcribing, he did not limit himself to copying but intervened on the text with his own emendations.",
+    "At III.84 he was the first to perceive that the transmitted <i>suadet</i> perverts the syntax of the whole period (<i>qui primus vidit suadet orationem pervertere</i>), and proposed the conjecture <i>suauem</i>."
+  ]
+},
+{
+  "name": "Otto Zwierlein",
+  "tags": [
+    "20th–21st Century",
+    "Bonn",
+    "Interpolation Criticism",
+    "apud Deufert (1996)"
+  ],
+  "paragraphs": [
+    "German classical philologist (born 1939), professor at the University of Bonn, known for his editions of Seneca's tragedies (Oxford 1986) and his studies on interpolations in Latin poetry.",
+    "His conjectures on Lucretius are not published in a work of his own: Deufert learned of them in person, discussing them directly with Zwierlein, and reports and examines them in his study <i>M. Deufert, Pseudo-Lukrezisches im Lukrez. Die unechten Verse in Lukrezens “De rerum natura”</i>, Berolini et Novi Eboraci 1996 (hence the formula <i>Zwierlein apud Deufert</i>).",
+    "At III.85–86 he once condemned the two lines as spurious (<i>olim damnavit</i>), as discussed in Deufert (1996) 52 sq., following the lead (<i>praeeunte</i>) of Friedrich Bockemüller."
+  ]
+},
+{
+  "name": "Friedrich Bockemüller",
+  "tags": [
+    "19th Century",
+    "Stade Edition (1874)",
+    "Editor & Commentator"
+  ],
+  "paragraphs": [
+    "German classical scholar of the 19th century, editor and commentator of Lucretius.",
+    "Author of the edition with commentary <i>T. Lucreti Cari de rerum natura libri sex. Redigirt und erklärt von Friedrich Bockemüller</i>, Stadis 1874.",
+    "Cited in the apparatus at III.85–86 as the forerunner (<i>praeeunte Bockemüller</i>) of the athetesis later argued by Otto Zwierlein, since he regarded the two lines as a non-Lucretian interpolation."
+  ]
+}
+      ]
+    },
+    {
+      title: "Ancient Indirect Sources",
+      keywords: [
+        {
+          name: "Lucius Caecilius Firmianus Lactantius",
+          tags: ["Church Father", "4th Century AD", "Indirect Witness"],
+          paragraphs: [
+            "Early Christian author, rhetorician, and apologist (ca. 250 – ca. 325 AD); preserves crucial indirect quotations from Lucretius in his <i>Divinae Institutiones</i>.",
+            "His testimony is valuable because it may reflect textual forms earlier than the medieval manuscript tradition."
+          ]
+        },
+        {
+          name: "Nonius Marcellus",
+          tags: ["Grammarian", "4th Century AD", "Lexicography"],
+          paragraphs: [
+            "Roman grammarian and lexicographer from Thubursicu (active early 4th century AD); quotes numerous poetic lines in <i>De compendiosa doctrina</i>.",
+            "Some Lucretian fragments transmitted by Nonius differ from the medieval manuscripts, offering alternative readings."
+          ]
+        },
+        {
+  "name": "Ambrosius Theodosius Macrobius ",
+  "tags": [
+    "Late Antiquity",
+    "5th Century AD",
+    "Indirect Witness"
+  ],
+  "paragraphs": [
+    "Late antique Roman provincial writer and Neoplatonist philosopher (fl. ca. 400 AD), best known for his encyclopedic dialogue <i>Saturnalia</i>.",
+    "His work preserves vital indirect quotations from early Latin poets, including numerous citations from Lucretius illustrating poetic diction and Virgil's models.",
+    "Cited in the critical apparatus at III.72 under the siglum <i>Macr.</i> for preserving the correct genitive reading <i>fratris</i> against the erroneous nominative/accusative <i>fratres</i> transmitted by the medieval archetype Ω."
+  ]
+},
+{
+  "name": "Lucius Annaeus Seneca",
+  "tags": [
+    "Stoic Philosopher",
+    "1st Century AD",
+    "Indirect Witness"
+  ],
+  "paragraphs": [
+    "Roman Stoic philosopher, dramatist and statesman (ca. 4 BC – AD 65), tutor and adviser of Nero.",
+    "In his <i>Epistulae morales ad Lucilium</i> (110, 6) he quotes Lucretius' simile of the children who tremble in the dark (III.87–88 = II.55–56).",
+    "Cited in the critical apparatus at III.88 under the siglum <i>Sen.</i> for the synonymous variant <i>ita</i> in place of the transmitted <i>sic</i> (cf. the same variation at II.56)."
+  ]
+}
+      ]
+    }
+  ]
+};
+    function slugify(text) {
+      return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    }
+
+    // Cards are listed alphabetically by surname (the last word of the name),
+    // except where the conventional sort name is another word
+    const SORT_NAME_EXCEPTIONS = {
+      "Michele Marullo Tarcaniota": "Marullo",
+      "Nonius Marcellus": "Nonius"
+    };
+
+    function sortName(name) {
+      const clean = name.trim();
+      return SORT_NAME_EXCEPTIONS[clean] || clean.split(/\s+/).pop();
+    }
+
+    function bySortName(a, b) {
+      return sortName(a.name).localeCompare(sortName(b.name), "en", { sensitivity: "base" });
+    }
+
+    function applyPageMeta(page) {
+      if (!page) return;
+      const h1 = document.querySelector(".page-intro h1");
+      const subtitle = document.querySelector(".page-intro .subtitle");
+      if (page.title && h1) h1.textContent = page.title;
+      if (page.subtitle && subtitle) subtitle.textContent = page.subtitle;
+    }
+
+    function renderScholars(data) {
+      applyPageMeta(data.page);
+
+      const container = document.getElementById("scholars-content");
+      container.innerHTML = "";
+
+      data.sections.forEach(sec => {
+        const h2 = document.createElement("h2");
+        h2.className = "section-title";
+        h2.textContent = sec.title;
+        container.appendChild(h2);
+
+        const grid = document.createElement("div");
+        grid.className = "cards-grid";
+
+        [...sec.keywords].sort(bySortName).forEach(item => {
+          const card = document.createElement("details");
+          card.className = "info-card";
+          card.id = slugify(item.name);
+
+          const summary = document.createElement("summary");
+          summary.textContent = item.name;
+
+          const content = document.createElement("div");
+          content.className = "card-content";
+
+          if (item.tags && item.tags.length > 0) {
+            const meta = document.createElement("div");
+            meta.className = "card-meta";
+            item.tags.forEach(t => {
+              const span = document.createElement("span");
+              span.className = "meta-tag";
+              span.textContent = t;
+              meta.appendChild(span);
+            });
+            content.appendChild(meta);
+          }
+
+          (item.paragraphs || []).forEach(paragraph => {
+            const p = document.createElement("p");
+            p.innerHTML = paragraph;
+            content.appendChild(p);
+          });
+
+          card.appendChild(summary);
+          card.appendChild(content);
+          grid.appendChild(card);
+        });
+
+        container.appendChild(grid);
+      });
+
+      // Apertura automatica da link URL hash (es. #giovanni-pontano)
+      function syncHash() {
+        if (window.location.hash) {
+          const targetSlug = slugify(decodeURIComponent(window.location.hash.substring(1)));
+          const targetCard = document.getElementById(targetSlug);
+          if (targetCard) {
+            targetCard.open = true;
+            targetCard.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }
+      }
+
+      syncHash();
+      window.addEventListener("hashchange", syncHash);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch(SCHOLARS_JSON_URL)
+        .then(res => {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .then(renderScholars)
+        .catch(err => {
+          console.warn("Impossibile caricare scholars.json (" + err.message + "), uso i dati incorporati di riserva.", err);
+          renderScholars(scholarsFallback);
+        });
+    });
+  </script>
+  <script src="assets/nav.js"></script>
+</body>
+</html>

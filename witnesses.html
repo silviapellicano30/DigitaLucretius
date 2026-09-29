@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>De rerum natura — Stemma Codicum</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+  <style>
+    /* Palette and fonts come from assets/theme.css; these are local aliases */
+    :root {
+      --text: var(--ink);
+      --bg: var(--parchment);
+      --accent: var(--burgundy);
+      --link: var(--red);
+      --border: 1px solid #cfc9c0;
+      --muted: #43392e;
+      --card-bg: #fae9d3;
+      --general_font: var(--font-body);
+      --h1_font: var(--font-display);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--general_font);
+      font-size: 1.15rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-intro { text-align: center; padding: 2.5rem 1rem 1rem; }
+    .page-intro h1 { margin: 0; font-size: 3.2rem; color: var(--accent); font-family: var(--h1_font); font-variant: small-caps; }
+    .subtitle { margin: 0.5rem auto 0; max-width: 750px; color: var(--muted); font-size: 1.15rem; font-style: italic; }
+
+    .stemma-container {
+      width: 100%;
+      max-width: 1000px;
+      margin: 1rem auto 2.5rem;
+      padding: 1.5rem;
+      background: #f7ecd5;
+      border: 1px solid #d9cbaf;
+      border-radius: 8px;
+      box-shadow: inset 0 0 40px rgba(160, 130, 85, 0.14), 0 8px 24px rgba(0,0,0,0.06);
+      position: relative;
+    }
+
+    svg.stemma-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      user-select: none;
+    }
+
+    .tree-edge {
+      stroke: #2b241e;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+    }
+
+    .tree-edge-dashed {
+      stroke: #665a4f;
+      stroke-width: 1.3;
+      stroke-dasharray: 4, 4;
+    }
+
+    .equals-mark {
+      stroke: #2b241e;
+      stroke-width: 1.8;
+    }
+
+    .stemma-node {
+      cursor: pointer;
+    }
+
+    .stemma-node text {
+      font-family: var(--general_font);
+      font-size: 24px;
+      fill: #2b241e;
+      text-anchor: middle;
+      dominant-baseline: central;
+      transition: fill 0.2s ease, transform 0.2s ease;
+    }
+
+    .stemma-node .sub-label {
+      font-size: 13px;
+      fill: #5a4b3d;
+      font-style: italic;
+    }
+
+    .stemma-node .hit-area {
+      fill: transparent;
+      stroke: transparent;
+      stroke-width: 1.5;
+      transition: all 0.2s ease;
+    }
+
+    .stemma-node:hover text {
+      fill: var(--link);
+      font-weight: bold;
+    }
+
+    .stemma-node:hover .hit-area {
+      fill: rgba(139, 31, 45, 0.08);
+      stroke: var(--link);
+    }
+
+    .stemma-node.active text {
+      fill: var(--link);
+      font-weight: bold;
+    }
+
+    .stemma-node.active .hit-area {
+      fill: rgba(139, 31, 45, 0.18);
+      stroke: var(--link);
+      stroke-width: 2;
+    }
+
+    #witness-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fae9d3;
+      border: 1px solid #c7b299;
+      border-radius: 8px;
+      padding: 1.8rem 2.2rem;
+      max-width: 580px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    #witness-modal.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #witness-modal h3 {
+      margin: 0 0 0.3rem;
+      font-family: var(--h1_font);
+      font-size: 1.6rem;
+      color: var(--accent);
+    }
+
+    #witness-modal .modal-siglum {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: var(--link);
+      margin-bottom: 0.8rem;
+    }
+
+    #witness-modal .modal-main-desc {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 1.1rem;
+    }
+
+    #witness-modal .peculiarities-title {
+      font-size: 0.92rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6a533f;
+      border-top: 1px dashed #d0beaa;
+      padding-top: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    #witness-modal .peculiarities-list {
+      margin: 0 0 1.3rem;
+      padding-left: 1.2rem;
+      font-size: 0.95rem;
+      color: #2b241e;
+      line-height: 1.55;
+    }
+
+    #witness-modal .peculiarities-list li {
+      margin-bottom: 0.45rem;
+    }
+
+    #witness-modal .peculiarities-list strong {
+      color: var(--link);
+    }
+
+    .modal-highlight-note {
+      background: rgba(223, 141, 47, 0.15);
+      border-left: 3px solid #df8d2f;
+      padding: 0.4rem 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 0.92rem;
+      color: #43392e;
+    }
+
+    #witness-modal .close-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.45rem 1.4rem;
+      border-radius: 6px;
+      border: 0;
+      font-family: var(--general_font);
+      font-size: 0.98rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    #witness-modal .close-btn:hover {
+      background: #863838;
+    }
+
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 24, 18, 0.45);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .backdrop.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cta-wrapper { display: flex; justify-content: center; gap: 1rem; padding: 0 1rem 2.5rem; }
+    .explore-btn-main { display: inline-flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; font-size: 1.05rem; font-weight: 600; padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: 0.2s ease; }
+    .explore-btn-main:hover { background: #863838; transform: translateY(-2px); }
+
+    footer { margin-top: auto; padding: 20px; text-align: center; border-top: var(--border); font-size: 0.85em; }
+
+
+.page-intro {
+  text-align: center;
+  padding: 2.5rem 1rem 1rem;
+}
+
+.intro-nav-wrapper {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+
+html,
+body,
+.page-intro {
+  background-color: var(--bg, #f3e6c3) !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="site-nav__brand" href="index.html" title="Home — Digital Lucretius"><img src="img/logo-lucretius.svg" alt="Digital Lucretius logo"></a>
+    <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Toggle navigation"><span></span></button>
+    <ul class="site-nav__menu" id="site-nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li class="site-nav__dropdown is-current">
+        <button type="button" aria-expanded="false" aria-controls="site-nav-edition">Edition</button>
+        <ul id="site-nav-edition">
+          <li><a href="edition.html">Text &amp; Apparatus</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="scholars.html">Scholars &amp; Sources</a></li>
+          <li><a href="witnesses.html" aria-current="page">Stemma Codicum</a></li>
+        </ul>
+      </li>
+      <li class="site-nav__dropdown">
+        <button type="button" aria-expanded="false" aria-controls="site-nav-docs">Documentation</button>
+        <ul id="site-nav-docs">
+          <li><a href="documentation.html#project">The Project</a></li>
+          <li><a href="documentation.html#the-work">The Work</a></li>
+          <li><a href="documentation.html#state-of-the-art">State of the Art</a></li>
+          <li><a href="documentation.html#digital-edition">The Digital Edition</a></li>
+          <li><a href="documentation.html#features-limitations">Evaluation</a></li>
+        </ul>
+      </li>
+      <li><a href="documentation.html#bibliography">Bibliography</a></li>
+    </ul>
+  </nav>
+
+  <section class="page-intro">
+    <h1>Stemma Codicum</h1>
+    <p class="subtitle">Traditio textus Lucretiani: aevi Carolini et traditionis Italicae (Deufert 2019). Click on any witness to view its description and shelfmark.</p>
+    <div class="intro-nav-wrapper">
+      <a href="keywords.html" class="explore-btn-main">Explore the Keywords</a>
+      <a href="scholars.html" class="explore-btn-main">Meet the Scholars</a>
+    </div>
+  </section>
+
+  <main class="stemma-container">
+    <svg class="stemma-svg" viewBox="0 0 760 840">
+      <!-- LINEE DI DERIVAZIONE SOLIDE -->
+      <g class="tree-edge">
+        <!-- Archetipo Omega -> O e Gamma -->
+        <line x1="380" y1="120" x2="210" y2="185" />
+        <line x1="380" y1="120" x2="560" y2="225" />
+
+        <!-- Ramo O -> pi -->
+        <line x1="210" y1="205" x2="210" y2="385" />
+
+        <!-- Ramo Gamma -> Q e GVU -->
+        <line x1="560" y1="245" x2="520" y2="290" />
+        <line x1="560" y1="245" x2="620" y2="310" />
+
+        <!-- Simbolo di equivalenza pi == xi -->
+        <line class="equals-mark" x1="232" y1="397" x2="262" y2="406" />
+        <line class="equals-mark" x1="230" y1="403" x2="260" y2="412" />
+
+        <!-- Ramo Umanistico xi -> discendenti -->
+        <line x1="285" y1="435" x2="150" y2="510" /> <!-- xi -> mu -->
+        <line x1="285" y1="435" x2="252" y2="525" /> <!-- xi -> L -->
+        <line x1="285" y1="435" x2="365" y2="540" /> <!-- xi -> Aa -->
+        <line x1="285" y1="435" x2="455" y2="570" /> <!-- xi -> o -->
+        <line x1="285" y1="435" x2="540" y2="600" /> <!-- xi -> x -->
+
+        <!-- Ramo mu -> Ja, d, alpha -->
+        <line x1="150" y1="525" x2="110" y2="565" />
+        <line x1="150" y1="525" x2="150" y2="565" />
+        <line x1="150" y1="525" x2="188" y2="570" />
+
+        <!-- Ramo alpha -> A, R, N, B -->
+        <line x1="188" y1="585" x2="120" y2="665" />
+        <line x1="188" y1="585" x2="162" y2="700" />
+        <line x1="188" y1="585" x2="235" y2="720" />
+        <line x1="188" y1="585" x2="195" y2="800" />
+
+        <!-- Ramo L -> S, T -->
+        <line x1="252" y1="550" x2="315" y2="780" />
+        <line x1="252" y1="550" x2="365" y2="780" />
+
+        <!-- Ramo o -> s, N, phi -->
+        <line x1="455" y1="585" x2="430" y2="735" />
+        <line x1="455" y1="585" x2="480" y2="735" />
+        <line x1="455" y1="585" x2="630" y2="660" />
+
+        <!-- Ramo phi -> C, F, e, f -->
+        <line x1="630" y1="675" x2="565" y2="780" />
+        <line x1="630" y1="675" x2="605" y2="780" />
+        <line x1="630" y1="675" x2="650" y2="780" />
+        <line x1="630" y1="675" x2="700" y2="780" />
+      </g>
+
+      <!-- LINEE TRATTEGGIATE (CONTAMINAZIONI E INFLUSSI) -->
+      <g class="tree-edge-dashed">
+        <line x1="215" y1="205" x2="630" y2="650" /> <!-- O -> phi -->
+        <line x1="260" y1="730" x2="630" y2="675" /> <!-- N(pars prior) -> phi -->
+        <line x1="500" y1="735" x2="630" y2="675" /> <!-- N(pars post.) -> phi -->
+      </g>
+
+      <!-- TESTIMONI (NODI CLICCABILI) -->
+      <g id="stemma-nodes">
+        <g class="stemma-node" data-id="Omega" transform="translate(380, 110)">
+          <circle class="hit-area" r="24"/>
+          <text>Ω</text>
+        </g>
+        <g class="stemma-node" data-id="O" transform="translate(210, 195)">
+          <circle class="hit-area" r="22"/>
+          <text>O</text>
+        </g>
+        <g class="stemma-node" data-id="Gamma" transform="translate(560, 235)">
+          <circle class="hit-area" r="22"/>
+          <text>Γ</text>
+        </g>
+        <g class="stemma-node" data-id="Q" transform="translate(505, 305)">
+          <circle class="hit-area" r="20"/>
+          <text>Q</text>
+        </g>
+        <g class="stemma-node" data-id="GVU" transform="translate(630, 325)">
+          <rect class="hit-area" x="-32" y="-18" width="64" height="36" rx="6"/>
+          <text>GVU</text>
+        </g>
+        <g class="stemma-node" data-id="pi" transform="translate(210, 400)">
+          <circle class="hit-area" r="20"/>
+          <text>π</text>
+        </g>
+        <g class="stemma-node" data-id="xi" transform="translate(285, 420)">
+          <circle class="hit-area" r="20"/>
+          <text>ξ</text>
+        </g>
+        <g class="stemma-node" data-id="mu" transform="translate(150, 515)">
+          <circle class="hit-area" r="20"/>
+          <text>μ</text>
+        </g>
+        <g class="stemma-node" data-id="L" transform="translate(252, 540)">
+          <circle class="hit-area" r="20"/>
+          <text>L</text>
+        </g>
+        <g class="stemma-node" data-id="Aa" transform="translate(365, 555)">
+          <rect class="hit-area" x="-18" y="-18" width="36" height="36" rx="6"/>
+          <text>A<tspan font-size="16" dy="5">a</tspan></text>
+        </g>
+        <g class="stemma-node" data-id="o" transform="translate(455, 575)">
+          <circle class="hit-area" r="20"/>
+          <text>o</text>
+        </g>
+        <g class="stemma-node" data-id="x" transform="translate(545, 600)">
+          <circle class="hit-area" r="20"/>
+          <text>x</text>
+        </g>
+        <g class="stemma-node" data-id="Ja" transform="translate(105, 580)">
+          <rect class="hit-area" x="-18" y="-18" width="36" height="36" rx="6"/>
+          <text>J<tspan font-size="16" dy="5">a</tspan></text>
+        </g>
+        <g class="stemma-node" data-id="d" transform="translate(150, 580)">
+          <circle class="hit-area" r="18"/>
+          <text>d</text>
+        </g>
+        <g class="stemma-node" data-id="alpha" transform="translate(188, 575)">
+          <circle class="hit-area" r="20"/>
+          <text>α</text>
+        </g>
+        <g class="stemma-node" data-id="A" transform="translate(110, 680)">
+          <circle class="hit-area" r="20"/>
+          <text>A</text>
+        </g>
+        <g class="stemma-node" data-id="R" transform="translate(160, 715)">
+          <circle class="hit-area" r="20"/>
+          <text>R</text>
+        </g>
+        <g class="stemma-node" data-id="B" transform="translate(195, 820)">
+          <circle class="hit-area" r="20"/>
+          <text>B</text>
+        </g>
+        <g class="stemma-node" data-id="N-prior" transform="translate(240, 735)">
+          <rect class="hit-area" x="-35" y="-18" width="70" height="42" rx="6"/>
+          <text y="-5">N</text>
+          <text class="sub-label" y="15">(pars prior)</text>
+        </g>
+        <g class="stemma-node" data-id="S" transform="translate(325, 800)">
+          <circle class="hit-area" r="20"/>
+          <text>S</text>
+        </g>
+        <g class="stemma-node" data-id="T" transform="translate(375, 800)">
+          <circle class="hit-area" r="20"/>
+          <text>T</text>
+        </g>
+        <g class="stemma-node" data-id="s" transform="translate(425, 755)">
+          <circle class="hit-area" r="20"/>
+          <text>s</text>
+        </g>
+        <g class="stemma-node" data-id="N-post" transform="translate(490, 755)">
+          <rect class="hit-area" x="-35" y="-18" width="70" height="42" rx="6"/>
+          <text y="-5">N</text>
+          <text class="sub-label" y="15">(pars post.)</text>
+        </g>
+        <g class="stemma-node" data-id="phi" transform="translate(630, 665)">
+          <circle class="hit-area" r="22"/>
+          <text>φ</text>
+        </g>
+        <g class="stemma-node" data-id="C" transform="translate(560, 805)">
+          <circle class="hit-area" r="20"/>
+          <text>C</text>
+        </g>
+        <g class="stemma-node" data-id="F" transform="translate(605, 805)">
+          <circle class="hit-area" r="20"/>
+          <text>F</text>
+        </g>
+        <g class="stemma-node" data-id="e" transform="translate(650, 805)">
+          <circle class="hit-area" r="20"/>
+          <text>e</text>
+        </g>
+        <g class="stemma-node" data-id="f" transform="translate(695, 805)">
+          <circle class="hit-area" r="20"/>
+          <text>f</text>
+        </g>
+      </g>
+    </svg>
+  </main>
+
+  <!-- Modal con struttura primaria + peculiarità ed esponenti -->
+  <div id="backdrop" class="backdrop"></div>
+  <div id="witness-modal">
+    <h3 id="modal-title">Witness Title</h3>
+    <div class="modal-siglum" id="modal-siglum">Sigla</div>
+    <div id="modal-sub-alert"></div>
+    <p class="modal-main-desc" id="modal-main-desc">Descrizione primaria.</p>
+    
+    <div id="peculiarities-box">
+      <div class="peculiarities-title">Particulars, Hands &amp; Sub-branches</div>
+      <ul class="peculiarities-list" id="modal-peculiarities"></ul>
+    </div>
+    
+    <button type="button" class="close-btn" id="modal-close">Close</button>
+  </div>
+
+  <div class="cta-wrapper">
+    <a href="edition.html" class="explore-btn-main">← Back to the Edition</a>
+  </div>
+
+  <footer>
+    <p>Project created for the course of Digital Scholarly Editing: Theory, Methods and Practice at Alma Mater Studiorum - Università di Bologna.</p>
+  </footer>
+
+  <script>
+    const witnessesData = {
+      "Omega": {
+        name: "Archetypus deperditus",
+        sigla: "Ω",
+        desc: "Lost common ancestor of the entire extant manuscript tradition of De rerum natura (saec. VIII/IX). Written in Carolingian minuscule with 26 lines per page. Both primary branches, O and Γ, derive directly from it. Four of its leaves came loose and were attached at the end of the codex after O had been copied but before Γ was (Praef. § 3, § 11).",
+        peculiarities: [
+          { siglum: "Ω", text: "Restored from the consensus of O and Γ, or of O with one of Q, G, U, V." }
+        ]
+      },
+      "O": {
+        name: "Codex Oblongus",
+        sigla: "O",
+        desc: "Leiden, Universitaire Bibliotheken, Voss. Lat. F 30; parchment, early 9th century (reign of Charlemagne), 192 folios with 20 lines per page. The oldest, most authoritative, and most complete direct witness of Lucretius (Praef. § 4).",
+        peculiarities: [
+          { siglum: "O¹", text: "Original hand of the primary Carolingian scribe (Praef. § 5)." },
+          { siglum: "Oᴰ", text: "Dungal, Irish monk at Saint-Denis and Pavia (early 9th c.), in insular/Anglo-Saxon script; corrected errors and supplied lacunae directly from the archetype Ω (Praef. § 5)." },
+          { siglum: "O²", text: "Contemporary or slightly later Carolingian corrector, active throughout the manuscript (Praef. § 5)." },
+          { siglum: "O³", text: "Corrector of the late 10th or early 11th century who glossed rare vocabulary and emended corrupt passages with the help of another manuscript; his work stops within Book I (no corrections after I 827) (Praef. § 5)." }
+        ]
+      },
+      "Gamma": {
+        name: "Subarchetypus deperditus",
+        sigla: "Γ",
+        desc: "Lost Carolingian twin sub-archetype to O, reconstructed through the consensus of Q and the fragments G, V, U. It was copied from Ω after four leaves of the archetype (I 734–785, II 253–304, II 757–806, V 928–979) had fallen out and been attached at its end: hence Q and U transmit these passages after the last line of Book VI (Praef. § 3, §§ 10–11).",
+        peculiarities: [
+          { siglum: "Γ", text: "Consensus of codex Q together with Schedae G, V, U." }
+        ]
+      },
+      "Q": {
+        name: "Codex Quadratus",
+        sigla: "Q",
+        desc: "Leiden, Universitaire Bibliotheken, Voss. Lat. Q 94, mid-9th century (north-eastern France), in 2 columns of 28 lines. The second principal Carolingian witness (Praef. § 6).",
+        peculiarities: [
+          { siglum: "Q¹", text: "First hand of the scribe (Praef. § 7)." },
+          { siglum: "Qᵃ", text: "Early Carolingian corrector, roughly contemporary with the scribe (Praef. § 7, § 14)." },
+          { siglum: "Q²", text: "Mid-15th-century Italian humanist corrector; emended the text through ingenious conjecture (suo Marte) without external codices (Praef. § 7)." }
+        ]
+      },
+      "GVU": {
+        name: "Schedae Carolinae (G, V, U)",
+        sigla: "G, V, U",
+        desc: "Fragments of a single northern Italian parchment manuscript written at the end of the 9th century, now preserved in three separate locations (Praef. §§ 8–9).",
+        peculiarities: [
+          { siglum: "G (Schedae Gottorpienses)", text: "Copenhagen, Det Kongelige Bibliotek, GKS 211 2°; contains I 1 – II 456 (Praef. §§ 8–9)." },
+          { siglum: "V (Schedae Vindobonenses priores)", text: "Vienna, ÖNB, Cod. Lat. 107, fols. 9–14; contains II 642 – III 621 (Praef. §§ 8–9)." },
+          { siglum: "U (Schedae Vindobonenses posteriores)", text: "Vienna, ÖNB, Cod. Lat. 107, fols. 15–18; contains VI 743 to the end (Praef. §§ 8–9)." },
+          { siglum: "G¹/G², V¹/V², U¹/U²", text: "Distinguishes the original scribal hands from later correctors in each fragment." }
+        ]
+      },
+      "pi": {
+        name: "Apographum Poggianum",
+        sigla: "π (P)",
+        desc: "The lost transcript executed in Germany in 1417 for Poggio Bracciolini and forwarded to Niccolò Niccoli in Florence in 1418. Father of all 56 humanist Italian manuscripts (Praef. § 17, § 20).",
+        peculiarities: [
+          { siglum: "π", text: "The baseline text as copied by the German scribe before any Italian corrections." }
+        ]
+      },
+      "xi": {
+        name: "Traditio Italica Vetustissima",
+        sigla: "ξ",
+        desc: "Poggio's apograph enriched in margins and text with the corrections and conjectures of Poggio, Niccolò Niccoli, and their circle. Deufert uses ξ for the consensus of its direct descendants (Praef. § 20).",
+        peculiarities: [
+          { siglum: "ξ⁻ᴸ, ξ⁻ᴬᵃ, ξ⁻ᵒ, ξ⁻ˣ, ξ⁻ᵐᵘ", text: "Consensus of all witnesses of the ξ family except the one indicated in the superscript (Praef. § 22)." }
+        ]
+      },
+      "mu": {
+        name: "Apographon deperditum",
+        sigla: "μ",
+        desc: "The earliest lost apograph derived from ξ; represents the branch least contaminated by speculative humanistic conjectures (Praef. § 17, §§ 22–23).",
+        peculiarities: [
+          { siglum: "μ⁻ᴶᵃ", text: "Consensus of branches d and α against Ja (Praef. § 23)." }
+        ]
+      },
+      "Ja": {
+        name: "Codex Matritensis",
+        sigla: "Jᵃ",
+        desc: "Madrid, Biblioteca Nacional de España, MS 2885 (15th c.); the most faithful surviving representative of branch μ (Praef. § 17, § 23).",
+        peculiarities: []
+      },
+      "d": {
+        name: "Codex Laurentianus Conv. Soppr.",
+        sigla: "d",
+        desc: "Florence, Biblioteca Medicea Laurenziana, Conv. Soppr. 453 (15th c.) (Praef. § 17).",
+        peculiarities: []
+      },
+      "alpha": {
+        name: "Familia Antonii Panormitae",
+        sigla: "α",
+        desc: "Lost Tuscan archetype arranged before 1442 by an anonymous scholar (likely Antonio Panormita), rich in original conjectures (Praef. § 17, §§ 24–25).",
+        peculiarities: [
+          { siglum: "α*", text: "Consensus of witnesses A², R, and B of the α family (Praef. § 25)." },
+          { siglum: "α⁻ᴬ", text: "Consensus of manuscripts R and B against codex A (Praef. § 25)." },
+          { siglum: "α*⁻ᴮ", text: "Consensus of manuscripts A² and R against codex B (Praef. § 25)." },
+          { siglum: "A²", text: "Corrections by Antonio Panormita in codex A (Vat. Lat. 3276) made in Naples to conform with α (Praef. § 25)." }
+        ]
+      },
+      "A": {
+        name: "Codex Vaticanus Lat. 3276",
+        sigla: "A",
+        desc: "Vatican City, BAV, Vat. Lat. 3276, copied in 1442 (Praef. § 17, § 25).",
+        peculiarities: [
+          { siglum: "A²", text: "Second hand of Antonio Panormita (Praef. § 25)." }
+        ]
+      },
+      "R": {
+        name: "Codex Vaticanus Rossianus",
+        sigla: "R",
+        desc: "Vatican City, BAV, Ross. 502 (15th c.) (Praef. § 17, § 25).",
+        peculiarities: []
+      },
+      "B": {
+        name: "Codex Barberinianus",
+        sigla: "B",
+        desc: "Vatican City, BAV, Barb. Lat. 154 (15th c.) (Praef. § 17, § 25).",
+        peculiarities: []
+      },
+      "L": {
+        name: "Codex Laurentianus Nicoli",
+        sigla: "L",
+        desc: "Florence, Biblioteca Medicea Laurenziana, Plut. 35.30. Autograph copy written by the humanist Niccolò Niccoli (Praef. § 17).",
+        peculiarities: []
+      },
+      "Aa": {
+        name: "Codex Vaticanus Reginensis",
+        sigla: "Aᵃ",
+        desc: "Vatican City, BAV, Reg. Lat. 1706; primary witness only from III 647 onwards (the preceding section being an unauthoritative copy of L) (Praef. § 17).",
+        peculiarities: []
+      },
+      "o": {
+        name: "Codex Vaticanus Patetta",
+        sigla: "o",
+        desc: "Vatican City, BAV, Patetta 312; contains three distinct chronological layers of humanist correctors (Praef. § 17, § 26).",
+        peculiarities: []
+      },
+      "x": {
+        name: "Codex Malatestianus",
+        sigla: "x",
+        desc: "Cesena, Biblioteca Malatestiana, S 20.4 (15th c.) (Praef. § 17).",
+        peculiarities: []
+      },
+      "S": {
+        name: "Codex Laurentianus Poliziani",
+        sigla: "S",
+        desc: "Florence, Biblioteca Medicea Laurenziana, Plut. 35.29; annotated by Angelo Poliziano and others (Praef. § 29).",
+        peculiarities: []
+      },
+      "T": {
+        name: "Codex Laurentianus 35.32",
+        sigla: "T",
+        desc: "Florence, Biblioteca Medicea Laurenziana, Plut. 35.32 (Praef. § 29).",
+        peculiarities: [
+          { siglum: "T²", text: "Second hand providing excellent emendations up to I 1038 (Praef. § 29)." }
+        ]
+      },
+      "s": {
+        name: "Codex Ambrosianus",
+        sigla: "s",
+        desc: "Milan, Biblioteca Ambrosiana, E 125 sup. (Praef. § 29).",
+        peculiarities: [
+          { siglum: "s²", text: "Pietro Odo da Montopoli, responsible for thorough second-hand corrections (Praef. § 29)." }
+        ]
+      },
+      "N-prior": {
+        name: "Codex Neapolitanus (pars prior)",
+        sigla: "N (pars prior)",
+        desc: "Naples, Biblioteca Nazionale Vittorio Emanuele III, IV E 51. First part of the codex, copied in Rome (1458/1459) by Pomponio Leto (lines I 1 – III 646) (Praef. § 17, § 26).",
+        peculiarities: [
+          { siglum: "N²", text: "Marginal and interlinear corrections made by Pomponio Leto himself (Praef. § 29)." }
+        ]
+      },
+      "N-post": {
+        name: "Codex Neapolitanus (pars posterior)",
+        sigla: "N (pars post.)",
+        desc: "Naples, IV E 51; covers line III 647 to the end. Corrected by Pomponio Leto in Rome in 1459 with the help of the Roman recension φ (Praef. § 26).",
+        peculiarities: []
+      },
+      "phi": {
+        name: "Familia Romana (Laurentii Vallae)",
+        sigla: "φ",
+        desc: "Lost Roman recension derived from codex o, heavily contaminated with readings from ancient grammarians, returns to Oblongus, and brilliant conjectures attributed to Lorenzo Valla (ca. mid-15th c.) (Praef. §§ 24–26).",
+        peculiarities: [
+          { siglum: "φ*", text: "Consensus of codices F, C, e, f along with the corrected exemplar o (Praef. § 26)." },
+          { siglum: "φ⁻ᶜ", text: "Consensus of manuscripts F, e, and f (from VI 562 only F and f) against codex C (Praef. § 26)." }
+        ]
+      },
+      "C": {
+        name: "Codex Cantabrigiensis",
+        sigla: "C",
+        desc: "Cambridge, University Library, Nn. 2. 40 (saec. XV 3/4, before 1471); the oldest extant manuscript witness of branch φ (Praef. §§ 24–26).",
+        peculiarities: []
+      },
+      "F": {
+        name: "Codex Laurentianus 35.31",
+        sigla: "F",
+        desc: "Florence, Biblioteca Medicea Laurenziana, Plut. 35.31 (Praef. § 24).",
+        peculiarities: []
+      },
+      "e": {
+        name: "Codex Vaticanus Lat. 3275",
+        sigla: "e",
+        desc: "Vatican City, BAV, Vat. Lat. 3275 (extends to VI 561) (Praef. § 24).",
+        peculiarities: []
+      },
+      "f": {
+        name: "Codex Ottobonianus",
+        sigla: "f",
+        desc: "Vatican City, BAV, Ottob. Lat. 1136 (Praef. § 24).",
+        peculiarities: []
+      }
+    };
+
+    const idAliasMap = {
+      "xi-mu": { target: "xi", note: "Consensus of the ξ-family without branch μ (L, Aa, o, x)." },
+      "O1": { target: "O", note: "Reading attested by O¹ (first hand of Codex Oblongus)." },
+      "OD": { target: "O", note: "Correction by Dungal (Oᴰ) in Codex Oblongus." },
+      "O2": { target: "O", note: "Correction by contemporary Carolingian hand (O²) in Codex Oblongus." },
+      "O3": { target: "O", note: "Emendation by the late 10th/early 11th-century corrector (O³) in Codex Oblongus." },
+      "Q1": { target: "Q", note: "Reading of Q¹ (first hand of Codex Quadratus)." },
+      "Qa": { target: "Q", note: "Early Carolingian correction (Qᵃ) in Codex Quadratus." },
+      "Q2": { target: "Q", note: "Humanistic conjecture by Q² (mid-15th century) in Codex Quadratus." },
+      "G": { target: "GVU", note: "Attested in Schedae Gottorpienses (G)." },
+      "V": { target: "GVU", note: "Attested in Schedae Vindobonenses priores (V)." },
+      "U": { target: "GVU", note: "Attested in Schedae Vindobonenses posteriores (U)." },
+      "alphaStar": { target: "alpha", note: "Consensus α* = agreement of manuscripts A², R, and B." },
+      "alpha-A": { target: "alpha", note: "Consensus α⁻ᴬ = agreement of R and B against codex A." },
+      "A2": { target: "A", note: "Second hand of Antonio Panormita (A²) in codex A." },
+      "N": { target: "N-prior", note: "Codex Neapolitanus (N), compiled by Pomponio Leto." },
+      "N2": { target: "N-prior", note: "Correction of Pomponio Leto (N²) in codex N." },
+      "s2": { target: "s", note: "Correction by Pietro Odo da Montopoli (s²) in codex s." },
+      "phiStar": { target: "phi", note: "Consensus φ* = agreement of F, C, e, f with corrected o." },
+      "phi-C": { target: "phi", note: "Consensus φ⁻ᶜ = agreement of F, e, f against C." }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const modal = document.getElementById("witness-modal");
+      const backdrop = document.getElementById("backdrop");
+      const modalTitle = document.getElementById("modal-title");
+      const modalSiglum = document.getElementById("modal-siglum");
+      const modalSubAlert = document.getElementById("modal-sub-alert");
+      const modalMainDesc = document.getElementById("modal-main-desc");
+      const peculiaritiesBox = document.getElementById("peculiarities-box");
+      const modalPeculiarities = document.getElementById("modal-peculiarities");
+      const modalClose = document.getElementById("modal-close");
+      const stemmaSvg = document.querySelector(".stemma-svg");
+
+      function openWitness(rawId) {
+        if (!rawId) return;
+        const clean = decodeURIComponent(rawId).replace(/^#/, "").trim();
+
+        let targetId = clean;
+        let alertMessage = "";
+
+        if (idAliasMap[clean]) {
+          targetId = idAliasMap[clean].target;
+          alertMessage = idAliasMap[clean].note;
+        }
+
+        const data = witnessesData[targetId];
+        if (!data) return;
+
+        document.querySelectorAll(".stemma-node").forEach(n => n.classList.remove("active"));
+        const targetNode = document.querySelector(`.stemma-node[data-id="${targetId}"]`);
+        if (targetNode) {
+          targetNode.classList.add("active");
+          targetNode.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        modalTitle.textContent = data.name;
+        modalSiglum.textContent = "Stemma Siglum: " + data.sigla;
+
+        if (alertMessage) {
+          modalSubAlert.innerHTML = `<div class="modal-highlight-note"><strong>Apparatus notice:</strong> ${alertMessage}</div>`;
+        } else {
+          modalSubAlert.innerHTML = "";
+        }
+
+        modalMainDesc.textContent = data.desc;
+
+        modalPeculiarities.innerHTML = "";
+        if (data.peculiarities && data.peculiarities.length > 0) {
+          peculiaritiesBox.style.display = "block";
+          data.peculiarities.forEach(p => {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>${p.siglum}</strong>: ${p.text}`;
+            modalPeculiarities.appendChild(li);
+          });
+        } else {
+          peculiaritiesBox.style.display = "none";
+        }
+
+        modal.classList.add("visible");
+        backdrop.classList.add("visible");
+      }
+
+      function closeModal() {
+        modal.classList.remove("visible");
+        backdrop.classList.remove("visible");
+        document.querySelectorAll(".stemma-node").forEach(n => n.classList.remove("active"));
+      }
+
+      if (stemmaSvg) {
+        stemmaSvg.addEventListener("click", (e) => {
+          const node = e.target.closest(".stemma-node");
+          if (node && node.dataset.id) {
+            openWitness(node.dataset.id);
+          }
+        });
+      }
+
+      modalClose.addEventListener("click", closeModal);
+      backdrop.addEventListener("click", closeModal);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+
+      function handleHash() {
+        if (window.location.hash) {
+          setTimeout(() => {
+            openWitness(window.location.hash);
+          }, 150);
+        }
+      }
+
+      handleHash();
+      window.addEventListener("hashchange", handleHash);
+    });
+  </script>
+  <script src="assets/nav.js"></script>
+</body>
+</html>

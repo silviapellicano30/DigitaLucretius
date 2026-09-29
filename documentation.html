@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation - Digital Lucretius</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+  <!-- Bootstrap 4.4.1 CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <!-- Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+
+
+  <style>
+    /* Palette and fonts come from assets/theme.css; these are local aliases */
+    :root {
+      --terracotta: var(--red);
+      --terracotta-dark: var(--burgundy-hover);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    h2[id], h3[id] {
+      scroll-margin-top: 90px;
+    }
+
+    body {
+      background-color: var(--ink);
+      color: var(--parchment);
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+      padding-top: 72px; 
+    }
+
+    /* ---------------- Navigation ---------------- */
+    #navbar.navbar {
+      background-color: var(--ink) !important;
+      border-bottom: 1px solid rgba(184, 151, 78, 0.25);
+      padding: 0.5rem 1.5rem;
+    }
+
+    .brand-mark {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: var(--parchment-dim);
+      padding: 0.5rem 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .navbar-dark .navbar-nav .nav-link:hover,
+    .navbar-dark .navbar-nav .nav-link:focus,
+    .navbar-dark .navbar-nav .show > .nav-link {
+      color: var(--gold);
+    }
+
+    .nav-dropdown-trigger {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      outline: none !important;
+    }
+
+    .nav-dropdown-trigger:focus {
+      box-shadow: none !important;
+    }
+
+    .navbar-nav .dropdown-menu {
+      display: none;
+      position: absolute;
+      float: none;
+      min-width: 11rem;
+      padding: 0.5rem 0;
+      background-color: var(--ink);
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      margin-top: 0;
+    }
+
+    .navbar-nav .dropdown-menu.show {
+      display: block;
+    }
+
+    .navbar-nav .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      background-color: var(--ink);
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      margin-top: 0.5rem;
+    }
+
+    .dropdown-item {
+      font-family: var(--font-body);
+      color: var(--parchment-dim);
+      font-size: 1rem;
+      padding: 0.5rem 1.25rem;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--terracotta-dark);
+      color: #fff;
+    }
+
+    /* ---------------- Documentation Layout & Sidebar ---------------- */
+    #wrapper {
+      display: flex;
+      min-height: calc(100vh - 72px);
+    }
+
+    #sidebar-wrapper {
+      width: 17rem;
+      min-width: 17rem;
+      background-color: #241e1a;
+      border-right: 1px solid rgba(184, 151, 78, 0.2);
+      font-family: var(--font-body);
+      position: sticky;
+      top: 72px;
+      height: calc(100vh - 72px);
+      overflow-y: auto;
+    }
+
+    .sidebar-heading {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 1.2rem 1.25rem 0.4rem 1.25rem;
+    }
+
+    .list-group-item {
+      background-color: transparent;
+      border: none;
+      color: var(--parchment-dim);
+      font-size: 1.05rem;
+      padding: 0.45rem 1.25rem;
+      transition: all 0.2s ease;
+    }
+
+    .list-group-item.sub-item {
+      padding-left: 2rem;
+      font-size: 0.95rem;
+      border-left: 2px solid transparent;
+    }
+
+    .list-group-item:hover {
+      background-color: rgba(184, 151, 78, 0.1);
+      color: var(--gold);
+    }
+
+    .list-group-item.sub-item:hover {
+      border-left-color: var(--terracotta);
+    }
+
+    #page-content-wrapper {
+      flex: 1;
+      min-width: 0;
+      background-color: rgba(36, 30, 26, 0.4);
+      padding: 2.5rem 3.5rem;
+    }
+
+    /* ---------------- Typography & Headings ---------------- */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      color: var(--parchment);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    h1.doc-title {
+      font-size: 2.8rem;
+      border-bottom: 1px solid rgba(184, 151, 78, 0.3);
+      padding-bottom: 0.75rem;
+      margin-bottom: 2.5rem;
+      color: var(--gold);
+    }
+
+    h2 {
+      font-size: 2.1rem;
+      padding-top: 3.5rem;
+      margin-top: -1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(110, 101, 90, 0.25);
+      padding-bottom: 0.4rem;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      padding-top: 2.5rem;
+      margin-top: -1rem;
+      margin-bottom: 0.8rem;
+      color: var(--gold);
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      color: var(--parchment-dim);
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--parchment);
+      text-decoration: underline;
+    }
+
+    .lead {
+      font-size: 1.25rem;
+      line-height: 1.8;
+      color: var(--parchment);
+    }
+
+    ul, ol {
+      margin-bottom: 1.5rem;
+      color: var(--parchment-dim);
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+
+    h4 {
+      font-size: 1.15rem;
+      color: var(--parchment);
+      margin: 1.6rem 0 0.6rem;
+      letter-spacing: 0.04em;
+    }
+
+    code {
+      color: var(--gold-light);
+      background: rgba(0, 0, 0, 0.25);
+      padding: 0.05rem 0.3rem;
+      border-radius: 3px;
+      font-size: 0.85em;
+    }
+
+    .doc-code {
+      background: rgba(0, 0, 0, 0.3);
+      color: var(--gold-light);
+      border: 1px solid rgba(184, 151, 78, 0.25);
+      border-radius: 4px;
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+    }
+
+    .doc-table {
+      width: 100%;
+      margin: 0.5rem 0 1.6rem;
+      border-collapse: collapse;
+      color: var(--parchment-dim);
+      font-size: 1rem;
+    }
+
+    .doc-table th,
+    .doc-table td {
+      padding: 0.55rem 0.8rem;
+      border-bottom: 1px solid rgba(184, 151, 78, 0.2);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .doc-table th {
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .doc-table td:first-child {
+      white-space: nowrap;
+    }
+
+    .biblio li {
+      margin-bottom: 0.6rem;
+      padding-left: 1.2rem;
+      text-indent: -1.2rem;
+      list-style: none;
+    }
+
+    .biblio {
+      padding-left: 0;
+    }
+
+    .doc-note {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--stone);
+      border-left: 2px solid rgba(184, 151, 78, 0.35);
+      padding-left: 0.9rem;
+    }
+
+    /* ---------------- Footer ---------------- */
+.site-footer {
+    background-color: var(--ink);
+    color: var(--parchment-dim);
+    font-family: var(--font-body);
+    border-top: 1px solid rgba(184, 151, 78, 0.25);
+}
+
+.footer-band {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+}
+
+.footer-text h3 {
+    font-family: var(--font-display);
+    color: var(--gold);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+.footer-text h3:first-child {
+    margin-top: 0;
+}
+
+.footer-text p {
+    color: var(--parchment-dim);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.footer-text a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-text a:hover {
+    color: var(--parchment);
+    text-decoration: underline;
+}
+
+.email-link {
+    color: var(--parchment);
+    text-decoration: underline;
+}
+
+
+
+    /* ---------------- Responsive ---------------- */
+    @media (max-width: 991px) {
+      .navbar-nav .dropdown-menu {
+        position: static;
+        width: 100%;
+        margin-top: 0;
+        border-left: 0;
+        border-right: 0;
+      }
+
+      #wrapper {
+        flex-direction: column;
+      }
+      #sidebar-wrapper {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+      }
+      #page-content-wrapper {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav id="navbar" class="navbar navbar-expand-md navbar-dark fixed-top">
+  <a class="navbar-brand" href="index.html">
+    <img src="img/logo-lucretius.svg" alt="Digital Lucretius logo" class="brand-mark">
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link page-scroll" href="index.html#home">Home</a>
+        </li>
+
+        <!-- EDITION -->
+        <li class="nav-item dropdown">
+            <button class="nav-link dropdown-toggle nav-dropdown-trigger" type="button" id="editionDropdown"
+                    aria-haspopup="true" aria-expanded="false" aria-controls="editionMenu">Edition</button>
+            <div class="dropdown-menu" id="editionMenu" aria-labelledby="editionDropdown">
+                <a class="dropdown-item" href="edition.html">Text &amp; Apparatus</a>
+                <a class="dropdown-item" href="keywords.html">Keywords</a>
+                <a class="dropdown-item" href="scholars.html">Scholars &amp; Sources</a>
+                <a class="dropdown-item" href="witnesses.html">Stemma Codicum</a>
+            </div>
+        </li>
+
+        <!-- DOCUMENTATION -->
+        <li class="nav-item dropdown">
+            <button class="nav-link dropdown-toggle nav-dropdown-trigger" type="button" id="docsDropdown"
+                    aria-haspopup="true" aria-expanded="false" aria-controls="docsMenu">Documentation</button>
+            <div class="dropdown-menu" id="docsMenu" aria-labelledby="docsDropdown">
+                <a class="dropdown-item page-scroll" href="#project">The Project</a>
+                <a class="dropdown-item page-scroll" href="#the-work">The Work</a>
+                <a class="dropdown-item page-scroll" href="#state-of-the-art">State of the Art</a>
+                <a class="dropdown-item page-scroll" href="#digital-edition">The Digital Edition</a>
+                <a class="dropdown-item page-scroll" href="#features-limitations">Evaluation</a>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link page-scroll" href="#bibliography">Bibliography</a>
+        </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ============ MAIN WRAPPER ============ -->
+<div id="wrapper">
+
+  <!-- ============ SIDEBAR NAVIGATION ============ -->
+  <aside id="sidebar-wrapper">
+    <div class="list-group list-group-flush pt-3 pb-5">
+
+      <a href="#project" class="list-group-item list-group-item-action">The Project</a>
+
+      <div class="sidebar-heading">The Work</div>
+      <a href="#masterpiece" class="list-group-item list-group-item-action sub-item">The Masterpiece</a>
+      <a href="#author" class="list-group-item list-group-item-action sub-item">Author</a>
+      <a href="#historical-context" class="list-group-item list-group-item-action sub-item">Historical Context</a>
+      <a href="#why-digital" class="list-group-item list-group-item-action sub-item">Why a Digital Edition</a>
+      <a href="#manuscript-witnesses" class="list-group-item list-group-item-action sub-item">Manuscript Witnesses</a>
+
+      <div class="sidebar-heading">State of the Art</div>
+      <a href="#sota-print" class="list-group-item list-group-item-action sub-item">Printed Editions</a>
+      <a href="#sota-dse" class="list-group-item list-group-item-action sub-item">Digital Editions &amp; Transcriptions</a>
+
+      <div class="sidebar-heading">Reference Edition</div>
+      <a href="#deufert" class="list-group-item list-group-item-action sub-item">Deufert’s Teubner (2019)</a>
+      <a href="#translation" class="list-group-item list-group-item-action sub-item">The Translation</a>
+
+      <div class="sidebar-heading">Digital Edition</div>
+      <a href="#aims" class="list-group-item list-group-item-action sub-item">Aims, Audience, Scope</a>
+      <a href="#relationship" class="list-group-item list-group-item-action sub-item">Relationship to Deufert</a>
+      <a href="#encoding" class="list-group-item list-group-item-action sub-item">Encoding</a>
+      <a href="#the-website" class="list-group-item list-group-item-action sub-item">The Website</a>
+      <a href="#features-limitations" class="list-group-item list-group-item-action sub-item">Evaluation</a>
+
+      <div class="sidebar-heading">Project Info</div>
+      <a href="#documentation" class="list-group-item list-group-item-action">Credits &amp; Repository</a>
+
+      <div class="sidebar-heading">Bibliography</div>
+      <a href="#primary-sources" class="list-group-item list-group-item-action sub-item">Primary Sources</a>
+      <a href="#secondary-sources" class="list-group-item list-group-item-action sub-item">Secondary Sources</a>
+    </div>
+  </aside>
+
+
+  <!-- ============ PAGE CONTENT ============ -->
+  <main id="page-content-wrapper">
+    <div class="container-fluid">
+
+      <h1 class="doc-title">Project Documentation</h1>
+
+
+      <!-- ============ THE PROJECT ============ -->
+      <section>
+        <h2 id="project">The Project</h2>
+
+        <p class="lead">
+          <strong>Digital Lucretius</strong> is a prototype digital scholarly edition (DSE) of the proem to Book III of Lucretius’ <em>De rerum natura</em> (III 1–93). It is based on the critical text established by Marcus Deufert in the Bibliotheca Teubneriana (2019).
+        </p>
+
+        <p>
+          The text and its apparatuses are encoded in XML according to the TEI P5 Guidelines and published as an interactive website through an XSLT transformation. Companion pages present the <em>stemma codicum</em>, the scholars and ancient authors cited in the apparatus, and the philosophical keywords of the proem.
+        </p>
+
+        <p>
+          The proem — the hymn to Epicurus that opens the demonstration of the mortality of the soul — was chosen because, within the space of 93 lines, it brings together almost every problem an editor of Lucretius has to face. Its text depends on the Carolingian witnesses, but at several points it has been restored or questioned by humanist and modern scholars, whose conjectures, together with a transposition, a suspected lacuna and an athetesis, fill the critical apparatus. At the same time, the passage enjoyed a rich afterlife in antiquity, being quoted by Seneca, Nonius Marcellus, Lactantius and Macrobius, and some of its lines return, identically or with variations, elsewhere in the poem. The proem thus offers, on a small scale, a faithful image of the textual history of the whole work.
+        </p>
+      </section>
+
+
+      <!-- ============ THE WORK ============ -->
+      <section>
+        <h2 id="the-work">The Work</h2>
+
+
+        <!-- THE MASTERPIECE -->
+        <h3 id="masterpiece">The masterpiece</h3>
+
+        <p>
+          <strong>De rerum natura</strong> is a didactic poem in six books written by Lucretius in dactylic hexameter. The work is addressed to Memmius and presents the principles of Epicurean philosophy through the form of Latin poetry. Its main purpose is to explain the nature of the universe and human existence while showing how philosophical knowledge can lead to a happier and more peaceful life.
+        </p>
+
+        <p>
+          The poem is divided into six books, organised into three pairs. The first pair deals with the <strong>nature of the universe</strong>, explaining the existence of atoms and the void and describing the principles that govern the movement of matter. The second pair focuses on the <strong>nature of the human being</strong>, particularly the soul, sensations and the causes of human fears. The final pair examines <strong>natural and human phenomena</strong>, including the origins of the world, the development of civilisation and the causes of diseases and other natural events.
+        </p>
+
+        <p>
+          One of the central themes of the poem is the <strong>liberation of human beings from fear</strong>. Lucretius argues that fear often results from ignorance of nature and from false beliefs. In particular, he attacks the fear of death and the belief that divine powers directly control human life. Knowledge of the natural world is therefore presented as a way of achieving <em>ataraxia</em>, a state of tranquillity and freedom from anxiety.
+        </p>
+
+        <p>
+          Another important theme is the <strong>relationship between humanity and nature</strong>. Lucretius describes the universe as governed by natural processes rather than by supernatural intervention. He also explores the origins of life, the development of human society, language, technology and civilisation. These subjects are treated through rational explanations rather than through traditional myths.
+        </p>
+
+
+        <p>
+          A significant feature of the poem is the contrast between its <strong>philosophical message and its poetic form</strong>. Lucretius uses the beauty and rhythm of poetry to make complex philosophical ideas more accessible and engaging to his Roman audience. The result is a work that combines literature, philosophy and natural observation, occupying a unique position in Roman literary history.
+        </p>
+
+
+        <!-- AUTHOR -->
+        <h3 id="author">Author: Titus Lucretius Carus</h3>
+
+        <p>
+          <strong>Lucretius (c. 94–55 BC)</strong> was a Roman poet who lived during the late Republican period. Very little is known about his life, and the information provided by ancient sources is scarce and uncertain. His full name was Titus Lucretius Carus, and he probably belonged to a wealthy or educated Roman family. According to Saint Jerome, Lucretius died at the age of forty-four, although this information is not considered completely reliable.
+        </p>
+
+        <p>
+          Lucretius’ poetic style is characterised by a combination of <strong>elevated language, vivid imagery and rhetorical richness</strong>. His verse is carefully structured and shows a deep knowledge of archaic Latin poetry, especially that of Ennius. He frequently uses <strong>alliteration, repetition, metaphors, similes and personification</strong> to create a powerful and expressive style. His language can be both solemn and emotional, while his descriptions are often highly visual and evocative. Lucretius also uses poetic devices to give rhythm and force to his ideas, making his poetry distinctive within Latin literature.
+        </p>
+
+
+        <!-- HISTORICAL CONTEXT -->
+        <h3 id="historical-context">Historical Context</h3>
+
+        <p>
+          <strong>Lucretius lived and wrote during the first century BC, a period of great political and social instability in Rome.</strong> The Roman Republic was experiencing a serious crisis, marked by political conflicts, civil wars and struggles for power among influential leaders. The period was characterised by the decline of traditional Republican institutions and the gradual rise of powerful individuals such as Marius, Sulla, Pompey and Julius Caesar. These changes created a climate of uncertainty and tension in Roman society.
+        </p>
+
+        <p>
+          At the same time, the first century BC was an important period of cultural development. Greek philosophy and literature had a strong influence on Roman intellectual life, and many Roman writers became interested in philosophical schools such as Epicureanism and Stoicism. Lucretius wrote in this cultural environment, combining the traditions of Latin poetry with the influence of Greek philosophical thought. His work therefore belongs to a period in which Roman literature was developing new forms and styles while responding to the profound political and cultural changes of the late Republic.
+        </p>
+
+        <!-- WHY A DIGITAL EDITION -->
+        <h3 id="why-digital">Why <em>De rerum natura</em> Lends Itself to a Digital Edition</h3>
+
+        <p>
+          From the point of view of textual criticism, <em>De rerum natura</em> presents a set of problems that the printed critical edition can only record in compressed form, and that a digital edition can make explicit and verifiable:
+        </p>
+
+        <ul>
+          <li><strong>A closed recension with a corrupt archetype.</strong> The whole direct tradition goes back to a single lost archetype, <em>Ω</em>, which was already disfigured by lacunae, transpositions and deep corruptions. Where <em>O</em> and <em>Γ</em> agree in error, no manuscript can help: the text can be restored only by conjecture. The history of the text is therefore largely a history of <em>emendatio</em>, from the fifteenth-century humanists (<em>ξ</em>, <em>α</em>, <em>φ</em>, Pontano, Marullo) to the modern editors. The printed apparatus reduces this history to sigla and names. A digital apparatus can resolve each of them into the witness or reconstructed source it designates, its place in the stemma, and the scholar and publication behind a conjecture, so that the reader can assess the authority of every reading.</li>
+          <li><strong>The critical weight of the <em>versus iterati</em>.</strong> Lucretius repeats whole lines and blocks of lines, as when III 31–34 return verbatim at IV 45–48. For the editor this is a textual problem, not merely a stylistic one: a repetition may be authorial, a trace of the unfinished state of the poem, or an interpolation, and the answer can justify an athetesis. The athetesis of III 85–86 proposed by Zwierlein, following Bockemüller, is an example. Deufert, who devoted a monograph to the spurious lines of the poem, assigns the repetitions a separate apparatus. A digital edition can link each repeated passage to its counterparts, so that the evidence for or against authenticity can be examined directly.</li>
+          <li><strong>An indirect tradition with independent value.</strong> Lucretius was quoted by philosophers, grammarians and Christian writers from the Augustan age to the ninth century. Their quotations sometimes preserve a reading older than the archetype: Macrobius transmits the correct genitive <em>fratris</em> at III 72, against <em>fratres</em> in <em>Ω</em>. Deufert’s <em>apparatus fontium</em> records exactly which words each source quotes. Digital encoding can mark that span in the text, so that the reader sees at a glance where the text rests on the manuscripts alone and where it is confirmed or corrected by an ancient witness.</li>
+          <li><strong>An unnormalised orthography.</strong> Following the archetype, Deufert keeps archaic and inconsistent spellings (<em>quom</em> and <em>cum</em>, <em>diuorsus</em> and <em>diuersus</em>, <em>u</em> for both vowel and consonant) as evidence of Lucretius’ own usage. A digital edition can preserve these forms exactly as printed and still make the text analysable by machine: the lemmatization links every variant spelling to a single dictionary form.</li>
+        </ul>
+
+
+        <!-- MANUSCRIPT WITNESSES -->
+        <h3 id="manuscript-witnesses">Manuscript Witnesses</h3>
+
+        <p>
+          The textual transmission of Lucretius’ <em>De Rerum Natura</em> is characterized by a narrow Carolingian descent followed by an intensive fifteenth-century humanist revival. As Marcus Deufert outlines in his critical edition, the entire surviving direct tradition descends from a single, lost Carolingian archetype
+          (<a href="witnesses.html#Omega"
+             data-witness="Omega"
+             onclick="if(window.openWitnessModal){openWitnessModal('Omega'); return false;}"
+             style="color: #ff4d61; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-family: 'Cinzel', serif;"
+             title="Archetype Ω">&Omega;</a>).
+          This archetype, copied in Caroline minuscule with twenty-six lines per page, suffered substantive lacunae and corruptions as well as a physical dislocation: four of its leaves fell out of the binding and were attached at the end of the codex after <em>O</em> had been copied, so that only the later copy Γ transmits those passages after the end of Book VI.
+        </p>
+
+        <p>
+          From
+          <a href="witnesses.html#Omega"
+             data-witness="Omega"
+             onclick="if(window.openWitnessModal){openWitnessModal('Omega'); return false;}"
+             style="color: #ff4d61; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-family: 'Cinzel', serif;"
+             title="Archetype Ω">&Omega;</a>
+          originated two primary ninth-century witnesses: the intact <em>codex Oblongus</em>
+          (<a href="witnesses.html#O"
+             data-witness="O"
+             onclick="if(window.openWitnessModal){openWitnessModal('O'); return false;}"
+             style="color: #e8c980; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-style: italic; font-family: 'EB Garamond', serif;"
+             title="Codex Oblongus (O)">O</a>,
+          early ninth century) and a lost sister exemplar
+          (<a href="witnesses.html#Gamma"
+             data-witness="Gamma"
+             onclick="if(window.openWitnessModal){openWitnessModal('Gamma'); return false;}"
+             style="color: #ff4d61; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-family: 'Cinzel', serif;"
+             title="Lost Hyparchetype Γ">&Gamma;</a>,
+          mid-ninth century).
+          While
+          <a href="witnesses.html#Gamma"
+             data-witness="Gamma"
+             onclick="if(window.openWitnessModal){openWitnessModal('Gamma'); return false;}"
+             style="color: #ff4d61; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-family: 'Cinzel', serif;"
+             title="Lost Hyparchetype Γ">&Gamma;</a>
+          is physically lost, it is reliably reconstructed through the agreement of its surviving progeny: the <em>codex Quadratus</em>
+          (<a href="witnesses.html#Q"
+             data-witness="Q"
+             onclick="if(window.openWitnessModal){openWitnessModal('Q'); return false;}"
+             style="color: #e8c980; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-style: italic; font-family: 'EB Garamond', serif;"
+             title="Codex Quadratus (Q)">Q</a>)
+          and the fragmentary <em>Schedae</em>
+          (<a href="witnesses.html#G"
+             data-witness="G"
+             onclick="if(window.openWitnessModal){openWitnessModal('G'); return false;}"
+             style="color: #8ed8e8; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-style: italic; font-family: 'EB Garamond', serif;"
+             title="Schedae G">G</a>,
+          <a href="witnesses.html#V"
+             data-witness="V"
+             onclick="if(window.openWitnessModal){openWitnessModal('V'); return false;}"
+             style="color: #8ed8e8; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-style: italic; font-family: 'EB Garamond', serif;"
+             title="Schedae V">V</a>,
+          and
+          <a href="witnesses.html#U"
+             data-witness="U"
+             onclick="if(window.openWitnessModal){openWitnessModal('U'); return false;}"
+             style="color: #8ed8e8; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-style: italic; font-family: 'EB Garamond', serif;"
+             title="Schedae U">U</a>,
+          originally parts of a single manuscript produced in northern Italy).
+          By establishing the consensus between
+          <a href="witnesses.html#O"
+             data-witness="O"
+             onclick="if(window.openWitnessModal){openWitnessModal('O'); return false;}"
+             style="color: #e8c980; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-style: italic; font-family: 'EB Garamond', serif;">O</a>
+          and
+          <a href="witnesses.html#Gamma"
+             data-witness="Gamma"
+             onclick="if(window.openWitnessModal){openWitnessModal('Gamma'); return false;}"
+             style="color: #ff4d61; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-family: 'Cinzel', serif;">&Gamma;</a>
+          (or between
+          <a href="witnesses.html#O"
+             data-witness="O"
+             onclick="if(window.openWitnessModal){openWitnessModal('O'); return false;}"
+             style="color: #e8c980; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-style: italic; font-family: 'EB Garamond', serif;">O</a>,
+          <a href="witnesses.html#Q"
+             data-witness="Q"
+             onclick="if(window.openWitnessModal){openWitnessModal('Q'); return false;}"
+             style="color: #e8c980; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-style: italic; font-family: 'EB Garamond', serif;">Q</a>,
+          and the <em>Schedae</em>), an editor can reconstruct the text of the archetype
+          <a href="witnesses.html#Omega"
+             data-witness="Omega"
+             onclick="if(window.openWitnessModal){openWitnessModal('Omega'); return false;}"
+             style="color: #ff4d61; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-family: 'Cinzel', serif;">&Omega;</a>
+          and eliminate errors peculiar to individual copyists.
+        </p>
+
+        <p>
+          The Renaissance tradition constitutes a second, distinct phase. In 1417, Poggio Bracciolini rediscovered a Carolingian exemplar in Germany and had an apograph made, which he sent to Niccolò Niccoli in Florence in 1418. All fifty-six surviving Italian humanistic manuscripts descend from this Poggian exemplar
+          (<a href="witnesses.html#pi"
+             data-witness="pi"
+             onclick="if(window.openWitnessModal){openWitnessModal('pi'); return false;}"
+             style="color: #f3e6c3; background-color: rgba(243, 230, 195, 0.12); font-weight: 700; text-decoration: none; cursor: pointer; padding: 1px 4px; border-radius: 3px; border: 1px solid rgba(243, 230, 195, 0.3);"
+             title="Lost Poggian Exemplar π">&pi;</a>),
+          which comparative analysis shows was copied directly from
+          <a href="witnesses.html#O"
+             data-witness="O"
+             onclick="if(window.openWitnessModal){openWitnessModal('O'); return false;}"
+             style="color: #e8c980; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-style: italic; font-family: 'EB Garamond', serif;">O</a>
+          (or an immediate duplicate) after early correctors
+          (<a href="witnesses.html#OD"
+             data-witness="OD"
+             onclick="if(window.openWitnessModal){openWitnessModal('OD'); return false;}"
+             style="color: #e59883; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-family: 'EB Garamond', serif;"
+             title="Corrector OD"><em>O<sup>D</sup></em></a>
+          and
+          <a href="witnesses.html#O2"
+             data-witness="O2"
+             onclick="if(window.openWitnessModal){openWitnessModal('O2'); return false;}"
+             style="color: #e59883; font-weight: 700; text-decoration: none; cursor: pointer; padding: 0 3px; font-family: 'EB Garamond', serif;"
+             title="Corrector O2"><em>O<sup>2</sup></em></a>)
+          had already intervened.
+          Consequently, the Italian humanistic copies possess no independent genealogical authority for the ancient text. Their value lies entirely in the progressive layer of corrections and conjectures made by Renaissance scholars—from Poggio, Niccoli, and their circle
+          (<a href="witnesses.html#xi"
+             data-witness="xi"
+             onclick="if(window.openWitnessModal){openWitnessModal('xi'); return false;}"
+             style="color: #f3e6c3; background-color: rgba(243, 230, 195, 0.12); font-weight: 700; text-decoration: none; cursor: pointer; padding: 1px 4px; border-radius: 3px; border: 1px solid rgba(243, 230, 195, 0.3);"
+             title="Humanistic branch ξ">&xi;</a>,
+          <a href="witnesses.html#mu"
+             data-witness="mu"
+             onclick="if(window.openWitnessModal){openWitnessModal('mu'); return false;}"
+             style="color: #f3e6c3; background-color: rgba(243, 230, 195, 0.12); font-weight: 700; text-decoration: none; cursor: pointer; padding: 1px 4px; border-radius: 3px; border: 1px solid rgba(243, 230, 195, 0.3);"
+             title="Humanistic branch μ">&mu;</a>),
+          through intermediate Tuscan and Roman recensions
+          (<a href="witnesses.html#alpha"
+             data-witness="alpha"
+             onclick="if(window.openWitnessModal){openWitnessModal('alpha'); return false;}"
+             style="color: #f3e6c3; background-color: rgba(243, 230, 195, 0.12); font-weight: 700; text-decoration: none; cursor: pointer; padding: 1px 4px; border-radius: 3px; border: 1px solid rgba(243, 230, 195, 0.3);"
+             title="Recension α">&alpha;</a>
+          and
+          <a href="witnesses.html#phi"
+             data-witness="phi"
+             onclick="if(window.openWitnessModal){openWitnessModal('phi'); return false;}"
+             style="color: #f3e6c3; background-color: rgba(243, 230, 195, 0.12); font-weight: 700; text-decoration: none; cursor: pointer; padding: 1px 4px; border-radius: 3px; border: 1px solid rgba(243, 230, 195, 0.3);"
+             title="Recension φ">&phi;</a>,
+          the latter linked to Lorenzo Valla), down to the late-fifteenth-century emendations of Giovanni Pontano and Michele Marullo.
+        </p>
+
+        <p>
+          For further information, see the
+          <a href="witnesses.html" style="color: var(--gold, #B8974E); text-decoration: underline;">
+            Manuscript Witnesses
+          </a>
+          page.
+        </p>
+      </section>
+
+
+      <!-- ============ STATE OF THE ART ============ -->
+      <section>
+        <h2 id="state-of-the-art">State of the Art</h2>
+
+        <!-- PRINTED EDITIONS -->
+        <h3 id="sota-print">Printed Editions: From the <em>Editio Princeps</em> to Deufert</h3>
+
+        <p>
+          Lucretius was first printed at Brescia around 1473. Deufert estimates the editions, translations and anthologies published since then in the hundreds (<em>Praef.</em> § 34). For the history of the text, the following stages are decisive:
+        </p>
+
+        <ul>
+          <li><strong>The humanist editions (1473–1512).</strong> The <em>editio princeps</em> of Brescia was followed by the Venetian edition of 1495. Copies of the 1495 edition preserve the emendations of Giovanni Pontano and Michele Marullo. The Aldine edition of 1500 was edited by Hieronymus Avancius, the first to recognise the importance of the repeated lines. The Florentine Giunta edition of 1512 was edited by Petrus Candidus, who followed Marullo’s recension.</li>
+          <li><strong>The age of commentaries (16th–18th centuries).</strong> The editions of Dionysius Lambinus (Paris 1563/1564), Obertus Gifanius (Antwerp 1566), Sigebertus Havercamp (Leiden 1725) and Gilbert Wakefield (London 1796–1797) are the source of many conjectures still cited today.</li>
+          <li><strong>Nineteenth-century method.</strong> Karl Lachmann (Berlin 1850) made the study of the Lucretian manuscripts a model of stemmatic method. He reconstructed the lost archetype down to its page layout. H. A. J. Munro (Cambridge 1864; 3rd ed. 1873) added an English translation and a commentary that dominated Anglophone scholarship.</li>
+          <li><strong>Twentieth-century critical editions.</strong> Hermann Diels (Berlin 1923–1924) produced an <em>editio maior</em>. Cyril Bailey’s editions became the standard text in the English-speaking world: the Oxford Classical Text (1900, revised in 1922) and the three-volume edition with commentary (Oxford 1947). Konrad Müller (Zürich 1975) produced the edition on which the modern apparatus of repeated lines is based. Enrico Flores published a new critical edition (Napoli 2002–2009).</li>
+          <li><strong>Deufert (2019).</strong> Deufert’s Teubner edition is the most recent critical edition and the reference text for this project (see <a href="#deufert">below</a>). Reviewing it in the <em>Bryn Mawr Classical Review</em>, D. Mark Possanza calls it “the most authoritative and up-to-date critical edition” of the poem and “a major contribution to Lucretian and Latin scholarship” (<a href="https://bmcr.brynmawr.edu/2020/2020.09.15/" target="_blank" rel="noopener noreferrer">BMCR 2020.09.15</a>).</li>
+        </ul>
+
+        <!-- DIGITAL EDITIONS AND TRANSCRIPTIONS -->
+        <h3 id="sota-dse">Digital Editions and Transcriptions</h3>
+
+        <p>
+          No digital scholarly edition of <em>De rerum natura</em> exists at present. The reference census of the field is Patrick Sahle’s <a href="https://www.digitale-edition.de/" target="_blank" rel="noopener noreferrer"><em>A Catalog of Digital Scholarly Editions</em></a> (Bergische Universität Wuppertal). When consulted in September 2026, its data (944 entries, last updated June 2026) contained no edition of Lucretius. Latin antiquity accounts for fewer than twenty entries, most of them epigraphic or documentary rather than literary. Classical Latin poetry is represented by only three projects:
+        </p>
+
+        <ul>
+          <li><a href="http://www.catullusonline.org" target="_blank" rel="noopener noreferrer"><em>Catullus Online</em></a>, ed. D. Kiss (LMU München, 2009–): a critical edition of Catullus with a repertory of conjectures.</li>
+          <li><a href="https://achilleid.unige.ch/welcome" target="_blank" rel="noopener noreferrer"><em>Digital Statius: The Achilleid</em></a>, ed. D. Nelis, V. Berlincourt, L. Galli Milić and J.-Ph. Goldman (University of Geneva, 2019).</li>
+          <li><a href="https://ldlt.digitallatin.org/editions/calpurnius_siculus/" target="_blank" rel="noopener noreferrer">Calpurnius Siculus, <em>Bucolica</em></a>, from C. Giarratano’s edition (1910), encoded in TEI by S. J. Huskey and H. A. Cayless for the <em>Library of Digital Latin Texts</em> (2017).</li>
+        </ul>
+
+        <p>
+          The Latin text of Lucretius is nevertheless available online, but only as digital transcriptions or reading texts:
+        </p>
+
+        <ul>
+          <li><a href="https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0131" target="_blank" rel="noopener noreferrer"><strong>Perseus Digital Library</strong></a> (Tufts University). It offers the Latin text of W. E. Leonard’s edition (New York 1916), with English translations and no apparatus. The text is encoded in TEI XML in the <a href="https://github.com/PerseusDL/canonical-latinLit/blob/master/data/phi0550/phi001/phi0550.phi001.perseus-lat1.xml" target="_blank" rel="noopener noreferrer"><em>canonical-latinLit</em></a> repository.</li>
+          <li><a href="https://www.thelatinlibrary.com/lucretius/lucretius3.shtml" target="_blank" rel="noopener noreferrer"><strong>The Latin Library</strong></a>. Plain HTML text; the source edition is not declared.</li>
+          <li><a href="https://www.mqdq.it/" target="_blank" rel="noopener noreferrer"><strong>Musisque Deoque</strong></a> (P. Mastandrea et al., 2005–). A digital archive of Latin poetry that includes the whole poem, with tools for the study of poetic language and intertextuality.</li>
+        </ul>
+
+        <p>
+          The primary evidence is also becoming available. <a href="https://www.universiteitleiden.nl/en/news/2025/01/more-than-300-medieval-manuscripts-from-the-bibliotheca-vossiana-now-available-in-open-access" target="_blank" rel="noopener noreferrer">Leiden University Libraries</a> published the Codex Oblongus (<em>O</em>, Voss. Lat. F 30) in open access in 2025, together with the other medieval manuscripts of the Bibliotheca Vossiana.
+        </p>
+
+        <p>
+          None of these resources, however, reproduces Deufert’s text, and none encodes an apparatus, the testimonia or the repeated lines. This is the gap Digital Lucretius begins to address.
+        </p>
+      </section>
+
+
+      <!-- ============ THE REFERENCE EDITION ============ -->
+      <section>
+        <h2 id="reference-edition">The Reference Edition</h2>
+
+        <!-- DEUFERT -->
+        <h3 id="deufert">Marcus Deufert’s Teubner Edition (2019)</h3>
+
+        <p>
+          <em>Titus Lucretius Carus, De rerum natura</em>, edited by Marcus Deufert (Leipzig), appeared in 2019 in the Bibliotheca Scriptorum Graecorum et Romanorum Teubneriana (Berlin/Boston, De Gruyter). It concludes a long programme of research. Deufert’s <em>Pseudo-Lukrezisches im Lukrez</em> (1996) studied the spurious lines of the poem, the <em>Prolegomena</em> (2017) discuss the manuscripts, the <em>tituli</em> and orthography, and the <em>Kritischer Kommentar</em> (2018) justifies the textual choices one by one. The Latin <em>praefatio</em> of the edition summarises these results for the reader.
+        </p>
+
+        <h4>A stemmatic, selective apparatus</h4>
+        <p>
+          Deufert collated all the Carolingian manuscripts himself (<em>Praef.</em> § 4) and uses the stemma (see <a href="#manuscript-witnesses">Manuscript Witnesses</a>) to decide what goes into the apparatus. When <em>O</em> and <em>Γ</em> agree, they give the reading of the archetype. The errors of a single manuscript are therefore left out. The apparatus is deliberately selective: it records only the readings that matter for reconstructing the text (<em>Praef.</em> §§ 13–16).
+        </p>
+        <p>
+          The humanist manuscripts are not treated as witnesses, because they all descend from a copy of <em>O</em>. They are cited only for their early conjectures, which Deufert groups under the sigla <em>ξ</em>, <em>μ</em>, <em>α</em> and <em>φ</em>. The later conjectures of Pontano and Marullo are known from annotated copies of the 1495 Venetian edition (<em>Praef.</em> §§ 17–33).
+        </p>
+
+        <h4>Three apparatuses</h4>
+        <ul>
+          <li>An <strong><em>apparatus fontium</em></strong>. It records the ancient authors, from the Augustan age to the end of the ninth century, who quote the poem, and specifies exactly which portion of each line they quote. It lists sources, not imitations or paraphrases (<em>Praef.</em> §§ 40–42).</li>
+          <li>An apparatus of <strong>repeated lines</strong>. Deufert believes he was the first editor of Lucretius to separate this apparatus from the critical one. It distinguishes identical (=) from similar (~) repetitions and is largely drawn from Konrad Müller (<em>Praef.</em> § 39).</li>
+          <li>A mostly <strong>positive <em>apparatus criticus</em></strong>. It names the witnesses of the accepted reading and uses the half bracket ( ] ) where the transmitted text is kept but conjectures are reported (<em>Praef.</em> § 38).</li>
+        </ul>
+
+        <h4>Orthography, <em>tituli</em> and fragments</h4>
+        <p>
+          Deufert keeps the orthographic inconsistency of the archetype (<em>diuorsus</em> beside <em>diuersus</em>, <em>quom</em> beside <em>cum</em>) as a truer image of Lucretius’ usage than a normalised spelling (<em>Praef.</em> §§ 53–55). Following Lachmann, he removes the prose <em>tituli</em> from the poem and edits them together at the end (<em>Praef.</em> §§ 47–52). The fragments attributed to Lucretius by the grammarians are edited separately, each marked according to its authenticity (<em>Praef.</em> §§ 56–57).
+        </p>
+
+        <!-- TRANSLATION -->
+        <h3 id="translation">The English Translation</h3>
+
+        <p>
+          A new translation of Lucretius lies beyond the purpose of this edition, and beyond the competence of a student project. Rendering <em>De rerum natura</em> demands the combined skills of the Latinist and of the poet. As printed bilingual editions do, the edition therefore relies on an established translation: David R. Slavitt, <em>De rerum natura (The Nature of Things): A Poetic Translation</em> (University of California Press, 2008).
+        </p>
+
+        <p>
+          Slavitt’s version was chosen for three reasons. First, its translator is one of the most experienced American translators of Latin poetry, with versions of Virgil’s <em>Eclogues</em> and <em>Georgics</em>, of Ovid and of Seneca’s tragedies. Second, it is a recent translation published by a major university press and reviewed in the <em>Bryn Mawr Classical Review</em> (2008.12.41). Third, and most importantly, it is a poetic translation that sets out to render the voice of the poem, not only its argument. This matters especially for the proem, which is a hymn: the fervour of Lucretius’ address to Epicurus, the images of light and darkness and the rhythm of the praise are lost in a prose crib. Slavitt’s free verse restores them and makes the proem accessible to readers without Latin.
+        </p>
+
+        <p>
+          Because the translation is in free verse, its lines do not map one-to-one onto the Latin. The verse-by-verse alignment encoded in the edition is therefore approximate.
+        </p>
+      </section>
+
+
+      <!-- ============ DIGITAL EDITION ============ -->
+      <section>
+        <h2 id="digital-edition">The Digital Edition</h2>
+
+        <p>
+          Digital Lucretius is not a documentary edition: it does not transcribe a single manuscript. It is the digital representation of a critical edition, reproducing the text established by Deufert together with the evidence on which it rests. It presents a single critical text (a monotextual edition) of a work transmitted by several witnesses, whose readings are recorded in the apparatus as selected by Deufert. For the proem to Book III the direct witnesses are <em>O</em>, <em>Q</em> and <em>V</em>. The edition is also multi-layered. The Latin text, the three apparatuses, the lemmatization, the keyword index and the translation are distinct layers of one TEI file. The text and the apparatus panel are always visible; the lemmatization, the keywords and the translation can be switched on or off by the reader.
+        </p>
+
+        <!-- AIMS -->
+        <h3 id="aims">Aims, Audience and Scope</h3>
+
+        <p>
+          The project was conceived not as a definitive edition but as a <em>secondary digital surrogate</em>, in the sense proposed by Peter Shillingsburg. Shillingsburg distinguishes the material record, which is primary, from its digital representations. A transcription already stands at one remove from the documents, as a first layer of interpretation, and critical annotation stands at a further remove. Digital Lucretius sits at this interpretive distance twice over, since it represents a printed critical edition which in turn interprets the manuscripts. Its value lies in being accessible anywhere, machine-readable and open to further analysis, rather than in any claim to be authoritative or final. Following Shillingsburg’s principles of modularity and durability, the transcribed and encoded text is treated as a stable base. Critical improvements — new apparatus entries, new interpretive layers, links to external resources — can be built on it without altering the underlying encoding.
+        </p>
+
+        <h4>Aims</h4>
+        <ul>
+          <li>To make Deufert’s critical text and apparatuses readable and explorable online, resolving every siglum and every name into structured information.</li>
+          <li>To test the TEI method of <em>parallel segmentation</em> on an apparatus that combines three kinds of evidence of different status. The first is the readings of the Carolingian witnesses, which descend from the archetype. The second is the humanist corrections, which are transmitted in manuscripts but, as Deufert shows, have the value of conjectures, because those manuscripts derive from <em>O</em>. The third is the modern conjectures drawn from printed editions and studies. The encoding keeps these kinds of evidence distinct (<code>@wit</code> for manuscripts and reconstructed humanist sources, <code>@resp</code> for the scholars responsible for a conjecture, <code>@source</code> for the ancient authors who transmit a reading) while presenting them in a single apparatus.</li>
+          <li>To connect the textual evidence (witnesses, sources, repeated lines) with the doctrinal content of the proem (lemmas and keywords).</li>
+          <li>To show students of Latin, in a didactic environment, how a critical text is constructed.</li>
+        </ul>
+
+        <h4>Audience</h4>
+        <p>
+          The primary audience is students and scholars of Latin philology and of ancient philosophy. They can use the apparatus and the stemma as in a printed edition, with every abbreviation resolved. The secondary audience is students of Digital Humanities, for whom the edition documents a complete TEI-to-HTML workflow. Thanks to the translation and to the optional layers, which are switched off by default, the edition is also readable by non-specialists.
+        </p>
+
+        <h4>What the edition contains</h4>
+        <ul>
+          <li>The Latin text of III 1–93 in Deufert’s constitution and orthography.</li>
+          <li>A critical apparatus of 47 entries with 58 readings. Among the readings, 11 are rejected conjectures, one records an athetesis (III 85–86) and one a lacuna (after III 82). Six further conjectures or transpositions are adopted in the text.</li>
+          <li>An <em>apparatus fontium</em> of 5 <em>testimonia</em> (Lactantius, Nonius Marcellus, Macrobius).</li>
+          <li>An apparatus of 11 <em>loci paralleli</em>: 6 identical, 2 similar and 1 varied repetition, plus 2 cross-references.</li>
+          <li>The lemmatization of all 680 words (399 distinct lemmas).</li>
+          <li>An index of 12 philosophical keywords, with 27 occurrences marked in the text.</li>
+          <li>Slavitt’s English translation.</li>
+          <li>An interactive stemma with 28 nodes, manuscripts and reconstructed sources, and profiles of the 21 scholars and ancient authors cited in the apparatus.</li>
+        </ul>
+
+        <h4>What it does not contain</h4>
+        <ul>
+          <li>The rest of the poem.</li>
+          <li>Images or diplomatic transcriptions of the manuscripts, and an independent collation. The edition represents Deufert’s selective apparatus without re-examining the witnesses.</li>
+          <li>A running commentary, beyond the keyword entries and the notes attached to the apparatus.</li>
+          <li>The <em>tituli</em>, which Deufert himself removes from the text.</li>
+        </ul>
+
+        <!-- RELATIONSHIP -->
+        <h3 id="relationship">Relationship to Deufert’s Text</h3>
+
+        <ul>
+          <li><strong>Text.</strong> The reading printed by Deufert is always the <code>&lt;lem&gt;</code>. The readings reported in his apparatus are <code>&lt;rdg&gt;</code> elements. His spelling is kept unchanged.</li>
+          <li><strong>Sigla.</strong> His sigla are kept, including consensus sigla such as <em>ξ-μ</em>, <em>α*</em> and <em>α-A</em>.</li>
+          <li><strong>Witnesses and conjectures.</strong> Where Deufert names the witnesses of the accepted reading, they are encoded on the <code>&lt;lem&gt;</code> (36 entries). Where he adopts a conjecture, the <code>&lt;lem&gt;</code> names only its author, as for Pontano’s <em>ibi</em> at III 28.</li>
+          <li><strong>Apparatuses.</strong> The <em>testimonia</em> and the repeated lines reproduce his <em>apparatus fontium</em> and his apparatus of <em>versus iterati</em>. The descriptions of the witnesses follow his <em>praefatio</em> and <em>conspectus siglorum</em>.</li>
+        </ul>
+        <p>
+          Everything else has been added by this project: the lemmatization, the keyword index, the colour coding, the translation, and the biographical profiles of the scholars and ancient authors.
+        </p>
+
+        <!-- ENCODING -->
+        <h3 id="encoding">Encoding</h3>
+
+        <h4>Workflow</h4>
+        <p>
+          The Latin text was taken from the <a href="https://github.com/PerseusDL/canonical-latinLit/blob/master/data/phi0550/phi001/phi0550.phi001.perseus-lat1.xml" target="_blank" rel="noopener noreferrer">open TEI transcription of the Perseus Digital Library</a> and then checked line by line against Deufert’s printed edition. Wherever the two differ, Deufert’s text was followed, including his orthography: archaic <em>u</em> for consonantal <em>v</em> (<em>uitae</em>, not <em>vitae</em>) and his word division (<em>quidnam</em>, <em>interdum</em>). The three apparatuses were then encoded from the Teubner edition. Finally, the lemmatization, the keyword entries and the translation were added.
+        </p>
+
+        <h4>Organisation of the XML file</h4>
+        <table class="doc-table">
+          <thead>
+            <tr><th>Section</th><th>Content</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>&lt;teiHeader&gt;</code></td><td>Metadata: Deufert’s edition as source, the list of 43 witnesses and sigla (<code>&lt;listWit&gt;</code>), the lists of scholars and ancient authors (<code>&lt;listPerson&gt;</code>), and the editorial principles, including the declaration of parallel segmentation (<code>&lt;variantEncoding&gt;</code>).</td></tr>
+            <tr><td><code>&lt;body&gt;</code></td><td>One <code>&lt;div type="prooemium"&gt;</code> containing:
+              <br>– the poem: 93 <code>&lt;l&gt;</code> elements, each word a <code>&lt;w lemma="…"&gt;</code>, variants inline as <code>&lt;app&gt;</code>, <code>&lt;lem&gt;</code> and <code>&lt;rdg&gt;</code>;
+              <br>– the <em>apparatus fontium</em>: one <code>&lt;note type="fontium"&gt;</code> per testimonium;
+              <br>– the repeated lines: one <code>&lt;note type="iterati"&gt;</code> per parallel;
+              <br>– the translation: each English <code>&lt;l&gt;</code> linked to its Latin line through <code>@corresp</code>.</td></tr>
+            <tr><td><code>&lt;back&gt;</code></td><td>The glossary of the 12 keywords (<code>&lt;entry&gt;</code>).</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Notable encoding choices</h4>
+        <p>
+          <strong>1. Critical apparatus: parallel segmentation.</strong> Each variant is an <code>&lt;app&gt;</code> placed inside the verse, where the text diverges. The <code>&lt;app&gt;</code> contains the accepted reading (<code>&lt;lem&gt;</code>) and the alternatives (<code>&lt;rdg&gt;</code>). Witnesses are given in <code>@wit</code> and scholars in <code>@resp</code>. Editorial interventions are typed (<code>@type</code> = <code>conjecture</code>, <code>athetesis</code>, <code>lacuna</code>).
+        </p>
+        <p>
+          <strong>2. <em>Apparatus fontium</em> and <em>loci paralleli</em>: linked notes.</strong> These are not variants but information about a passage, so they are kept outside the verse, as notes in two separate sections. The passage is marked in the text by a <code>&lt;seg&gt;</code>, or by two <code>&lt;anchor&gt;</code> elements when it spans several lines, and the note points to it with <code>@target</code>. This records exactly which words a source quotes or the poem repeats.
+        </p>
+        <p>
+          <strong>3. The indirect tradition in both.</strong> An ancient author appears in the <em>apparatus fontium</em> for what he quotes, and in the critical apparatus, through <code>@source</code>, for the reading he transmits. His name goes on the <code>&lt;lem&gt;</code> when he confirms the text, as with Macrobius’ <em>fratris</em> at III 72. It goes on a <code>&lt;rdg&gt;</code> when he differs from it, as with Seneca’s <em>ita</em> for <em>sic</em> at III 88.
+        </p>
+        <p>
+          <strong>4. Words and lemmas.</strong> Every word is a <code>&lt;w&gt;</code> with a <code>@lemma</code> assigned by hand in its context, so that homographs are distinguished (relative <em>qui</em>, interrogative <em>quis</em>). The lemmas follow dictionary conventions: nominative singular for nouns and first person present for verbs, with deponents in <em>-or</em>. Like the text, they use <em>u</em> for consonantal <em>v</em>, and there are 399 distinct lemmas. The <code>@join</code> attribute handles enclitics and punctuation.
+        </p>
+        <p>
+          <strong>5. Keywords and names.</strong> Keywords are <code>&lt;term&gt;</code> elements linked to the glossary. Every siglum and every name is resolved against <code>&lt;listWit&gt;</code> or <code>&lt;listPerson&gt;</code>.
+        </p>
+
+        <h4>Validation</h4>
+        <p>
+          An XML file can be correct at two levels. It is <strong>well-formed</strong> when it respects the syntax of XML: every tag is closed and the elements are properly nested. It is <strong>valid</strong> when it also respects the rules of a schema, which defines which elements and attributes may be used and where. For example, the TEI schema allows <code>&lt;lem&gt;</code> and <code>&lt;rdg&gt;</code> only inside an <code>&lt;app&gt;</code>: a reading placed directly in the verse would make the file invalid.
+        </p>
+        <p>
+          The file declares the TEI schema it follows (<code>tei_all</code>, the complete TEI P5 schema) in its first lines. It was checked against that schema with a validator, which confirmed that it is both well-formed and valid.
+        </p>
+        <p>
+          A second check verified a rule that the schema does not enforce: every reference must point to something that exists. When a reading is attributed to <code>@wit="#O"</code>, the file must contain a witness with the identifier <code>O</code>. All references in the file meet this rule, except those of the <em>loci paralleli</em> that point to lines in other books of the poem. These are not part of the encoded text, so the pointers are deliberate.
+        </p>
+
+        <!-- THE WEBSITE -->
+        <h3 id="the-website">The Website</h3>
+
+        <h4>Transformation with XSLT 3.0 and Saxon</h4>
+        <p>
+          Ready-made environments exist for publishing TEI critical editions. One is <a href="http://evt.labcd.unipi.it/" target="_blank" rel="noopener noreferrer"><strong>EVT 2</strong></a> (Edition Visualization Technology), which supports editions encoded with parallel segmentation. A custom XSLT stylesheet was chosen instead for the sake of customisation. It allows the page to be shaped around Deufert’s three apparatuses, the colour coding of the evidence and the links to the companion pages of the site.
+        </p>
+        <p>
+          The edition page is generated from the TEI file by the stylesheet <code>tei-to-edition.xsl</code> and published as static HTML. The stylesheet is written in XSLT 3.0 and is run with <strong>Saxon</strong> (Saxonica), the reference XSLT 3.0 processor, available in an open-source Home Edition:
+        </p>
+        <pre class="doc-code">java -jar saxon-he.jar -s:edition.xml -xsl:tei-to-edition.xsl -o:edition.html</pre>
+        <p>
+          Pre-rendering means that the site needs no server and can be hosted on GitHub Pages, and that pages load without a processing step. Regenerating the page from the XML reproduces the published one exactly. The stylesheet is organised in modes, with separate templates for the running text, the apparatus, the translation, the <em>testimonia</em> and the parallel passages. A single template resolves the evidence of every reading, turning sigla into links to the stemma page and names into links to the scholars’ profiles.
+        </p>
+
+        <h4>Architecture of the site</h4>
+        <table class="doc-table">
+          <thead>
+            <tr><th>Page</th><th>Content and data source</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><a href="index.html">Home</a></td><td>Introduction and entry points.</td></tr>
+            <tr><td><a href="edition.html">Text &amp; Apparatus</a></td><td>The edition, generated from <code>edition.xml</code>.</td></tr>
+            <tr><td><a href="keywords.html">Keywords</a></td><td>Philosophical keywords, from <code>data/keywords.json</code>.</td></tr>
+            <tr><td><a href="scholars.html">Scholars &amp; Sources</a></td><td>Profiles of scholars and ancient authors, from <code>data/scholars.json</code>, with an embedded copy used when the file cannot be loaded.</td></tr>
+            <tr><td><a href="witnesses.html">Stemma Codicum</a></td><td>Interactive SVG stemma. Each node opens the description of a witness, with its hands and consensus sigla.</td></tr>
+            <tr><td>Documentation</td><td>This page.</td></tr>
+          </tbody>
+        </table>
+        <p>
+          All pages share one design system (<code>assets/theme.css</code>): a common palette, the Cinzel and EB Garamond typefaces, and the same navigation bar.
+        </p>
+
+        <h4>Features of the reading environment</h4>
+        <p>
+          For the features it supports and for the rendering of the HTML, the edition takes its inspiration from two digital editions of the University of Bologna: <a href="https://dharc-org.github.io/progetto-vasto/" target="_blank" rel="noopener noreferrer"><strong>VaSto</strong></a>, the digital edition of Benedetto Varchi’s <em>Storia fiorentina</em>, and <a href="https://projects.dharc.unibo.it/leggomanzoni/" target="_blank" rel="noopener noreferrer"><strong>LeggoManzoni</strong></a>, which accompanies the 1840–42 edition of <em>I promessi sposi</em> with critical commentaries, translations and the digitized printed edition. The features of the edition are the following:
+        </p>
+        <ul>
+          <li><strong>Integrated critical apparatus.</strong> Numbered markers in the text open the corresponding entry in a panel docked at the bottom of the screen, and each entry leads back to the text. The panel has three tabs: <em>Apparatus criticus</em>, <em>Testimonia</em> and <em>Loci paralleli</em>.</li>
+          <li><strong>Colour coding of the evidence.</strong> Every siglum or name is coloured by its place in the tradition. Red marks the archetype; blue the Carolingian witnesses; yellow the humanist tradition; green ancient authors; purple modern scholars. A reader can thus grasp the weight of a reading before decoding the sigla.</li>
+          <li><strong>Highlighting of <em>testimonia</em> and <em>loci paralleli</em>.</strong> Selecting an entry highlights in the text exactly the words quoted by a source or repeated elsewhere.</li>
+          <li><strong>Optional interpretive layers.</strong> The reader can switch on the lemmatization (the lemma appears on hover), the keyword highlighting (linked to the keyword entries) and the facing translation. The translation is aligned verse by verse in the encoding but not yet synchronised interactively with the Latin.</li>
+          <li><strong>Links to the companion pages.</strong> The text and the apparatus are connected to the other pages of the site, and clicking on an element opens the corresponding page:
+            <ul>
+              <li>a keyword in the text opens its entry on the <a href="keywords.html">Keywords</a> page;</li>
+              <li>a manuscript siglum in the apparatus opens the description of that witness on the <a href="witnesses.html">Stemma Codicum</a> page;</li>
+              <li>the name of a scholar or of an ancient author opens his profile on the <a href="scholars.html">Scholars &amp; Sources</a> page. For most names, hovering over them shows the bibliographical reference of the conjecture or of the quotation.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h4>User experience</h4>
+        <p>
+          The interface follows the principle of <em>progressive disclosure</em>. As in a printed edition, the text and its apparatus come first, while the interpretive layers (lemmatization, keywords and translation) are optional and switched off by default. A reading guide at the top of the edition explains each tool and the three apparatuses. On the edition page the navigation bar scrolls away with the text, so as not to reduce the room left by the apparatus panel. The site is responsive, with a collapsible menu on small screens. Interactive elements expose their state to assistive technologies (<code>aria-pressed</code>, <code>aria-expanded</code>, <code>role="tab"</code>), and menus and dialogs close with the Esc key.
+        </p>
+
+        <p class="doc-note">
+          A generative AI assistant (Anthropic’s Claude) was used to manage the XSLT stylesheet and the SVG of the stemma, to translate Deufert’s <em>praefatio</em>, written entirely in Latin, and to translate this documentation into academic English. The philological content is the editor’s own and was checked against Deufert’s edition.
+        </p>
+
+        <!-- EVALUATION -->
+        <h3 id="features-limitations">Evaluation: Achievements and Limitations</h3>
+
+        <h4>Achievements</h4>
+        <ul>
+          <li>A valid TEI encoding of a classical text with its three apparatuses, in which every siglum and every conjecture is linked to structured information.</li>
+          <li>A reading interface that keeps the apparatus always visible below the text, as in a printed edition, and makes the weight of each reading visible.</li>
+          <li>A reproducible workflow (TEI → XSLT 3.0 → static HTML) that can be regenerated and extended.</li>
+        </ul>
+
+        <h4>Limitations</h4>
+        <ul>
+          <li><strong>Scope.</strong> Only 93 of the poem’s more than 7,400 lines are edited.</li>
+          <li><strong>Dependence on a single edition.</strong> The apparatus is Deufert’s, with no independent collation, and inherits its deliberate omission of singular errors.</li>
+          <li><strong>Translation.</strong> The Latin text and the translation are shown side by side but are not linked on screen. Selecting a Latin line does not highlight the corresponding English line, although the correspondence between lines is already encoded in the XML.</li>
+          <li><strong>Pointers outside the proem.</strong> Repeated lines in other books are referenced but cannot be displayed.</li>
+          <li><strong>Lemmatization.</strong> Each lemma is recorded as plain text (e.g. <code>lemma="uita"</code>). It is not linked to an external lexical database such as the LiLa Knowledge Base for Latin, so the lemmatization cannot yet be connected with other lemmatized texts.</li>
+          <li><strong>No search.</strong> There is no full-text search, and no export other than the TEI source.</li>
+        </ul>
+
+        <h4>Future work</h4>
+        <ul>
+          <li>Extending the encoding to the whole of Book III.</li>
+          <li>Linking lemmas to the LiLa Knowledge Base, and the <em>loci paralleli</em> outside the proem to the Perseus text through CTS URNs.</li>
+          <li>Integrating the IIIF images of the Leiden manuscripts.</li>
+          <li>Synchronising the translation with the Latin text.</li>
+        </ul>
+      </section>
+
+
+      <!-- ============ CREDITS ============ -->
+      <section>
+        <h2 id="documentation">Credits and Repository</h2>
+
+        <p>
+          Digital Lucretius was developed by <strong>Silvia Antonella Pellicano</strong>, who was responsible for the XML/TEI encoding and the philological annotation. It was produced for the course <em>Digital Scholarly Editing: Theory, Methods and Practice</em>, taught by Prof. <strong>Paola Italia</strong> in the Master’s Degree in <em>Digital Humanities and Digital Knowledge (DHDK)</em> at the University of Bologna, academic year 2025/2026.
+        </p>
+
+        <p>
+          The source files are available in the project’s GitHub repository:
+          <a href="https://github.com/silviapellicano30/DigitaLucretius" target="_blank" rel="noopener noreferrer">github.com/silviapellicano30/DigitaLucretius</a>.
+          The encoding is released under a Creative Commons Attribution–NonCommercial 4.0 licence (CC BY-NC 4.0). The critical text belongs to Deufert’s edition (De Gruyter, 2019) and the translation to Slavitt (University of California Press, 2008). Both are reproduced for teaching and research purposes only.
+        </p>
+      </section>
+
+
+      <!-- ============ BIBLIOGRAPHY ============ -->
+      <section>
+        <h2 id="bibliography">Bibliography</h2>
+
+        <p>
+          The works listed below shaped both the constitution of the digital text and the critical framework of the project. The <em>primary sources</em> are the editions of <em>De rerum natura</em> consulted for the Latin text and its apparatuses, together with the digital transcription used as a base and the translation. The <em>secondary sources</em> are the critical studies on which the historical, philological and interpretive sections of this documentation rest, together with the methodological works and technical standards adopted for the encoding and publication of the edition. The editions, studies and ancient authors cited in the apparatus, such as Timpanaro’s conjectures or the quotations of Seneca and Lactantius, are reported from Deufert’s edition and were not consulted directly. Their references are given in the apparatus and on the <a href="scholars.html">Scholars &amp; Sources</a> page.
+        </p>
+
+        <!-- PRIMARY SOURCES -->
+        <h3 id="primary-sources">Primary Sources</h3>
+        <ul class="biblio">
+          <li>Lucretius. <em>De rerum natura</em>. Ed. M. Deufert. Bibliotheca Scriptorum Graecorum et Romanorum Teubneriana. De Gruyter, 2019.</li>
+          <li>Lucretius. <em>De rerum natura</em>. Ed. W. E. Leonard. E. P. Dutton, 1916. [TEI XML file available at the <a href="https://github.com/PerseusDL/canonical-latinLit/blob/master/data/phi0550/phi001/phi0550.phi001.perseus-lat1.xml" target="_blank" rel="noopener noreferrer">Perseus Digital Library</a>.]</li>
+          <li>Lucretius. <em>De rerum natura libri sex</em>. Ed. K. Lachmann. Reimer, 1850.</li>
+          <li>Lucretius. <em>De rerum natura libri sex</em>. Ed. C. Bailey. 3 vols. Clarendon Press, 1947.</li>
+          <li>Lucretius. <em>De rerum natura (The Nature of Things): A Poetic Translation</em>. Trans. D. R. Slavitt. University of California Press, 2008.</li>
+        </ul>
+
+        <!-- SECONDARY SOURCES -->
+        <h3 id="secondary-sources">Secondary Sources</h3>
+        <ul class="biblio">
+          <li>Butterfield, D. <em>The Early Textual History of Lucretius’ De rerum natura</em>. Cambridge University Press, 2013.</li>
+          <li>Clay, D. <em>Lucretius and Epicurus</em>. Cornell University Press, 1983.</li>
+          <li>Conte, G. B. <em>Letteratura latina. Manuale storico dalle origini alla fine dell’impero romano</em>. Le Monnier, 2002.</li>
+          <li>Dionigi, I. <em>Lucrezio. Le parole e le cose</em>. Pàtron, 2005.</li>
+          <li>Gale, M. R., ed. <em>Lucretius</em>. Oxford Readings in Classical Studies. Oxford University Press, 2007.</li>
+          <li>Gillespie, S., and P. Hardie, eds. <em>The Cambridge Companion to Lucretius</em>. Cambridge University Press, 2007.</li>
+          <li>Kenney, E. J. <em>Lucretius: De Rerum Natura Book III</em>. 2nd ed. Cambridge Greek and Latin Classics. Cambridge University Press, 2014.</li>
+          <li>Possanza, D. M. Review of <em>Titus Lucretius Carus. De rerum natura</em>, ed. M. Deufert. <em>Bryn Mawr Classical Review</em> 2020.09.15. <a href="https://bmcr.brynmawr.edu/2020/2020.09.15/" target="_blank" rel="noopener noreferrer">bmcr.brynmawr.edu/2020/2020.09.15</a>.</li>
+          <li>Reeve, M. D. “The Italian Tradition of Lucretius Revisited.” <em>Aevum</em> 79 (2005): 115–164.</li>
+          <li>Sahle, P. “What is a Scholarly Digital Edition?” In M. J. Driscoll &amp; E. Pierazzo (Eds.), <em>Digital Scholarly Editing: Theories and Practices</em>. <a href="https://doi.org/10.11647/OBP.0095.02" target="_blank" rel="noopener noreferrer">doi.org/10.11647/OBP.0095.02</a>.</li>
+          <li>Saxonica. <em>Saxon XSLT and XQuery Processor</em>. <a href="https://www.saxonica.com/" target="_blank" rel="noopener noreferrer">saxonica.com</a>.</li>
+          <li>Sedley, D. <em>Lucretius and the Transformation of Greek Wisdom</em>. Cambridge University Press, 1998.</li>
+          <li>Shillingsburg, P. “Development Principles for Virtual Archives and Editions.” Center for Textual Studies and Digital Humanities Publications, 2013. <a href="https://ecommons.luc.edu/ctsdh_pubs/4/" target="_blank" rel="noopener noreferrer">ecommons.luc.edu/ctsdh_pubs/4</a>.</li>
+          <li>TEI Consortium. <em>TEI P5: Guidelines for Electronic Text Encoding and Interchange</em>. <a href="https://tei-c.org/guidelines/p5/" target="_blank" rel="noopener noreferrer">tei-c.org/guidelines/p5</a>.</li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+    <div class="row justify-content-center pt-1 footer-band">
+        <div class="col-md-5 text-center footer-text">
+            <h3>About the Project</h3>
+            <p>
+                Project developed by <a href="https://github.com/silviapellicano30" target="_blank" rel="noopener noreferrer">Silvia Antonella Pellicano</a> for the <a href="https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/478841" target="_blank" rel="noopener noreferrer">Digital Scholarly Editing: Theory, Methods and Practice</a> course taught by Prof. <a href="https://www.unibo.it/sitoweb/paola.italia" target="_blank" rel="noopener noreferrer">Paola Maria Carmela Italia</a> as part of the Master's Degree in <a href="https://corsi.unibo.it/2cycle/DigitalHumanitiesKnowledge" target="_blank" rel="noopener noreferrer">Digital Humanities and Digital Knowledge (DHDK)</a> at the University of Bologna.
+            </p>
+            <h3>Contact</h3>
+            <p>Silvia Antonella Pellicano<br>
+                Student at the Department of Classical Philology and Italian Studies at the University of Bologna<br></p>
+            <p><strong>Email:</strong> <a class="email-link" href="mailto:silvia.pellicano@studio.unibo.it">silvia.pellicano@studio.unibo.it</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/silviapellicano30" target="_blank" rel="noopener noreferrer">silviapellicano30</a></p>
+        </div>
+    </div>
+    <hr class="socket">
+    <p class="copyright">&copy;2026 <b>Digital Lucretius</b> | Silvia Antonella Pellicano</p>
+</footer>
+
+<!-- Bootstrap & jQuery Scripts -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- Lateral Drawer Panel for Witness Descriptions -->
+<div id="wit-drawer" style="position: fixed; top: 0; right: -420px; width: 380px; max-width: 90vw; height: 100vh; background-color: #241e1a; border-left: 1px solid #B8974E; box-shadow: -4px 0 25px rgba(0,0,0,0.6); z-index: 9999; padding: 2rem 1.5rem; transition: right 0.3s ease; overflow-y: auto; font-family: var(--font-body); color: #f3e6c3;">
+  <button type="button" onclick="closeWitDrawer()" aria-label="Close" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.6rem; color: #B8974E; cursor: pointer; line-height: 1;">&times;</button>
+  <div id="wit-drawer-content"></div>
+</div>
+<div id="wit-drawer-backdrop" onclick="closeWitDrawer()" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9998;"></div>
+
+<script>
+  // Philological metadata according to M. Deufert (2019)
+  const witnessesData = {
+    'Omega': {
+      title: 'Archetype Ω',
+      siglum: '&Omega;',
+      date: 'c. 8th–9th century (lost)',
+      desc: 'The lost Carolingian archetype of the entire direct tradition, written in Caroline minuscule with 26 lines per page. It suffered omissions and mechanical corruptions; four of its leaves came loose and were attached at the end of the codex after O had been copied but before Γ was.'
+    },
+    'O': {
+      title: 'Codex Oblongus (O)',
+      siglum: '<em>O</em>',
+      shelfmark: 'Leiden, Universitaire Bibliotheken, Voss. Lat. F 30',
+      date: 'Early 9th century (c. 800–825)',
+      desc: 'Written in Caroline minuscule under Charlemagne, at an unknown place; by the late 15th century it was in Mainz (subscription of 1479). 192 folios with 20 lines per page: the oldest and most authoritative witness, and the only intact one.'
+    },
+    'Gamma': {
+      title: 'Lost Hyparchetype Γ',
+      siglum: '&Gamma;',
+      date: 'Mid-9th century (lost)',
+      desc: 'Lost Carolingian sister exemplar directly descended from Ω. Reconstructed through the common consensus of its surviving progeny: Codex Quadratus (Q) and the fragmentary Schedae (G, V, U).'
+    },
+    'Q': {
+      title: 'Codex Quadratus (Q)',
+      siglum: '<em>Q</em>',
+      shelfmark: 'Leiden, Universitaire Bibliotheken, Voss. Lat. Q 94',
+      date: 'Mid-9th century',
+      desc: 'Direct descendant of Γ, copied in north-eastern France. Crucial for confirming, supplementing, or rejecting the independent readings preserved in O.'
+    },
+    'G': {
+      title: 'Schedae G (Schedae Gottorpienses)',
+      siglum: '<em>G</em>',
+      shelfmark: 'Copenhagen, Det Kongelige Bibliotek, GKS 211 2°',
+      date: 'Late 9th century',
+      desc: 'Fragment of the same dismembered northern Italian codex as V and U, preserving I 1 – II 456.'
+    },
+    'V': {
+      title: 'Schedae V (Schedae Vindobonenses priores)',
+      siglum: '<em>V</em>',
+      shelfmark: 'Wien, Österreichische Nationalbibliothek, Cod. Lat. 107, fols. 9–14',
+      date: 'Late 9th century',
+      desc: 'Leaves from the same dismembered codex as G and U, preserving II 642 – III 621.'
+    },
+    'U': {
+      title: 'Schedae U (Schedae Vindobonenses posteriores)',
+      siglum: '<em>U</em>',
+      shelfmark: 'Wien, Österreichische Nationalbibliothek, Cod. Lat. 107, fols. 15–18',
+      date: 'Late 9th century',
+      desc: 'The last surviving portion of the dismantled Carolingian copy of Γ, preserving VI 743 to the end.'
+    },
+    'OD': {
+      title: 'Corrector OD (Dungal)',
+      siglum: '<em>O<sup>D</sup></em>',
+      date: 'First half of the 9th century',
+      desc: 'An insular corrector active on Codex Oblongus, paleographically identified with the Irish master Dungal at the Abbey of Saint-Denis.'
+    },
+    'O2': {
+      title: 'Corrector O2',
+      siglum: '<em>O<sup>2</sup></em>',
+      date: '9th century',
+      desc: 'Contemporary or slightly later Carolingian corrector intervening on the leaves of Codex Oblongus.'
+    },
+    'pi': {
+      title: 'Lost Poggian Exemplar π',
+      siglum: '&pi;',
+      date: '1417–1418 (lost)',
+      desc: 'The apograph of Codex Oblongus made in Germany in 1417 for Poggio Bracciolini and sent to Niccolò Niccoli in Florence. Ancestor of all surviving 15th-century Italian humanist manuscripts.'
+    },
+    'xi': {
+      title: 'Primary Florentine Circle (ξ)',
+      siglum: '&xi;',
+      date: 'Early 15th century (after 1418)',
+      desc: 'The Poggian apograph as corrected in its margins and text by Poggio, Niccolò Niccoli and their circle; the siglum denotes the consensus of its direct descendants.'
+    },
+    'mu': {
+      title: 'Secondary Florentine Branch (μ)',
+      siglum: '&mu;',
+      date: 'First half of the 15th century (lost)',
+      desc: 'The oldest lost apograph derived from ξ, representing the branch least altered by humanistic conjectures.'
+    },
+    'alpha': {
+      title: 'Tuscan Recension α',
+      siglum: '&alpha;',
+      date: 'Before 1442 (lost)',
+      desc: 'Lost Tuscan exemplar derived from μ by an anonymous scholar (possibly Antonio Panormita), rich in original conjectures.'
+    },
+    'phi': {
+      title: 'Roman Recension φ',
+      siglum: '&phi;',
+      date: 'Mid-15th century',
+      desc: 'Humanistic recension associated with the Roman editorial sphere and the textual interventions of Lorenzo Valla.'
+    }
+  };
+
+  function openWitnessModal(witKey) {
+    const data = witnessesData[witKey];
+    if (!data) return;
+
+    const content = document.getElementById('wit-drawer-content');
+    content.innerHTML = `
+      <div style="font-family: var(--font-display); font-size: 2.2rem; color: #B8974E; margin-bottom: 0.2rem;">${data.siglum}</div>
+      <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: #f3e6c3; margin-top: 0; margin-bottom: 1rem; border-bottom: 1px solid rgba(184,151,78,0.3); padding-bottom: 0.5rem;">${data.title}</h3>
+      ${data.shelfmark ? `<p style="font-size: 0.95rem; margin-bottom: 0.5rem;"><strong style="color: #B8974E;">Shelfmark:</strong> ${data.shelfmark}</p>` : ''}
+      <p style="font-size: 0.95rem; margin-bottom: 1rem;"><strong style="color: #B8974E;">Date:</strong> ${data.date}</p>
+      <p style="line-height: 1.6; color: #E9E0CC; font-size: 1rem; margin-bottom: 1.5rem;">${data.desc}</p>
+      <div style="margin-top: 2rem;">
+        <a href="witnesses.html#${witKey}" style="display: inline-block; font-size: 0.95rem; color: #B8974E; border: 1px solid #B8974E; padding: 0.4rem 0.8rem; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">View in Witnesses page &rarr;</a>
+      </div>
+    `;
+
+    document.getElementById('wit-drawer').style.right = '0';
+    document.getElementById('wit-drawer-backdrop').style.display = 'block';
+  }
+
+  function closeWitDrawer() {
+    document.getElementById('wit-drawer').style.right = '-420px';
+    document.getElementById('wit-drawer-backdrop').style.display = 'none';
+  }
+
+  // Close drawer on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeWitDrawer();
+  });
+</script>
+
+<script>
+  /*
+   * Documentation navigation
+   * -------------------------
+   * The two top-level menus are handled here instead of relying on
+   * Bootstrap's dropdown plugin. This makes "The Work" and
+   * "Digital Edition" work even if a Bootstrap dropdown dependency
+   * is unavailable or another script intercepts the page-scroll links.
+   */
+  (function () {
+    const triggers = document.querySelectorAll('.nav-dropdown-trigger');
+
+    function closeAllDropdowns(exceptMenu) {
+      document.querySelectorAll('.navbar-nav .dropdown-menu.show').forEach(function (menu) {
+        if (menu !== exceptMenu) {
+          menu.classList.remove('show');
+          const trigger = document.querySelector('[aria-controls="' + menu.id + '"]');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    triggers.forEach(function (trigger) {
+      const menuId = trigger.getAttribute('aria-controls');
+      const menu = document.getElementById(menuId);
+
+      if (!menu) return;
+
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const willOpen = !menu.classList.contains('show');
+        closeAllDropdowns(menu);
+
+        menu.classList.toggle('show', willOpen);
+        trigger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+    });
+
+    document.querySelectorAll('.navbar-nav .dropdown-menu .dropdown-item').forEach(function (item) {
+      item.addEventListener('click', function () {
+        const menu = item.closest('.dropdown-menu');
+        const trigger = menu ? document.querySelector('[aria-controls="' + menu.id + '"]') : null;
+
+        if (menu) menu.classList.remove('show');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+
+        // On small screens, also close the Bootstrap navbar collapse.
+        const navbar = document.getElementById('navbarResponsive');
+        if (navbar && window.jQuery && window.jQuery.fn && window.jQuery.fn.collapse) {
+          window.jQuery(navbar).collapse('hide');
+        }
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.navbar-nav .dropdown')) {
+        closeAllDropdowns(null);
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeAllDropdowns(null);
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

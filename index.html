@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>De Rerum Natura — A Digital Edition</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Personal stylesheet -->
+    <link rel="stylesheet" href="assets/theme.css">
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel="icon" href="img/favicon.svg">
+
+    <style>
+      .nav-dropdown-trigger {
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        outline: none !important;
+      }
+      .nav-dropdown-trigger:focus {
+        box-shadow: none !important;
+      }
+      .navbar-nav .dropdown-menu {
+        display: none;
+        position: absolute;
+        float: none;
+        min-width: 13rem;
+        padding: 0.5rem 0;
+        background-color: var(--ink);
+        border: 1px solid var(--gold);
+        border-radius: 4px;
+        margin-top: 0;
+      }
+      .navbar-nav .dropdown-menu.show {
+        display: block;
+      }
+      .navbar-nav .dropdown {
+        position: relative;
+      }
+      @media (max-width: 767px) {
+        .navbar-nav .dropdown-menu {
+          position: static;
+          width: 100%;
+          border-left: 0;
+          border-right: 0;
+        }
+      }
+    </style>
+</head>
+
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav id="navbar" class="navbar navbar-expand-md navbar-dark fixed-top">
+    <a class="navbar-brand" href="index.html">
+        <img src="img/logo-lucretius.svg" alt="Digital Lucretius logo" class="brand-mark">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="#home" aria-current="page">Home</a>
+            </li>
+
+            <!-- EDITION -->
+            <li class="nav-item dropdown">
+                <button class="nav-link dropdown-toggle nav-dropdown-trigger" type="button" id="editionDropdown"
+                        aria-haspopup="true" aria-expanded="false" aria-controls="editionMenu">Edition</button>
+                <div class="dropdown-menu" id="editionMenu" aria-labelledby="editionDropdown">
+                    <a class="dropdown-item" href="edition.html">Text &amp; Apparatus</a>
+                    <a class="dropdown-item" href="keywords.html">Keywords</a>
+                    <a class="dropdown-item" href="scholars.html">Scholars &amp; Sources</a>
+                    <a class="dropdown-item" href="witnesses.html">Stemma Codicum</a>
+                </div>
+            </li>
+
+            <!-- DOCUMENTATION -->
+            <li class="nav-item dropdown">
+                <button class="nav-link dropdown-toggle nav-dropdown-trigger" type="button" id="docsDropdown"
+                        aria-haspopup="true" aria-expanded="false" aria-controls="docsMenu">Documentation</button>
+                <div class="dropdown-menu" id="docsMenu" aria-labelledby="docsDropdown">
+                    <a class="dropdown-item" href="documentation.html#project">The Project</a>
+                    <a class="dropdown-item" href="documentation.html#the-work">The Work</a>
+                    <a class="dropdown-item" href="documentation.html#state-of-the-art">State of the Art</a>
+                    <a class="dropdown-item" href="documentation.html#digital-edition">The Digital Edition</a>
+                    <a class="dropdown-item" href="documentation.html#features-limitations">Evaluation</a>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="documentation.html#bibliography">Bibliography</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ============ HOME / HERO ============ -->
+<section id="home" class="hero">
+    <img class="hero-image" src="img/backgroud.jfif" alt="">
+    <div class="hero-overlay"></div>
+    <div class="hero-content text-center">
+        <h1>Digital Lucretius</h1>
+        <p class="hero-eyebrow">A digital edition prototype of Lucretius’ <i>De Rerum Natura</i> based on the critical edition by Marcus Deufert (2019).</p>
+        <a class="btn btn-outline-light btn-lg hero-btn" href="edition.html">Explore the Edition</a>
+    </div>
+</section>
+
+<div class="page-body">
+
+<!-- ============ THE PROJECT ============ -->
+<section class="page-section" id="project">
+    <div class="col-12 narrow text-center">
+        <h1>The Project</h1>
+        <p class="lead-text"><strong>Digital Lucretius</strong> is a digital scholarly edition prototype of Lucretius’ <em>De Rerum Natura</em> focusing on the proem to Book III. Based on the critical edition established by Marcus Deufert (2019), it enables users to explore and compare the different manuscript witnesses alongside the editorial choices of major classical scholars.</p>
+        <p class="lead-text">This project was developed by Silvia Antonella Pellicano—who was responsible for the XML/TEI encoding and philological annotations—for the course <em>Digital Scholarly Editing: Theory, Methods and Practice</em> at the Alma Mater Studiorum – Università di Bologna.</p>
+
+        <a id="intro-btn" class="btn btn-secondary btn-md" href="documentation.html#project">Introduction</a>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ THE WORK ============ -->
+<section class="page-section" id="work">
+    <div class="col-12 narrow text-center">
+        <h1>The Work</h1>
+        <p class="lead-text"><em>De Rerum Natura</em> ("On the Nature of Things") is a didactic poem in six
+            books, composed by Titus Lucretius Carus in the first century BCE to expound the physics and
+            ethics of Epicurean philosophy. The proem to Book III turns from the atomic foundations of the
+            universe to the fear of death, and to the figure of Epicurus who first showed a way beyond it.</p>
+    </div>
+
+    <div class="row justify-content-center subsection-row">
+        <div class="col-md-4 subsection-card" id="card-author">
+            <h3>Author</h3>
+            <p>Titus Lucretius Carus (c. 99–55 BCE) remains one of the most elusive poets of the late
+                Roman Republic, known almost entirely through the single poem he left behind.</p>
+            <a class="btn btn-secondary btn-sm" href="documentation.html#author">Read more</a>
+        </div>
+        <div class="col-md-4 subsection-card" id="card-historical-context">
+            <h3>Historical Context</h3>
+            <p>The poem was composed during the final, turbulent decades of the Republic, a period of
+                civil war whose anxieties shape Lucretius' Epicurean call to tranquillity.</p>
+            <a class="btn btn-secondary btn-sm" href="documentation.html#historical-context">Read more</a>
+        </div>
+        <div class="col-md-4 subsection-card" id="card-manuscript-witnesses">
+            <h3>Manuscript Witnesses</h3>
+            <p>The text survives through a small number of manuscripts, chief among them the ninth-century
+                Oblongus and Quadratus, from which all later copies descend.</p>
+            <a class="btn btn-secondary btn-sm" href="documentation.html#manuscript-witnesses">Read more</a>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ DIGITAL EDITION ============ -->
+<section class="page-section" id="edition">
+    <div class="col-12 narrow text-center">
+        <h1>Digital Edition</h1>
+        <div class="container edition-frame">
+            <a id="center" class="btn btn-secondary btn-md" href="edition.html">Open Edition</a>
+        </div>
+        <p class="lead-text">The digital edition combines philological rigor with interactive
+            visualization, allowing readers to move between diplomatic transcription, critical text,
+            and commentary on the proem to Book III.</p>
+    </div>
+
+    <div class="row justify-content-center subsection-row">
+        <div class="col-md-4 subsection-card" id="card-encoding">
+            <h3>Encoding</h3>
+            <p>The text has been encoded in TEI XML, marking structural, textual, and apparatus
+                features according to the guidelines of the Text Encoding Initiative.</p>
+            <a class="btn btn-secondary btn-sm" href="documentation.html#encoding">Read more</a>
+        </div>
+        <div class="col-md-4 subsection-card" id="card-the-website">
+            <h3>The Website</h3>
+            <p>Built as a static prototype in HTML, CSS, and JavaScript, the site organizes the
+                edition around a clear navigational structure suited to a single, short text.</p>
+            <a class="btn btn-secondary btn-sm" href="documentation.html#the-website">Read more</a>
+        </div>
+        <div class="col-md-4 subsection-card" id="card-features-limitations">
+            <h3>Features &amp; Limitations</h3>
+            <p>As a prototype built for an exam, the edition covers only the proem of Book III and
+                does not yet include a full apparatus criticus or collation tool.</p>
+            <a class="btn btn-secondary btn-sm" href="documentation.html#features-limitations">Read more</a>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ DOCUMENTATION ============ -->
+<section class="page-section" id="documentation">
+    <div class="col-12 narrow text-center">
+        <h1>Repository</h1>
+        <p class="lead-text">For details on the technical development, the encoding choices, and the
+            methodology behind this prototype, see the project documentation and the source repository.</p>
+        <a id="right" class="btn btn-secondary btn-md" href="documentation.html#documentation">Documentation</a>
+        <a id="left" class="btn btn-secondary btn-md" href="https://github.com/silviapellicano30/DigitaLucretius" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ BIBLIOGRAPHY ============ -->
+<section class="page-section" id="bibliography">
+    <div class="col-12 narrow text-center">
+        <h1>Bibliography</h1>
+        <p class="lead-text">Editions, translations, and critical studies consulted in preparing this
+            prototype are collected in the bibliography, together with the digital resources it builds on.</p>
+        <a class="btn btn-secondary btn-md" href="documentation.html#bibliography">Bibliography</a>
+    </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer style="background-color: var(--ink) !important; color: var(--parchment-dim) !important; font-family: var(--font-body) !important; border-top: 1px solid rgba(184, 151, 78, 0.25) !important; width: 100%;">
+    <div class="row justify-content-center" style="padding-top: 4.5rem !important; padding-bottom: 2rem !important; margin: 0 !important;">
+        <div class="col-lg-6 col-md-8 col-11 text-center" style="color: var(--parchment-dim) !important; font-family: var(--font-body) !important; padding: 0 1.5rem !important;">
+            
+            <h3 style="font-family: var(--font-display) !important; color: var(--gold) !important; font-size: 1.45rem !important; font-weight: 600 !important; letter-spacing: 0.04em !important; margin-top: 0 !important; margin-bottom: 1.2rem !important;">About the Project</h3>
+            
+            <p style="color: var(--parchment-dim) !important; font-size: 1.05rem !important; line-height: 1.8 !important; margin-bottom: 2.2rem !important;">
+                Project developed by <a href="https://github.com/silviapellicano30" target="_blank" rel="noopener noreferrer" style="color: var(--gold) !important; text-decoration: none !important;">Silvia Antonella Pellicano</a> for the <a href="https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/478841" target="_blank" rel="noopener noreferrer" style="color: var(--gold) !important; text-decoration: none !important;">Digital Scholarly Editing: Theory, Methods and Practice</a> course taught by Prof. <a href="https://www.unibo.it/sitoweb/paola.italia" target="_blank" rel="noopener noreferrer" style="color: var(--gold) !important; text-decoration: none !important;">Paola Maria Carmela Italia</a> as part of the Master's Degree in <a href="https://corsi.unibo.it/2cycle/DigitalHumanitiesKnowledge" target="_blank" rel="noopener noreferrer" style="color: var(--gold) !important; text-decoration: none !important;">Digital Humanities and Digital Knowledge (DHDK)</a> at the University of Bologna.
+            </p>
+            
+            <h3 style="font-family: var(--font-display) !important; color: var(--gold) !important; font-size: 1.45rem !important; font-weight: 600 !important; letter-spacing: 0.04em !important; margin-top: 0 !important; margin-bottom: 1.2rem !important;">Contact</h3>
+            
+            <p style="color: var(--parchment-dim) !important; font-size: 1.02rem !important; line-height: 1.75 !important; margin-bottom: 0.75rem !important;">
+                Silvia Antonella Pellicano<br>
+                Student at the Department of Classical Philology and Italian Studies at the University of Bologna
+            </p>
+            
+            <p style="color: var(--parchment-dim) !important; font-size: 1.02rem !important; line-height: 1.75 !important; margin-bottom: 0.75rem !important;">
+                <strong style="color: var(--gold) !important;">Email:</strong> <a href="mailto:silvia.pellicano@studio.unibo.it" style="color: #f3e6c3 !important; text-decoration: underline !important;">silvia.pellicano@studio.unibo.it</a>
+            </p>
+            
+            <p style="color: var(--parchment-dim) !important; font-size: 1.02rem !important; line-height: 1.75 !important; margin-bottom: 1rem !important;">
+                <strong style="color: var(--gold) !important;">GitHub:</strong> <a href="https://github.com/silviapellicano30" target="_blank" rel="noopener noreferrer" style="color: var(--gold) !important; text-decoration: none !important;">silviapellicano30</a>
+            </p>
+        </div>
+    </div>
+    
+    <hr style="border: 0; border-top: 1px solid rgba(241, 234, 217, 0.15) !important; width: 85% !important; margin: 2rem auto 1.5rem auto !important;">
+    
+    <p style="text-align: center !important; font-size: 0.85rem !important; letter-spacing: 0.03em !important; color: var(--stone) !important; padding-bottom: 2rem !important; margin-bottom: 0 !important; font-family: var(--font-body) !important;">
+        &copy;2026 <b style="color: var(--parchment-dim) !important;">Digital Lucretius</b> | Silvia Antonella Pellicano
+    </p>
+</footer>
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Gestione dropdown autonoma e robusta
+    const triggers = document.querySelectorAll('.nav-dropdown-trigger');
+
+    function closeAllDropdowns(exceptMenu) {
+      document.querySelectorAll('.navbar-nav .dropdown-menu.show').forEach(function (menu) {
+        if (menu !== exceptMenu) {
+          menu.classList.remove('show');
+          const trigger = document.querySelector('[aria-controls="' + menu.id + '"]');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    triggers.forEach(function (trigger) {
+      const menuId = trigger.getAttribute('aria-controls');
+      const menu = document.getElementById(menuId);
+
+      if (!menu) return;
+
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const willOpen = !menu.classList.contains('show');
+        closeAllDropdowns(menu);
+
+        menu.classList.toggle('show', willOpen);
+        trigger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.navbar-nav .dropdown')) {
+        closeAllDropdowns(null);
+      }
+    });
+
+    // Chiusura menu collapse mobile
+    const navLinks = document.querySelectorAll('#navbarResponsive .nav-link:not(.dropdown-toggle), #navbarResponsive .dropdown-item');
+    const navbarCollapse = document.getElementById('navbarResponsive');
+
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeAllDropdowns(null);
+        if (navbarCollapse.classList.contains('show') && window.jQuery) {
+          window.jQuery(navbarCollapse).collapse('hide');
+        }
+      });
+    });
+
+    // Scurimento navbar allo scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 40) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  });
+</script>
+</body>
+</html>

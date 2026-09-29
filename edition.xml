@@ -1,0 +1,1961 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model
+    href="https://vault.tei-c.org/P5/current/xml/tei/custom/schema/relaxng/tei_all.rng"
+    schematypens="http://relaxng.org/ns/structure/1.0"
+    type="application/xml"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader xml:lang="en">
+    <fileDesc>
+      <titleStmt>
+        <title type="main">De rerum natura, Liber III: Prooemium (III 1 – 93)</title>
+        <author><persName ref="#TLC">Titus Lucretius Carus</persName></author>
+      </titleStmt>
+      <editionStmt>
+        <edition n="1">Digital scholarly edition, version 1.0 (2026)</edition>
+        <respStmt>
+          <resp>Annotated by</resp>
+          <persName ref="#SAP">
+            <forename>Silvia Antonella</forename>
+            <surname>Pellicano</surname>
+          </persName>
+        </respStmt>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>
+          <foreign xml:lang="la">Alma Mater Studiorum</foreign> - <foreign xml:lang="it">Università di Bologna</foreign>
+        </publisher>
+        <pubPlace>
+          <placeName key="Bologna" sameAs="https://www.geonames.org/3181928">Bologna</placeName>
+          <date when="2026-09">September, 2026</date>
+        </pubPlace>
+        <availability status="free">
+          <licence target="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC</licence>
+          <p>Open Access. Available for academic purposes.</p>
+        </availability>
+      </publicationStmt>
+      <notesStmt>
+        <note>Prototype digital scholarly edition of Lucretius, <title level="m">De rerum natura</title> 3.1–93. XML/TEI encoding produced for the course examination in Digital Scholarly Editing: Theory, Methods, and Practice.</note>
+      </notesStmt>
+      <sourceDesc>
+        <bibl type="printed_source" xml:id="Deufert2019">
+          <title level="m">De rerum natura libri VI</title>
+          <author ref="#TLC">Titus Lucretius Carus</author>
+          <editor>Marcus Deufert</editor>
+          <series>Bibliotheca scriptorum Graecorum et Romanorum Teubneriana</series>
+          <pubPlace>Berlin</pubPlace>
+          <pubPlace>Boston</pubPlace>
+          <publisher>Walter de Gruyter</publisher>
+          <date when="2019">2019</date>
+          <idno type="ISBN">978-3-11-026251-3</idno>
+        </bibl>
+        <bibl type="secondary_source" xml:id="Deufert1996">
+          <author>Marcus Deufert</author>
+          <title level="m">Pseudo-Lukrezisches im Lukrez. Die unechten Verse in Lukrezens „De rerum natura“</title>
+          <series>Untersuchungen zur antiken Literatur und Geschichte 48</series>
+          <pubPlace>Berlin</pubPlace>
+          <pubPlace>New York</pubPlace>
+          <publisher>Walter de Gruyter</publisher>
+          <date when="1996">1996</date>
+        </bibl>
+        <listWit>
+          <!-- 1. THE CAROLINGIAN TRADITION AND PRIMARY WITNESSES -->
+          <witness xml:id="Omega">
+            <abbr>Ω</abbr>
+            <desc>Lost Carolingian archetype of the entire extant Lucretian transmission (saec. VIII/IX). Written in Carolingian minuscule with 26 lines per page. Four of its leaves came loose and were attached at the end of the codex after O had been copied but before Γ was (Praef. § 3, § 11).</desc>
+          </witness>
+          <witness xml:id="O">
+            <abbr>O</abbr>
+            <desc>Codex Oblongus, Leiden, Universitaire Bibliotheken, Voss. Lat. F 30, parchment, early 9th century (reign of Charlemagne), 192 folios with 20 lines per page. The oldest, most authoritative, and complete direct witness (Praef. § 4).</desc>
+          </witness>
+          <witness xml:id="O1">
+            <abbr>O<hi rend="sup">1</hi></abbr>
+            <desc>First hand (scribe) of Codex Oblongus (Praef. § 5).</desc>
+          </witness>
+          <witness xml:id="OD">
+            <abbr>O<hi rend="sup">D</hi></abbr>
+            <desc>Dungal, Irish monk at Saint-Denis and Pavia (early 9th century); contemporary corrector of Oblongus in Anglo-Saxon script, supplying lacunae directly from the archetype Ω (Praef. § 5).</desc>
+          </witness>
+          <witness xml:id="O2">
+            <abbr>O<hi rend="sup">2</hi></abbr>
+            <desc>Anonymous contemporary or slightly later Carolingian correctors of Codex Oblongus (Praef. § 5).</desc>
+          </witness>
+          <witness xml:id="O3">
+            <abbr>O<hi rend="sup">3</hi></abbr>
+            <desc>Corrector of Codex Oblongus of the late 10th or early 11th century; glossed rare words and corrected corrupt passages with the help of another manuscript; no corrections after I 827 (Praef. § 5).</desc>
+          </witness>
+          <witness xml:id="Gamma">
+            <abbr>Γ</abbr>
+            <desc>Lost Carolingian sub-archetype, twin branch to O, reconstructed through the shared consensus of Q and the fragments G, V, U. Copied from Ω after four leaves of the archetype (I 734–785, II 253–304, II 757–806, V 928–979) had fallen out and been attached at its end: hence Q and U transmit these passages after the last line of Book VI (Praef. § 3, §§ 10–11).</desc>
+          </witness>
+          <witness xml:id="Q">
+            <abbr>Q</abbr>
+            <desc>Codex Quadratus, Leiden, Universitaire Bibliotheken, Voss. Lat. Q 94, mid-9th century (north-eastern France), 2 columns of 28 lines (Praef. § 6).</desc>
+          </witness>
+          <witness xml:id="Q1">
+            <abbr>Q<hi rend="sup">1</hi></abbr>
+            <desc>First hand of Codex Quadratus (Praef. § 7).</desc>
+          </witness>
+          <witness xml:id="Qa">
+            <abbr>Q<hi rend="sup">a</hi></abbr>
+            <desc>Ancient Carolingian corrector of Quadratus, contemporary with the scribe (Praef. § 7, § 14).</desc>
+          </witness>
+          <witness xml:id="Q2">
+            <abbr>Q<hi rend="sup">2</hi></abbr>
+            <desc>Mid-15th-century Italian humanist corrector of Quadratus; emended through ingenious conjectures (suo Marte) without consulting additional manuscripts (Praef. § 7).</desc>
+          </witness>
+          <witness xml:id="G">
+            <abbr>G</abbr>
+            <desc>Schedae Gottorpienses, Copenhagen, Det Kongelige Bibliotek, GKS 211 2°, late 9th century; preserves I 1 – II 456 (Praef. §§ 8–9).</desc>
+          </witness>
+          <witness xml:id="V">
+            <abbr>V</abbr>
+            <desc>Schedae Vindobonenses priores, Vienna, ÖNB, Cod. Lat. 107, fols. 9–14, late 9th century; preserves II 642 – III 621 (Praef. §§ 8–9).</desc>
+          </witness>
+          <witness xml:id="U">
+            <abbr>U</abbr>
+            <desc>Schedae Vindobonenses posteriores, Vienna, ÖNB, Cod. Lat. 107, fols. 15–18, late 9th century; preserves VI 743 to end. Originally G, V, and U formed a single parchment codex copied in northern Italy (Praef. §§ 8–9).</desc>
+          </witness>
+
+          <!-- 2. HUMANISTIC TRADITION (POGGIO'S APOGRAPH) -->
+          <witness xml:id="pi">
+            <abbr>π</abbr>
+            <desc>Apographum Poggianum: the lost exemplar transcribed in Germany (1417) for Poggio Bracciolini and sent to Niccolò Niccoli in Florence in 1418 (Praef. § 17, § 20).</desc>
+          </witness>
+          <witness xml:id="xi">
+            <abbr>ξ</abbr>
+            <desc>The corrected Poggian apograph enriched in the margins with conjectures and emendations by Poggio, Niccolò Niccoli, and their circle; consensus of direct descendants (Praef. § 20).</desc>
+          </witness>
+          <witness xml:id="L">
+            <abbr>L</abbr>
+            <desc>Florence, Biblioteca Medicea Laurenziana, Plut. 35.30, autograph copy written by Niccolò Niccoli (Praef. § 17).</desc>
+          </witness>
+          <witness xml:id="Aa">
+            <abbr>A<hi rend="sup">a</hi></abbr>
+            <desc>Vatican City, BAV, Reg. Lat. 1706; primary witness from III 647 onwards (first part copied from L) (Praef. § 17).</desc>
+          </witness>
+          <witness xml:id="o">
+            <abbr>o</abbr>
+            <desc>Vatican City, BAV, Patetta 312; exhibits three distinct layers of humanist correctors (Praef. § 17, § 26).</desc>
+          </witness>
+          <witness xml:id="x">
+            <abbr>x</abbr>
+            <desc>Cesena, Biblioteca Malatestiana, S 20.4 (Praef. § 17).</desc>
+          </witness>
+          <witness xml:id="mu">
+            <abbr>μ</abbr>
+            <desc>Oldest lost apograph derived from ξ; the branch least altered by humanistic conjectures (Praef. § 17, §§ 22–23).</desc>
+          </witness>
+          <witness xml:id="Ja">
+            <abbr>J<hi rend="sup">a</hi></abbr>
+            <desc>Madrid, Biblioteca Nacional de España, MS 2885; most faithful extant witness of branch μ (Praef. § 17, § 23).</desc>
+          </witness>
+          <witness xml:id="d">
+            <abbr>d</abbr>
+            <desc>Florence, Biblioteca Medicea Laurenziana, Conv. Soppr. 453 (Praef. § 17).</desc>
+          </witness>
+          <witness xml:id="xi-mu">
+            <abbr>ξ<hi rend="sup">-μ</hi></abbr>
+            <desc>Consensus of manuscripts L, Aa, x and o of the ξ-family.</desc>
+          </witness>
+
+          <!-- 3. HUMANISTIC CONJECTURAL SUBGROUPS: alpha AND phi -->
+          <witness xml:id="alpha">
+            <abbr>α</abbr>
+            <desc>Lost Tuscan exemplar derived from μ before 1442 by an anonymous scholar (possibly Antonio Panormita), rich in original conjectures (Praef. § 17, §§ 24–25).</desc>
+          </witness>
+          <witness xml:id="A">
+            <abbr>A</abbr>
+            <desc>Vatican City, BAV, Vat. Lat. 3276 (copied in 1442) (Praef. § 17, § 25).</desc>
+          </witness>
+          <witness xml:id="A2">
+            <abbr>A<hi rend="sup">2</hi></abbr>
+            <desc>Second hand in manuscript A, added by Antonio Panormita in Naples, correcting the text to conform with α (Praef. § 25).</desc>
+          </witness>
+          <witness xml:id="R">
+            <abbr>R</abbr>
+            <desc>Vatican City, BAV, Ross. 502 (Praef. § 17, § 25).</desc>
+          </witness>
+          <witness xml:id="B">
+            <abbr>B</abbr>
+            <desc>Vatican City, BAV, Barb. Lat. 154 (Praef. § 17, § 25).</desc>
+          </witness>
+          <witness xml:id="alphaStar">
+            <abbr>α*</abbr>
+            <desc>Consensus of manuscripts A², R, and B of the α-family (Praef. § 25).</desc>
+          </witness>
+          <witness xml:id="alpha-A">
+            <abbr>α<hi rend="sup">-A</hi></abbr>
+            <desc>Consensus of manuscripts R and B against A (Praef. § 25).</desc>
+          </witness>
+          <witness xml:id="phi">
+            <abbr>φ</abbr>
+            <desc>Lost Roman conjectural recension derived from codex o, heavily contaminated with grammarians' citations and emendations by Lorenzo Valla (ca. mid-15th century) (Praef. §§ 24–26).</desc>
+          </witness>
+          <witness xml:id="C">
+            <abbr>C</abbr>
+            <desc>Cambridge, University Library, Nn. 2. 40 (saec. XV 3/4, before 1471); oldest extant witness of branch φ (Praef. §§ 24–26).</desc>
+          </witness>
+          <witness xml:id="F">
+            <abbr>F</abbr>
+            <desc>Florence, Biblioteca Medicea Laurenziana, Plut. 35.31 (Praef. § 24).</desc>
+          </witness>
+          <witness xml:id="e">
+            <abbr>e</abbr>
+            <desc>Vatican City, BAV, Vat. Lat. 3275 (extends to VI 561) (Praef. § 24).</desc>
+          </witness>
+          <witness xml:id="f">
+            <abbr>f</abbr>
+            <desc>Vatican City, BAV, Ottob. Lat. 1136 (Praef. § 24).</desc>
+          </witness>
+          <witness xml:id="phiStar">
+            <abbr>φ*</abbr>
+            <desc>Consensus of codices F, C, e, f together with the corrected exemplar o (Praef. § 26).</desc>
+          </witness>
+
+          <!-- 4. LATER HUMANISTIC WITNESSES AND SCHOLARLY EDITIONS -->
+          <witness xml:id="N">
+            <abbr>N</abbr>
+            <desc>Codex Neapolitanus, Naples, Biblioteca Nazionale Vittorio Emanuele III, IV E 51, copied and corrected by Pomponio Leto in Rome (1458/1459) (Praef. §§ 26–29).</desc>
+          </witness>
+          <witness xml:id="N2">
+            <abbr>N<hi rend="sup">2</hi></abbr>
+            <desc>Correcting hand of Pomponio Leto in codex N, who corrected it in Rome in 1459 with the help of φ (Praef. § 26, § 29).</desc>
+          </witness>
+          <witness xml:id="s">
+            <abbr>s</abbr>
+            <desc>Milan, Biblioteca Ambrosiana, E 125 sup. (Praef. § 29).</desc>
+          </witness>
+          <witness xml:id="s2">
+            <abbr>s<hi rend="sup">2</hi></abbr>
+            <desc>Pietro Odo da Montopoli, humanist corrector of codex s (Praef. § 29).</desc>
+          </witness>
+          <witness xml:id="S">
+            <abbr>S</abbr>
+            <desc>Florence, Biblioteca Medicea Laurenziana, Plut. 35.29, with annotations by Angelo Poliziano and others (Praef. § 29).</desc>
+          </witness>
+          <witness xml:id="T">
+            <abbr>T</abbr>
+            <desc>Florence, Biblioteca Medicea Laurenziana, Plut. 35.32; second hand (T²) introduces emendations up to I 1038 (Praef. § 29).</desc>
+          </witness>
+        </listWit>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <variantEncoding method="parallel-segmentation" location="internal"/>
+      <projectDesc>
+        <p>Prototype of a Digital Scholarly Edition (DSE) of the proem to Book III of Lucretius'
+          <title>De rerum natura</title>, developed for the examination in
+          <name type="course">Digital Scholarly Editing: Theory, Methods, and Practice</name>
+          held by Prof. <persName>Paola Italia</persName> at the <orgName>University
+            of Bologna</orgName> for the academic year <date>2025/2026</date>, based on the critical
+          text established by <persName>Marcus Deufert</persName>.</p>
+      </projectDesc>
+      <editorialDecl>
+        <segmentation>
+          <p>The critical apparatus is encoded inline using the parallel segmentation method. The &lt;lem&gt; element represents the critical text established by Marcus Deufert (2019), while &lt;rdg&gt; elements record readings from the primary manuscript branches, the indirect tradition, and humanist or modern conjectures.</p>
+        </segmentation>
+        <interpretation>
+          <p>The apparatus fontium is kept separate from the critical apparatus and records ancient source attestations (Aug.–saec. IX ex.) as provided by Deufert (Praef. §§ 40–46).</p>
+          <p>The apparatus ad versus iteratos tracks internal formulaic recurrences across the poem, distinguishing identical repetitions (=) from verbal and thematic similarities (~) (Praef. § 39).</p>
+        </interpretation>
+        <normalization>
+          <p>Orthography follows the non-normalized practice of the archetype as preserved in Deufert's text (Praef. §§ 53–55), maintaining archaic spellings, unassimilated prefixes, and the non-distinction between vocalic and consonantal u.</p>
+        </normalization>
+      </editorialDecl>
+    </encodingDesc>
+    <profileDesc>
+      <textDesc>
+        <channel mode="w"/>
+        <constitution type="single"/>
+        <derivation type="original"/>
+        <domain type="literary"/>
+        <factuality type="fact"/>
+        <interaction type="none"/>
+        <preparedness type="prepared"/>
+        <purpose type="inform" degree="high"/>
+        <purpose type="entertain" degree="medium"/>
+      </textDesc>
+      <langUsage>
+        <language ident="la">Latin</language>
+        <language ident="en">English</language>
+      </langUsage>
+      <particDesc>
+        <listPerson type="contributors">
+          <person xml:id="SAP" source="https://github.com/silviapellicano30">
+            <persName xml:lang="it">Silvia Antonella Pellicano</persName>
+            <occupation>student, annotator</occupation>
+          </person>
+        </listPerson>
+        <listPerson type="authors">
+          <person xml:id="TLC" sameAs="https://viaf.org/en/viaf/106388020">
+            <persName xml:lang="la">Titus Lucretius Carus</persName>
+            <birth when="-0099" cert="low">ca. 99 a.C.</birth>
+            <death when="-0055" cert="low">ca. 55 a.C.</death>
+          </person>
+        </listPerson>
+        <listPerson type="scholars">
+          <person xml:id="MD">
+            <persName xml:lang="de">Marcus Deufert</persName>
+            <note>German classical philologist and professor (born 1970); editor of the 2019 critical edition of Lucretius' De rerum natura.</note>
+          </person>
+          <person xml:id="Wakefield">
+            <persName xml:lang="en">Gilbert Wakefield</persName>
+            <note>English classical scholar and critic (1756–1801); editor of an influential edition of Lucretius published in London (1796–1797).</note>
+          </person>
+          <person xml:id="Timpanaro">
+            <persName xml:lang="it">Sebastiano Timpanaro</persName>
+            <note>Italian classical philologist and textual critic (1923–2000); renowned scholar of classical reception and Latin textual transmission.</note>
+          </person>
+          <person xml:id="SH">
+            <persName xml:lang="en">Richard J. Shackle</persName>
+            <note>British classical scholar (active early 20th century); author of conjectural emendations to classical Latin poets, including Lucretius (1921).</note>
+          </person>
+          <person xml:id="Marullus">
+            <persName xml:lang="it">Michele Marullo Tarcaniota</persName>
+            <note>Greek-Italian Renaissance poet and humanist scholar (ca. 1458–1500); produced major conjectural emendations in his working copy of Lucretius.</note>
+          </person>
+          <person xml:id="OR">
+            <persName xml:lang="de">Johann Caspar von Orelli</persName>
+            <note>Swiss classical scholar and epigraphist (1787–1849); editor of Latin classical texts and philosophical treatises.</note>
+          </person>
+          <person xml:id="LACh">
+            <persName xml:lang="de">Karl Lachmann</persName>
+            <note>German classical and Germanic philologist (1793–1851); established the landmark stemmatic edition and reconstructed the archetype of Lucretius (1850).</note>
+          </person>
+          <person xml:id="Bentley">
+            <persName xml:lang="en">Richard Bentley</persName>
+            <note>English classical scholar and pioneering textual critic (1662–1742); composed marginalia and influential conjectures on the text of Lucretius.</note>
+          </person>
+          <person xml:id="Pont">
+            <persName xml:lang="it">Giovanni Gioviano Pontano</persName>
+            <note>Italian humanist poet and scholar (1429–1503), active in Naples; proposed conjectural emendations to classical Latin poets, including Lucretius.</note>
+          </person>
+          <person xml:id="Lambinus">
+            <persName xml:lang="fr">Dionysius Lambinus</persName>
+            <note>French classical scholar and philologist (1516–1572); editor of a milestone critical edition and commentary on Lucretius (Paris 1563/1570).</note>
+          </person>
+          <person xml:id="Heinze">
+            <persName xml:lang="de">Richard Heinze</persName>
+            <note>German classical philologist (1867–1929); author of a major critical commentary on Lucretius Book III (1897).</note>
+          </person>
+          <person xml:id="Morel">
+            <persName xml:lang="de">Willy Morel</persName>
+            <note>German classical philologist (1894–1973); editor of Fragmenta Poetarum Latinorum and author of textual notes on Lucretius (1930).</note>
+          </person>
+          <person xml:id="Munro">
+            <persName xml:lang="en">Hugh Andrew Johnstone Munro</persName>
+            <note>British classical scholar (1819–1885), Fellow of Trinity College and first Kennedy Professor of Latin at Cambridge; editor of the fundamental edition, translation and commentary of Lucretius (Cambridge 1864; 3rd ed. 1873, cited as Munro³). At III 82 he posited a lacuna and supplied a verse so as to keep the transmitted suadet at III 84.</note>
+          </person>
+          <person xml:id="CMueller">
+            <persName xml:lang="de">Konrad Müller</persName>
+            <note>Swiss classical philologist (1920–2016), professor at the University of Bern; editor of T. Lucreti Cari De rerum natura libri sex (Zürich 1975), cited as C. Müller. At III 84 he conjectured foede, comparing Lucr. 1, 85.</note>
+          </person>
+          <person xml:id="Cippellarius">
+            <persName xml:lang="la">Cippellarius</persName>
+            <note>Italian humanist copyist who in 1507 wrote codex Y of Lucretius (Piacenza, Biblioteca Comunale Passerini-Landi, 33: Placentinus Bibl. comm. Land. 33, a Cippellario a. 1507 exaratus). Cited in Deufert's apparatus at III 84: he was the first to see that the transmitted suadet perverts the syntax of the period (qui primus vidit suadet orationem pervertere) and proposed suauem.</note>
+          </person>
+          <person xml:id="Zwierlein">
+            <persName xml:lang="de">Otto Zwierlein</persName>
+            <note>German classical philologist (born 1939), professor at the University of Bonn; textual critic specialised in interpolation in Latin poetry (editor of Seneca's tragedies, Oxford 1986). His Lucretian conjectures are not published in a work of his own: Deufert discussed them with him in person and reports them in <bibl corresp="#Deufert1996">M. Deufert, Pseudo-Lukrezisches im Lukrez. Die unechten Verse in Lukrezens “De rerum natura”, Berolini et Novi Eboraci 1996</bibl>. He once condemned III 85–86 as spurious (Deufert 1996, 52 sq.).</note>
+          </person>
+          <person xml:id="Bockemueller">
+            <persName xml:lang="de">Friedrich Bockemüller</persName>
+            <note>German classical scholar (19th century); editor and commentator of <bibl>T. Lucreti Cari de rerum natura libri sex. Redigirt und erklärt von Friedrich Bockemüller, Stadis 1874</bibl>. He anticipated the athetesis of III 85–86.</note>
+          </person>
+        </listPerson>
+
+        <listPerson type="ancientSources">
+          <person xml:id="Lact">
+            <persName xml:lang="la">Lucius Caecilius Firmianus Lactantius</persName>
+            <note>Early Christian author, rhetorician, and apologist (ca. 250 – ca. 325 AD); preserves indirect quotations from Lucretius in his Divinae Institutiones.</note>
+          </person>
+          <person xml:id="Non">
+            <persName xml:lang="la">Nonius Marcellus</persName>
+            <note>Roman grammarian and lexicographer from Thubursicu (active early 4th century AD); quotes numerous poetic lines in De compendiosa doctrina.</note>
+          </person>
+          <person xml:id="Macrobius">
+            <persName xml:lang="la">Ambrosius Theodosius Macrobius</persName>
+            <note>Late Roman provincial author and philosopher (fl. ca. 400 AD); preserves numerous classical poetic citations in his Saturnalia.</note>
+          </person>
+          <person xml:id="Sen">
+            <persName xml:lang="la">Lucius Annaeus Seneca</persName>
+            <note>Roman Stoic philosopher, dramatist and statesman (ca. 4 BC – AD 65); quotes Lucretius' simile of the children frightened in the dark (III 87–88 = II 55–56) in his Epistulae morales ad Lucilium (110, 6), reading ita instead of sic.</note>
+          </person>
+        </listPerson>
+      </particDesc>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="prooemium" n="III">
+        <head>Liber III, prooemium: III 1–93</head>
+        <argument>
+          <p>Traditio textus (vv. 1–621): Ω (= O Γ [= Q V]). The text of this section rests upon the consensus of the Carolingian archetype Ω, witnessed by O and the Γ-branch (Q and V). Critical text follows Deufert (2019).</p>
+        </argument>
+        <lg type="poem">
+          <!-- III 1 -->
+          <l xml:id="III1" n="1">
+            <app type="critical">
+              <lem wit="#Omega" resp="#Wakefield #Timpanaro"><w lemma="o">O</w></lem>
+              <rdg wit="#alpha-A" type="conjecture"><w lemma="e">E</w></rdg>
+              <rdg resp="#SH" type="conjecture"><w lemma="tu">Te</w></rdg>
+            </app>
+            <w lemma="tenebrae">tenebris</w>
+            <w lemma="tantus">tantis</w>
+            <w lemma="tam">tam</w>
+            <seg type="testimonium" corresp="#test-lact-1">
+              <w lemma="clarus">clarum</w>
+            </seg>
+            <w lemma="extollo">extollere</w>
+            <anchor xml:id="f1_lumen"/>
+            <seg type="testimonium" corresp="#test-lact-1">
+              <app type="critical">
+                <lem wit="#Gamma" source="#Lact">
+                  <term ref="#lumen"><w lemma="lumen">lumen</w></term>
+                </lem>
+                <rdg wit="#O"><w lemma="flumen">flumen</w></rdg>
+              </app>
+            </seg>
+          </l>
+
+          <!-- III 2 -->
+          <l xml:id="III2" n="2">
+            <w lemma="qui">qui</w>
+            <w lemma="primus">primus</w>
+            <w lemma="possum">potuisti</w>
+            <w lemma="illustro">inlustrans</w>
+            <w lemma="commodum">commoda</w>
+            <app type="critical">
+              <lem wit="#O"><w lemma="uita">uitae</w></lem>
+              <rdg wit="#Gamma"><w lemma="uito">uitat</w></rdg>
+            </app>,
+          </l>
+
+          <!-- III 3 -->
+          <l xml:id="III3" n="3">
+            <w lemma="tu">te</w>
+            <w lemma="sequor">sequor</w>,
+            <w lemma="o">o</w>
+            <w lemma="Graius">Graiae</w>
+            <w lemma="gens">gentis</w>
+            <w lemma="decus">decus</w>,
+            <w lemma="in">in</w><w lemma="que" join="left">que</w>
+            <w lemma="tuus">tuis</w>
+            <w lemma="nunc">nunc</w>
+          </l>
+
+          <!-- III 4 -->
+          <l xml:id="III4" n="4">
+            <w lemma="fingo">ficta</w>
+            <w lemma="pes">pedum</w>
+            <w lemma="pono">pono</w>
+            <w lemma="premo">pressis</w>
+            <w lemma="uestigium">uestigia</w>
+            <w lemma="signum">signis</w>,
+          </l>
+
+          <!-- III 5 -->
+          <l xml:id="III5" n="5">
+            <w lemma="non">non</w>
+            <w lemma="ita">ita</w>
+            <w lemma="certo">certandi</w>
+            <w lemma="cupidus">cupidus</w>
+            <w lemma="quam">quam</w>
+            <w lemma="propter">propter</w>
+            <w lemma="amor">amorem</w>
+          </l>
+
+          <!-- III 6 -->
+          <l xml:id="III6" n="6">
+            <w lemma="quod">quod</w>
+            <w lemma="tu">te</w>
+            <w lemma="imitor">imitari</w>
+            <w lemma="aueo">aueo</w>;
+            <w lemma="quis">quid</w>
+            <w lemma="enim">enim</w>
+            <app type="critical">
+              <lem wit="#O"><w lemma="contendo">contendat</w></lem>
+              <rdg wit="#Gamma">contenda</rdg>
+            </app>
+            <w lemma="hirundo">hirundo</w>
+          </l>
+
+          <!-- III 7 -->
+          <l xml:id="III7" n="7">
+            <app type="critical">
+              <lem wit="#N2 #s2"><w lemma="cycnus">cycnis</w></lem>
+              <rdg wit="#Q2 #alphaStar #phi"><w lemma="cycnus">cignis</w> <seg type="alt"><w lemma="cycnus">cygnis</w></seg></rdg>
+              <rdg wit="#O">cycniis</rdg>
+              <rdg wit="#V">cyiniis</rdg>
+              <rdg wit="#Q1">ciniis</rdg>
+            </app>,
+            <anchor xml:id="f7_start"/>
+            <seg type="testimonium" corresp="#test-non-7">
+              <w lemma="aut">aut</w>
+              <w lemma="quisnam">quidnam</w>
+              <anchor xml:id="r7_start"/>
+              <seg type="parallel" corresp="#iter-III7">
+                <w lemma="tremulus">tremulis</w>
+                <w lemma="facio">facere</w>
+                <w lemma="artus">artubus</w>
+                <w lemma="haedus">haedi</w>
+              </seg>
+              <anchor xml:id="r7_end"/>
+            </seg>
+          </l>
+
+          <!-- III 8 -->
+          <l xml:id="III8" n="8">
+            <seg type="testimonium" corresp="#test-non-7">
+              <app type="critical">
+                <lem wit="#Omega"><w lemma="consimile">consimile</w></lem>
+                <rdg source="#Non"><w lemma="consimilis">consimili</w></rdg>
+              </app>
+              <w lemma="in">in</w>
+              <w lemma="cursus">cursu</w>
+              <w lemma="possum">possint</w>
+              <app type="critical">
+                <lem wit="#Omega"><w lemma="et">et</w></lem>
+                <rdg source="#Non"><w lemma="atque">ac</w></rdg>
+              </app>
+              <w lemma="fortis">fortis</w>
+              <w lemma="equus">equi</w>
+              <w lemma="uis">uis</w>?
+            </seg>
+            <anchor xml:id="f7_end"/>
+          </l>
+
+          <!-- III 9 -->
+          <l xml:id="III9" n="9">
+            <w lemma="tu">tu</w>,
+            <w lemma="pater">pater</w>,
+            <w lemma="sum">es</w>
+            <w lemma="res">rerum</w>
+            <w lemma="inuentor">inuentor</w>,
+            <w lemma="tu">tu</w>
+            <w lemma="patria">patria</w>
+            <w lemma="nos">nobis</w>
+          </l>
+
+          <!-- III 10 -->
+          <l xml:id="III10" n="10">
+            <w lemma="suppedito">suppeditas</w>
+            <app type="critical">
+              <lem wit="#O"><w lemma="praeceptum">praecepta</w></lem>
+              <rdg wit="#Gamma"><w lemma="praecipio">praeceptas</w></rdg>
+            </app>,
+            <w lemma="tuus">tuis</w><w lemma="que" join="left">que</w>
+            <w lemma="ex">ex</w>,
+            <w lemma="inclutus">inclute</w>,
+            <w lemma="charta">chartis</w>,
+          </l>
+
+          <!-- III 11 -->
+          <l xml:id="III11" n="11">
+            <w lemma="florifer">floriferis</w>
+            <w lemma="ut">ut</w>
+            <w lemma="apis">apes</w>
+            <w lemma="in">in</w>
+            <w lemma="saltus">saltibus</w>
+            <w lemma="omnis">omnia</w>
+            <app type="critical">
+              <lem resp="#Marullus"><w lemma="libo">libant</w></lem>
+              <rdg wit="#Omega"><w lemma="limo">limant</w></rdg>
+            </app>,
+          </l>
+
+          <!-- III 12 -->
+          <l xml:id="III12" n="12">
+            <w lemma="omnis">omnia</w>
+            <w lemma="nos">nos</w>
+            <w lemma="itidem">itidem</w>
+            <w lemma="depascor">depascimur</w>
+            <w lemma="aureus">aurea</w>
+            <w lemma="dictum">dicta</w>,
+          </l>
+
+          <!-- III 13 -->
+          <l xml:id="III13" n="13">
+            <w lemma="aureus">aurea</w>,
+            <w lemma="perpetuus">perpetua</w>
+            <w lemma="semper">semper</w>
+            <w lemma="dignus">dignissima</w>
+            <w lemma="uita">uita</w>.
+          </l>
+
+          <!-- III 14 -->
+          <l xml:id="III14" n="14">
+            <w lemma="nam">nam</w>
+            <w lemma="simul">simul</w>
+            <w lemma="atque">ac</w>
+            <term ref="#ratio"><w lemma="ratio">ratio</w></term>
+            <w lemma="tuus">tua</w>
+            <w lemma="coepi">coepit</w>
+            <w lemma="uociferor">uociferari</w>
+          </l>
+
+          <!-- III 15 -->
+          <l xml:id="III15" n="15">
+            <w lemma="natura">naturam</w>
+            <w lemma="res">rerum</w>,
+            <w lemma="diuinus">diuina</w>
+            <w lemma="mens">mente</w>
+            <app type="critical">
+              <lem resp="#OR"><w lemma="coorior">coorta</w></lem>
+              <rdg wit="#O"><w lemma="coorior">coortam</w></rdg>
+              <rdg wit="#Gamma"><w lemma="coarto">coartam</w></rdg>
+            </app>,
+          </l>
+
+          <!-- III 16 -->
+          <l xml:id="III16" n="16">
+            <w lemma="diffugio">diffugiunt</w>
+            <w lemma="animus">animi</w>
+            <w lemma="terror">terrores</w>,
+            <term ref="#moenia-mundi"><w lemma="moenia">moenia</w>
+              <w lemma="mundus">mundi</w></term>
+          </l>
+
+          <!-- III 17 -->
+          <l xml:id="III17" n="17">
+            <w lemma="discedo">discedunt</w>,
+            <anchor xml:id="f17_start"/>
+            <seg type="testimonium" corresp="#test-non-17">
+              <w lemma="totus">totum</w>
+              <w lemma="uideo">uideo</w>
+              <w lemma="per">per</w>
+              <term ref="#inane"><w lemma="inanis">inane</w></term>
+              <w lemma="gero">geri</w>
+              <w lemma="res">res</w>.
+            </seg>
+            <anchor xml:id="f17_end"/>
+          </l>
+
+          <!-- III 18 -->
+          <l xml:id="III18" n="18">
+            <w lemma="appareo">apparet</w>
+            <w lemma="diuus">diuum</w>
+            <w lemma="numen">numen</w>
+            <w lemma="sedes">sedes</w><w lemma="que" join="left">que</w>
+            <w lemma="quietus">quietae</w>,
+          </l>
+
+          <!-- III 19 -->
+          <l xml:id="III19" n="19">
+            <w lemma="qui">quas</w>
+            <w lemma="neque">neque</w>
+            <w lemma="concutio">concutiunt</w>
+            <w lemma="uentus">uenti</w>
+            <w lemma="nec">nec</w>
+            <w lemma="nubilum">nubila</w>
+            <w lemma="nimbus">nimbis</w>
+          </l>
+
+          <!-- III 20 -->
+          <l xml:id="III20" n="20">
+            <w lemma="aspergo">aspergunt</w>
+            <w lemma="neque">neque</w>
+            <w lemma="nix">nix</w>
+            <w lemma="acer">acri</w>
+            <w lemma="concretus">concreta</w>
+            <w lemma="pruina">pruina</w>
+          </l>
+
+          <!-- III 21 -->
+          <l xml:id="III21" n="21">
+            <w lemma="canus">cana</w>
+            <w lemma="cado">cadens</w>
+            <w lemma="uiolo">uiolat</w>,
+            <app type="critical">
+              <lem wit="#phi"><w lemma="semper">semper</w><w lemma="que" join="left">que</w></lem>
+              <rdg wit="#Omega"><w lemma="semper">semper</w></rdg>
+            </app>
+            <w lemma="innubilus">innubilus</w>
+            <w lemma="aether">aether</w>
+          </l>
+
+          <!-- III 22 -->
+          <l xml:id="III22" n="22">
+            <w lemma="intego">integit</w>
+            <w lemma="et">et</w>
+            <w lemma="large">large</w>
+            <w lemma="diffundo">diffuso</w>
+            <term ref="#lumen"><w lemma="lumen">lumine</w></term>
+            <app type="critical">
+              <lem wit="#Omega"><w lemma="rideo">ridet</w></lem>
+              <rdg resp="#LACh" type="conjecture"><w lemma="rideo">rident</w></rdg>
+            </app>.
+          </l>
+
+          <!-- III 23 -->
+          <l xml:id="III23" n="23">
+            <w lemma="omnis">Omnia</w>
+            <w lemma="suppedito">suppeditat</w>
+            <w lemma="porro">porro</w>
+            <w lemma="natura">natura</w>,
+            <w lemma="neque">neque</w>
+            <w lemma="ullus">ulla</w>
+          </l>
+
+          <!-- III 24 -->
+          <l xml:id="III24" n="24">
+            <w lemma="res">res</w>
+            <w lemma="animus">animi</w>
+            <w lemma="pax">pacem</w>
+            <w lemma="delibo">delibat</w>
+            <w lemma="tempus">tempore</w>
+            <w lemma="in">in</w>
+            <w lemma="ullus">ullo</w>.
+          </l>
+
+          <!-- III 25 -->
+          <l xml:id="III25" n="25">
+            <w lemma="at">at</w>
+            <w lemma="contra">contra</w>
+            <w lemma="nusquam">nusquam</w>
+            <w lemma="appareo">apparent</w>
+            <term ref="#acherusia-templa"><w lemma="Acherusius">Acherusia</w>
+              <w lemma="templum">templa</w></term>,
+          </l>
+
+          <!-- III 26 -->
+          <l xml:id="III26" n="26">
+            <w lemma="nec">nec</w>
+            <w lemma="tellus">tellus</w>
+            <w lemma="obsto">obstat</w>
+            <w lemma="quin">quin</w>
+            <w lemma="omnis">omnia</w>
+            <w lemma="dispicio">dispiciantur</w>,
+          </l>
+
+          <!-- III 27 -->
+          <l xml:id="III27" n="27">
+            <w lemma="sub">sub</w>
+            <w lemma="pes">pedibus</w>
+            <w lemma="quicumque">quaecumque</w>
+            <w lemma="infra">infra</w>
+            <w lemma="per">per</w>
+            <term ref="#inane"><w lemma="inanis">inane</w></term>
+            <w lemma="gero">geruntur</w>.
+          </l>
+
+          <!-- III 28 -->
+          <l xml:id="III28" n="28">
+            <w lemma="hic">his</w>
+            <app type="critical">
+              <lem resp="#Pont"><w lemma="ibi">ibi</w></lem>
+              <rdg wit="#Omega"><w lemma="ubi">ubi</w></rdg>
+            </app>
+            <w lemma="ego">me</w>
+            <w lemma="res">rebus</w>
+            <w lemma="quidam">quaedam</w>
+            <w lemma="diuinus">diuina</w>
+            <term ref="#uoluptas"><w lemma="uoluptas">uoluptas</w></term>
+          </l>
+
+          <!-- III 29 -->
+          <l xml:id="III29" n="29">
+            <w lemma="percipio">percipit</w>
+            <w lemma="atque">atque</w>
+            <w lemma="horror">horror</w>,
+            <w lemma="quod">quod</w>
+            <app type="critical">
+              <lem wit="#R"><w lemma="sic">sic</w> <w lemma="natura">natura</w></lem>
+              <rdg wit="#Omega"><w lemma="signatura">signatura</w></rdg>
+            </app>
+            <w lemma="tuus">tua</w>
+            <w lemma="uis">ui</w>
+          </l>
+
+          <!-- III 30 -->
+          <l xml:id="III30" n="30">
+            <w lemma="tam">tam</w>
+            <w lemma="manifestus">manifesta</w>
+            <w lemma="pateo">patens</w>
+            <w lemma="ex">ex</w>
+            <w lemma="omnis">omni</w>
+            <w lemma="pars">parte</w>
+            <w lemma="retego">retecta</w>
+            <w lemma="sum">est</w>.
+          </l>
+
+          <!-- III 31 -->
+          <l xml:id="III31" n="31">
+            <anchor xml:id="r31_start"/>
+            <seg type="parallel" corresp="#iter-III31 #iter-III31-34">
+              <w lemma="et">Et</w>
+              <w lemma="quoniam">quoniam</w>
+              <w lemma="doceo">docui</w>
+            </seg>
+            <anchor xml:id="r31_end"/>
+            <seg type="parallel" corresp="#iter-III31-34">
+              <w lemma="cunctus">cunctarum</w>
+              <w lemma="exordium">exordia</w>
+              <w lemma="res">rerum</w>
+            </seg>
+          </l>
+
+          <!-- III 32 -->
+          <l xml:id="III32" n="32">
+            <anchor xml:id="r32_start"/>
+            <seg type="parallel" corresp="#iter-III32 #iter-III31-34">
+              <w lemma="qualis">qualia</w>
+              <w lemma="sum">sint</w>
+              <w lemma="et">et</w>
+              <w lemma="quam">quam</w>
+              <w lemma="uarius">uariis</w>
+              <w lemma="disto">distantia</w>
+              <w lemma="forma">formis</w>
+            </seg>
+            <anchor xml:id="r32_end"/>
+          </l>
+
+          <!-- III 33 -->
+          <l xml:id="III33" n="33">
+            <seg type="parallel" corresp="#iter-III31-34">
+              <w lemma="spons">sponte</w>
+              <w lemma="suus">sua</w>
+            </seg>
+            <anchor xml:id="r33_start"/>
+            <seg type="parallel" corresp="#iter-III33 #iter-III31-34">
+              <w lemma="uolito">uolitent</w>
+              <app type="critical">
+                <lem resp="#Marullus"><w lemma="aeternus">aeterno</w></lem>
+                <rdg wit="#Omega"><w lemma="alternus">alterno</w></rdg>
+              </app>
+              <w lemma="percieo">percita</w>
+              <w lemma="motus">motu</w>
+            </seg>
+            <anchor xml:id="r33_end"/>,
+          </l>
+
+          <!-- III 34 -->
+          <l xml:id="III34" n="34">
+            <seg type="parallel" corresp="#iter-III31-34">
+              <w lemma="quo">quo</w><w lemma="ue" join="left">ue</w>
+              <w lemma="modus">modo</w>
+              <w lemma="possum">possint</w>
+              <w lemma="res">res</w>
+              <w lemma="ex">ex</w>
+              <app type="critical">
+                <lem wit="#O"><w lemma="hic">his</w></lem>
+                <rdg wit="#Gamma"><w lemma="is">iis</w></rdg>
+              </app>
+              <w lemma="quisque">quaeque</w>
+              <w lemma="creo">creari</w>,
+            </seg>
+          </l>
+
+          <!-- III 35 -->
+          <l xml:id="III35" n="35">
+            <w lemma="hic">hasce</w>
+            <w lemma="secundum">secundum</w>
+            <w lemma="res">res</w>
+            <term ref="#animus-and-anima"><w lemma="animus">animi</w></term>
+            <w lemma="natura">natura</w>
+            <w lemma="uideo">uidetur</w>
+          </l>
+
+          <!-- III 36 -->
+          <l xml:id="III36" n="36">
+            <w lemma="atque">atque</w>
+            <term ref="#animus-and-anima"><w lemma="anima">animae</w></term>
+            <w lemma="claro">claranda</w>
+            <w lemma="meus">meis</w>
+            <w lemma="iam">iam</w>
+            <w lemma="uersus">uersibus</w>
+            <w lemma="sum">esse</w>
+          </l>
+
+          <!-- III 37 (variante focalizzata sul solo sintagma nominale) -->
+          <l xml:id="III37" n="37">
+            <w lemma="et">et</w>
+            <term ref="#metus-acheruntis"><w lemma="metus">metus</w></term>
+            <w lemma="ille">ille</w>
+            <w lemma="foras">foras</w>
+            <w lemma="praeceps">praeceps</w>
+            <term ref="#metus-acheruntis"><w lemma="Acheron">Acheruntis</w></term>
+            <w lemma="ago">agendus</w>,
+          </l>
+
+          <!-- III 38 -->
+          <l xml:id="III38" n="38">
+            <w lemma="funditus">funditus</w>
+            <w lemma="humanus">humanam</w>
+            <w lemma="qui">qui</w>
+            <app type="critical">
+              <lem wit="#O"><w lemma="uita">uitam</w></lem>
+              <rdg wit="#Gamma"><w lemma="uito">uitat</w></rdg>
+            </app>
+            <w lemma="turbo">turbat</w>
+            <w lemma="ab">ab</w>
+            <w lemma="imus">imo</w>
+          </l>
+
+          <!-- III 39 -->
+          <l xml:id="III39" n="39">
+            <w lemma="omnis">omnia</w>
+            <app type="critical">
+              <lem wit="#A #phi"><w lemma="suffundo">suffundens</w></lem>
+              <rdg wit="#Omega"><w lemma="suffundo">suffundans</w></rdg>
+            </app>
+            <w lemma="mors">mortis</w>
+            <w lemma="nigror">nigrore</w>
+            <w lemma="neque">neque</w>
+            <w lemma="ullus">ullam</w>
+          </l>
+
+          <!-- III 40 -->
+          <l xml:id="III40" n="40">
+            <w lemma="sum">esse</w>
+            <term ref="#uoluptas"><w lemma="uoluptas">uoluptatem</w></term>
+            <w lemma="liquidus">liquidam</w>
+            <w lemma="purus">puram</w><w lemma="que" join="left">que</w>
+            <w lemma="relinquo">relinquit</w>.
+          </l>
+          <!-- III 41 -->
+          <l xml:id="III41" n="41">
+            <w lemma="nam">nam</w>
+            <w lemma="qui">quod</w>
+            <w lemma="saepe">saepe</w>
+            <w lemma="homo">homines</w>
+            <app type="critical">
+              <lem wit="#O"><w lemma="morbus">morbos</w></lem>
+              <rdg wit="#Gamma"><w lemma="morbus">morbus</w></rdg>
+            </app>
+            <w lemma="magis">magis</w>
+            <w lemma="sum">esse</w>
+            <w lemma="timeo">timendos</w>
+          </l>
+
+          <!-- III 42 -->
+          <l xml:id="III42" n="42">
+            <w lemma="infamis">infamem</w><w lemma="que" join="left">que</w>
+            <w lemma="fero">ferunt</w>
+            <w lemma="uita">uitam</w>
+            <w lemma="quam">quam</w>
+            <w lemma="Tartara">Tartara</w>
+            <w lemma="letum">leti</w>
+          </l>
+
+          <!-- III 43 -->
+          <l xml:id="III43" n="43">
+            <w lemma="et">et</w>
+            <w lemma="se">se</w>
+            <app type="critical">
+              <lem wit="#O"><w lemma="scio">scire</w></lem>
+              <rdg wit="#Gamma"><w lemma="scio">sciri</w></rdg>
+            </app>
+            <app type="critical">
+              <lem wit="#O"><w lemma="animus">animi</w></lem>
+              <rdg wit="#Gamma"><w lemma="anima">anime</w></rdg>
+            </app>
+            <w lemma="natura">naturam</w>
+            <w lemma="sanguis">sanguinis</w>
+            <w lemma="sum">esse</w>
+          </l>
+
+          <!-- III 46 (collocavit Bentley post 43) -->
+          <l xml:id="III46" n="46">
+            <app type="critical">
+              <lem resp="#Bentley"/>
+              <note type="editorial">post 43 collocavit Bentley</note>
+            </app>
+            <w lemma="aut">aut</w>
+            <w lemma="etiam">etiam</w>
+            <w lemma="uentus">uenti</w>,
+            <w lemma="si">si</w>
+            <w lemma="fero">fert</w>
+            <w lemma="ita">ita</w>
+            <w lemma="forte">forte</w>
+            <w lemma="uoluntas">uoluntas</w>,
+          </l>
+
+          <!-- III 44 -->
+          <l xml:id="III44" n="44">
+            <w lemma="nec">nec</w>
+            <w lemma="prorsum">prorsum</w>
+            <w lemma="quisquam">quicquam</w>
+            <w lemma="noster">nostrae</w>
+            <term ref="#ratio"><w lemma="ratio">rationis</w></term>
+            <w lemma="egeo">egere</w>,
+          </l>
+
+          <!-- III 45 -->
+          <l xml:id="III45" n="45">
+            <anchor xml:id="r45_start"/>
+            <seg type="parallel" corresp="#iter-III45">
+              <w lemma="hinc">hinc</w>
+              <w lemma="licet">licet</w>
+              <w lemma="aduerto">aduertas</w>
+              <w lemma="animus">animum</w>
+            </seg>
+            <anchor xml:id="r45_end"/>
+            <w lemma="magis">magis</w>
+            <w lemma="omnis">omnia</w>
+            <w lemma="laus">laudis</w>
+          </l>
+
+          <!-- III 47 -->
+          <l xml:id="III47" n="47">
+            <w lemma="iacto">iactari</w>
+            <app type="critical">
+              <lem wit="#O2"><w lemma="causa">causa</w></lem>
+              <rdg wit="#Omega"><w lemma="causa">causam</w></rdg>
+            </app>
+            <w lemma="quam">quam</w>
+            <w lemma="quod">quod</w>
+            <w lemma="res">res</w>
+            <w lemma="ipse">ipsa</w>
+            <w lemma="probo">probetur</w>.
+          </l>
+
+          <!-- III 48 -->
+          <l xml:id="III48" n="48">
+            <w lemma="extorris">extorres</w>
+            <w lemma="idem">idem</w>
+            <w lemma="patria">patria</w>
+            <w lemma="longe">longe</w><w lemma="que" join="left">que</w>
+            <w lemma="fugo">fugati</w>
+          </l>
+
+          <!-- III 49 -->
+          <l xml:id="III49" n="49">
+            <w lemma="conspectus">conspectu</w>
+            <w lemma="ex">ex</w>
+            <w lemma="homo">hominum</w>,
+            <w lemma="foedo">foedati</w>
+            <w lemma="crimen">crimine</w>
+            <w lemma="turpis">turpi</w>,
+          </l>
+
+          <!-- III 50 -->
+          <l xml:id="III50" n="50">
+            <w lemma="omnis">omnibus</w>
+            <w lemma="aerumna">aerumnis</w>
+            <w lemma="adficio">adfecti</w>
+            <w lemma="denique">denique</w>,
+            <app type="critical">
+              <lem wit="#O #Q1"><w lemma="uiuo">uiuunt</w></lem>
+              <rdg wit="#Qa #V"><w lemma="uiuo">uiunt</w></rdg>
+            </app>,
+          </l>
+
+          <!-- III 51 -->
+          <l xml:id="III51" n="51">
+            <w lemma="et">et</w>
+            <w lemma="quocumque">quocumque</w>
+            <w lemma="tamen">tamen</w>
+            <w lemma="miser">miseri</w>
+            <w lemma="uenio">uenere</w>
+            <w lemma="parento">parentant</w>
+          </l>
+
+          <!-- III 52 -->
+          <l xml:id="III52" n="52">
+            <anchor xml:id="f52_start"/>
+            <seg type="testimonium" corresp="#test-non-52">
+              <w lemma="et">et</w>
+              <w lemma="niger">nigras</w>
+              <w lemma="macto">mactant</w>
+              <app type="critical">
+                <lem wit="#Gamma" source="#Non"><w lemma="pecus">pecudes</w> <w lemma="et">et</w></lem>
+                <rdg wit="#O"><w lemma="pecus">pecudes</w></rdg>
+              </app>
+              <w lemma="manes">manibus</w>
+              <w lemma="diuus">diuis</w>
+            </seg>
+            <anchor xml:id="f52_end"/>
+          </l>
+
+          <!-- III 53 -->
+          <l xml:id="III53" n="53">
+            <app type="critical">
+              <lem wit="#Q2 #L #o"><w lemma="inferiae">inferias</w></lem>
+              <rdg wit="#Omega"><w lemma="inferiae">inferia</w></rdg>
+            </app>
+            <w lemma="mitto">mittunt</w>
+            <w lemma="multus">multo</w><w lemma="que" join="left">que</w>
+            <w lemma="in">in</w>
+            <w lemma="res">rebus</w>
+            <w lemma="acerbus">acerbis</w>
+          </l>
+
+          <!-- III 54 -->
+          <l xml:id="III54" n="54">
+            <w lemma="acriter">acrius</w>
+            <w lemma="aduerto">aduertunt</w>
+            <w lemma="animus">animos</w>
+            <w lemma="ad">ad</w>
+            <term ref="#religio"><w lemma="religio">religionem</w></term>.
+          </l>
+
+          <!-- III 55 -->
+          <l xml:id="III55" n="55">
+            <w lemma="qui">quo</w>
+            <w lemma="magis">magis</w>
+            <w lemma="in">in</w>
+            <w lemma="dubius">dubiis</w>
+            <w lemma="homo">hominem</w>
+            <w lemma="specto">spectare</w>
+            <w lemma="periculum">periclis</w>
+          </l>
+
+          <!-- III 56 -->
+          <l xml:id="III56" n="56">
+            <w lemma="conuenio">conuenit</w>
+            <w lemma="aduersus">aduersis</w><w lemma="que" join="left">que</w>
+            <w lemma="in">in</w>
+            <w lemma="res">rebus</w>
+            <w lemma="nosco">noscere</w>
+            <w lemma="quis">qui</w>
+            <w lemma="sum">sit</w>;
+          </l>
+
+          <!-- III 57 -->
+          <l xml:id="III57" n="57">
+            <w lemma="nam">nam</w>
+            <w lemma="uerus">uerae</w>
+            <w lemma="uox">uoces</w>
+            <w lemma="tum">tum</w>
+            <w lemma="demum">demum</w>
+            <w lemma="pectus">pectore</w>
+            <w lemma="ab">ab</w>
+            <w lemma="imus">imo</w>
+          </l>
+
+          <!-- III 58 -->
+          <l xml:id="III58" n="58">
+            <app type="critical">
+              <lem wit="#Omega"><w lemma="elicio">eliciuntur</w></lem>
+              <rdg resp="#Lambinus" type="conjecture"><w lemma="eicio">eiiciuntur</w></rdg>
+            </app>,
+            <app type="critical">
+              <lem wit="#A #L #o"><w lemma="et">et</w></lem>
+            </app>
+            <w lemma="eripio">eripitur</w>
+            <w lemma="persona">persona</w>
+            <app type="critical">
+              <lem wit="#Omega"><term rend="crux">†<w lemma="mano">manare</w>†</term></lem>
+              <rdg wit="#phi"><w lemma="maneo">manet</w> <w lemma="res">res</w></rdg>
+              <rdg resp="#Heinze" type="conjecture"><w lemma="malus">mala</w> <w lemma="res">re</w></rdg>
+              <rdg resp="#Morel" type="conjecture"><w lemma="minax">minaci</w></rdg>
+              <rdg resp="#MD" type="conjecture">man<supplied>etque / uera hominis facies, misere detecta mal</supplied>a re</rdg>
+            </app>.
+          </l>
+
+          <!-- III 59 -->
+          <l xml:id="III59" n="59">
+            <w lemma="denique">denique</w>
+            <w lemma="auarities">auarities</w>
+            <w lemma="et">et</w>
+            <w lemma="honor">honorum</w>
+            <w lemma="caecus">caeca</w>
+            <w lemma="cupido">cupido</w>,
+          </l>
+
+          <!-- III 60 -->
+          <l xml:id="III60" n="60">
+            <app type="critical">
+              <lem wit="#O"><w lemma="qui">quae</w></lem>
+              <rdg wit="#Gamma"><w lemma="qui">quem</w></rdg>
+            </app>
+            <w lemma="miser">miseros</w>
+            <w lemma="homo">homines</w>
+            <w lemma="cogo">cogunt</w>
+            <w lemma="transcendo">transcendere</w>
+            <w lemma="finis">fines</w>
+          </l>
+
+          <!-- III 61 -->
+          <l xml:id="III61" n="61">
+            <w lemma="ius">iuris</w>
+            <w lemma="et">et</w>
+            <w lemma="interdum">interdum</w>
+            <app type="critical">
+              <lem wit="#O"><w lemma="socius">socios</w></lem>
+              <rdg wit="#Gamma"><w lemma="socius">socius</w></rdg>
+            </app>
+            <w lemma="scelus">scelerum</w>
+            <w lemma="atque">atque</w>
+            <w lemma="minister">ministros</w>
+          </l>
+
+          <!-- III 62 -->
+          <l xml:id="III62" n="62">
+            <anchor xml:id="r62_start"/>
+            <seg type="parallel" corresp="#iter-III62-63">
+              <w lemma="nox">noctes</w>
+              <w lemma="atque">atque</w>
+              <w lemma="dies">dies</w>
+              <w lemma="nitor">niti</w>
+              <w lemma="praesto">praestante</w>
+              <app type="critical">
+                <lem wit="#xi-mu #alpha-A"><w lemma="labor">labore</w></lem>
+                <rdg wit="#Omega"><w lemma="labor">tabore</w></rdg>
+              </app>
+            </seg>
+          </l>
+
+          <!-- III 63 -->
+          <l xml:id="III63" n="63">
+            <seg type="parallel" corresp="#iter-III62-63">
+              <w lemma="ad">ad</w>
+              <w lemma="summus">summas</w>
+              <w lemma="emergo">emergere</w>
+              <w lemma="ops">opes</w>
+            </seg>,
+            <anchor xml:id="r63_end"/>
+            <w lemma="hic">haec</w>
+            <w lemma="uulnus">uulnera</w>
+            <w lemma="uita">uitae</w>
+          </l>
+
+          <!-- III 64 -->
+          <l xml:id="III64" n="64">
+            <w lemma="non">non</w>
+            <w lemma="minimus">minimam</w>
+            <w lemma="pars">partem</w>
+            <term ref="#metus-acheruntis"><w lemma="mors">mortis</w>
+              <w lemma="formido">formidine</w></term>
+            <w lemma="alo">aluntur</w>.
+          </l>
+
+          <!-- III 65 -->
+          <l xml:id="III65" n="65">
+            <w lemma="turpis">turpis</w>
+            <w lemma="enim">enim</w>
+            <w lemma="ferme">ferme</w>
+            <w lemma="contemptus">contemptus</w>
+            <w lemma="et">et</w>
+            <w lemma="acer">acris</w>
+            <w lemma="egestas">egestas</w>
+          </l>
+
+          <!-- III 66 -->
+          <l xml:id="III66" n="66">
+            <w lemma="semotus">semota</w>
+            <w lemma="ab">ab</w>
+            <w lemma="dulcis">dulci</w>
+            <w lemma="uita">uita</w>
+            <w lemma="stabilis">stabili</w><w lemma="que" join="left">que</w>
+            <app type="critical">
+              <lem wit="#Omega"><w lemma="uideo">uidetur</w></lem>
+              <rdg resp="#Lambinus" type="conjecture"><w lemma="uideo">uidentur</w></rdg>
+            </app>
+          </l>
+
+          <!-- III 67 -->
+          <l xml:id="III67" n="67">
+            <w lemma="et">et</w>
+            <w lemma="quasi">quasi</w>
+            <w lemma="iam">iam</w>
+            <w lemma="letum">leti</w>
+            <w lemma="porta">portas</w>
+            <w lemma="cunctor">cunctarier</w>
+            <w lemma="ante">ante</w>;
+          </l>
+
+          <!-- III 68 -->
+          <l xml:id="III68" n="68">
+            <w lemma="unde">unde</w>
+            <w lemma="homo">homines</w>
+            <w lemma="dum">dum</w>
+            <w lemma="se">se</w>
+            <w lemma="falsus">falso</w>
+            <w lemma="terror">terrore</w>
+            <w lemma="cogo">coacti</w>
+          </l>
+
+          <!-- III 69 -->
+          <l xml:id="III69" n="69">
+            <w lemma="effugio">effugisse</w>
+            <w lemma="uolo">uolunt</w>
+            <w lemma="longe">longe</w>
+            <w lemma="longe">longe</w><w lemma="que" join="left">que</w>
+            <w lemma="remoueo">remosse</w>,
+          </l>
+
+          <!-- III 70 -->
+          <l xml:id="III70" n="70">
+            <anchor xml:id="f70_start"/>
+            <seg type="testimonium" corresp="#test-macr-70-72">
+              <w lemma="sanguis">sanguine</w>
+              <w lemma="ciuilis">ciuili</w>
+              <w lemma="res">rem</w>
+              <w lemma="conflo">conflant</w>
+              <w lemma="diuitiae">diuitias</w><w lemma="que" join="left">que</w>
+            </seg>
+          </l>
+
+          <!-- III 71 -->
+          <l xml:id="III71" n="71">
+            <seg type="testimonium" corresp="#test-macr-70-72">
+              <w lemma="conduplico">conduplicant</w>
+              <w lemma="auidus">auidi</w>,
+              <w lemma="caedes">caedem</w>
+              <w lemma="caedes">caede</w>
+              <w lemma="accumulo">accumulantes</w>,
+            </seg>
+          </l>
+
+          <!-- III 72 -->
+          <l xml:id="III72" n="72">
+            <seg type="testimonium" corresp="#test-macr-70-72">
+              <w lemma="crudelis">crudeles</w>
+              <w lemma="gaudeo">gaudent</w>
+              <w lemma="in">in</w>
+              <w lemma="tristis">tristi</w>
+              <w lemma="funus">funere</w>
+              <app type="critical">
+                <lem source="#Macrobius"><w lemma="frater">fratris</w></lem>
+                <rdg wit="#Omega"><w lemma="frater">fratres</w></rdg>
+              </app>
+            </seg>
+            <anchor xml:id="f72_end"/>
+          </l>
+
+          <!-- III 73 -->
+          <l xml:id="III73" n="73">
+            <w lemma="et">et</w>
+            <w lemma="consanguineus">consanguineum</w>
+            <w lemma="mensa">mensas</w>
+            <w lemma="odi">odere</w>
+            <w lemma="timeo">timent</w><w lemma="que" join="left">que</w>.
+          </l>
+
+          <!-- III 74 -->
+          <l xml:id="III74" n="74">
+            <w lemma="consimilis">Consimili</w>
+            <app type="critical">
+              <lem wit="#O"><w lemma="ratio">ratione</w></lem>
+              <rdg wit="#Q"><w lemma="ratio">rationi</w></rdg>
+              <rdg wit="#V"><w lemma="ratio">rationem</w></rdg>
+            </app>
+            <w lemma="ab">ab</w>
+            <w lemma="idem">eodem</w>
+            <w lemma="saepe">saepe</w>
+            <w lemma="timor">timore</w>
+          </l>
+
+          <!-- III 75 -->
+          <l xml:id="III75" n="75">
+            <w lemma="macero">macerat</w>
+            <app type="critical">
+              <lem><w lemma="inuidia">inuidia</w></lem>
+              <note type="editorial">post <mentioned>inuidia</mentioned> plene, post <mentioned>honore</mentioned> (v. 76) levius dist. edd. vet. -->
+                Deufert points out how editors of the past structured sentence syntax differently in order to distribute the complements of cause and means between envy and the desire for political honors.</note>
+            </app>
+            <w lemma="ante">ante</w>
+            <w lemma="oculus">oculos</w>
+            <w lemma="ille">illum</w>
+            <w lemma="sum">esse</w>
+            <w lemma="potens">potentem</w>,
+          </l>
+
+          <!-- III 76 -->
+          <l xml:id="III76" n="76">
+            <w lemma="ille">illum</w>
+            <w lemma="aspecto">aspectari</w>,
+            <w lemma="clarus">claro</w>
+            <w lemma="qui">qui</w>
+            <w lemma="incedo">incedit</w>
+            <w lemma="honor">honore</w>;
+          </l>
+
+          <!-- III 77 -->
+          <l xml:id="III77" n="77">
+            <w lemma="ipse">ipsi</w>
+            <w lemma="se">se</w>
+            <w lemma="in">in</w>
+            <term ref="#tenebrae"><w lemma="tenebrae">tenebris</w></term>
+            <w lemma="uoluo">uolui</w>
+            <w lemma="caenum">caeno</w><w lemma="que" join="left">que</w>
+            <w lemma="queror">queruntur</w>.
+          </l>
+
+          <!-- III 78 -->
+          <l xml:id="III78" n="78">
+            <w lemma="intereo">intereunt</w>
+            <w lemma="partim">partim</w>
+            <app type="critical">
+              <lem wit="#phi"><w lemma="statua">statuarum</w></lem>
+              <rdg wit="#Omega"><w lemma="status">statum</w></rdg>
+            </app>
+            <w lemma="et">et</w>
+            <w lemma="nomen">nominis</w>
+            <w lemma="ergo">ergo</w>.
+          </l>
+
+          <!-- III 79 -->
+          <l xml:id="III79" n="79">
+            <w lemma="et">et</w>
+            <w lemma="saepe">saepe</w>
+            <w lemma="usque">usque</w>
+            <w lemma="adeo">adeo</w>,
+            <term ref="#metus-acheruntis"><w lemma="mors">mortis</w>
+              <w lemma="formido">formidine</w></term>,
+            <w lemma="uita">uitae</w>
+          </l>
+
+          <!-- III 80 -->
+          <l xml:id="III80" n="80">
+            <w lemma="percipio">percipit</w>
+            <w lemma="humanus">humanos</w>
+            <w lemma="odium">odium</w>
+            <w lemma="lux">lucis</w><w lemma="que" join="left">que</w>
+            <w lemma="uideo">uidendae</w>,
+          </l>
+
+          <!-- III 81 -->
+          <l xml:id="III81" n="81">
+            <w lemma="ut">ut</w>
+            <w lemma="se">sibi</w>
+            <app type="critical">
+              <lem wit="#L #alpha #phi"><w lemma="conscisco">consciscant</w></lem>
+              <rdg wit="#O2"><w lemma="conscisco">conciscant</w></rdg>
+              <rdg wit="#Omega">coniciscant</rdg>
+            </app>
+            <w lemma="maereo">maerenti</w>
+            <w lemma="pectus">pectore</w>
+            <app type="critical">
+              <lem><w lemma="letum">letum</w></lem>
+              <rdg wit="#O"><w lemma="laetus">laetum</w></rdg>
+              <rdg wit="#Gamma"><w lemma="latus">latum</w></rdg>
+            </app>,
+          </l>
+
+          <!-- III 82 (post 82 lacunam statuit Munro) -->
+          <l xml:id="III82" n="82">
+            <w lemma="obliuiscor">obliti</w>
+            <w lemma="fons">fontem</w>
+            <w lemma="cura">curarum</w>
+            <w lemma="hic">hunc</w>
+            <w lemma="sum">esse</w>
+            <w lemma="timor">timorem</w>,
+            <app type="critical">
+              <lem/>
+              <rdg resp="#Munro" type="lacuna"><supplied reason="lacuna"><w lemma="qui">qui</w> <w lemma="miser">miseros</w> <w lemma="homo">homines</w> <w lemma="cogo">cogens</w> <w lemma="scelus">scelus</w> <w lemma="omnis">omne</w> <w lemma="patro">patrare</w></supplied></rdg>
+              <note type="editorial">Munro hypothesized the loss of an entire line after line 82. To fill the gap and provide a logical subject for the verb <mentioned>suadet</mentioned>, isolated in line 84, Munro proposed a conjectural insertion: 〈qui miseros homines cogens scelus omne patrare〉.</note>
+            </app>
+          </l>
+
+          <!-- III 83 -->
+          <l xml:id="III83" n="83">
+            <w lemma="hic">hunc</w>
+            <w lemma="uexo">uexare</w>
+            <w lemma="pudor">pudorem</w>,
+            <w lemma="hic">hunc</w>
+            <w lemma="uinculum">uincula</w>
+            <app type="critical">
+              <lem wit="#Q2 #xi"><w lemma="amicitia">amicitiai</w></lem>
+              <rdg wit="#Omega"><w lemma="amicitia">amicitia</w></rdg>
+            </app>
+          </l>
+
+          <!-- III 84 -->
+          <l xml:id="III84" n="84">
+            <w lemma="rumpo">rumpere</w>
+            <w lemma="et">et</w>
+            <w lemma="in">in</w>
+            <w lemma="summa">summa</w>
+            <app type="critical">
+              <lem wit="#A #phi"><term ref="#pietas"><w lemma="pietas">pietatem</w></term></lem>
+              <rdg wit="#Omega"><w lemma="pietas">pietate</w></rdg>
+            </app>
+            <w lemma="euerto">euertere</w>
+            <app type="critical">
+              <lem resp="#Lambinus" type="conjecture"><w lemma="fundus">fundo</w></lem>
+              <rdg wit="#Omega"><w lemma="suadeo">suadet</w></rdg>
+              <rdg resp="#CMueller" type="conjecture"><w lemma="foede">foede</w></rdg>
+              <rdg resp="#LACh" type="conjecture"><w lemma="fraus">fraude</w></rdg>
+              <rdg resp="#Cippellarius" type="conjecture"><w lemma="suauis">suauem</w></rdg>
+            </app>.
+          </l>
+
+          <!-- III 85 (vv. 85–86 olim damnavit Zwierlein) -->
+          <l xml:id="III85" n="85">
+            <app type="critical">
+              <lem/>
+              <rdg resp="#Zwierlein #Bockemueller" type="athetesis"/>
+              <note type="editorial">Lines 85 and 86 were previously rejected as spurious by the philologist Otto Zwierlein, following the pioneering example of the nineteenth-century commentator Friedrich Bockemüller, who considered these two lines to be a gloss or a non-Lucretian interpolation.</note>
+            </app>
+            <w lemma="nam">nam</w>
+            <w lemma="iam">iam</w>
+            <w lemma="saepe">saepe</w>
+            <w lemma="homo">homines</w>
+            <w lemma="patria">patriam</w>
+            <w lemma="carus">caros</w><w lemma="que" join="left">que</w>
+            <w lemma="parens">parentis</w>
+          </l>
+
+          <!-- III 86 -->
+          <l xml:id="III86" n="86">
+            <w lemma="prodo">prodiderunt</w>,
+            <w lemma="uito">uitare</w>
+            <term ref="#acherusia-templa"><w lemma="Acherusius">Acherusia</w>
+              <w lemma="templum">templa</w></term>
+            <w lemma="peto">petentes</w>.
+          </l>
+
+          <!-- III 87 -->
+          <l xml:id="III87" n="87">
+            <anchor xml:id="r87_start"/>
+            <seg type="parallel" corresp="#iter-III87-88 #iter-III87-93">
+              <w lemma="nam">nam</w>
+              <w lemma="ueluti">ueluti</w>
+              <w lemma="puer">pueri</w>
+              <w lemma="trepido">trepidant</w>
+              <w lemma="atque">atque</w>
+              <w lemma="omnis">omnia</w>
+              <w lemma="caecus">caecis</w>
+            </seg>
+          </l>
+
+          <!-- III 88 -->
+          <l xml:id="III88" n="88">
+            <seg type="parallel" corresp="#iter-III87-88 #iter-III87-93">
+              <w lemma="in">in</w>
+              <term ref="#tenebrae"><w lemma="tenebrae">tenebris</w></term>
+              <w lemma="metuo">metuunt</w>,
+              <app type="critical">
+                <lem wit="#Omega"><w lemma="sic">sic</w></lem>
+                <rdg source="#Sen"><w lemma="ita">ita</w></rdg>
+              </app>
+              <w lemma="nos">nos</w>
+              <w lemma="in">in</w>
+              <w lemma="lux">luce</w>
+              <w lemma="timeo">timemus</w>
+            </seg>
+            <anchor xml:id="r88_end"/>
+          </l>
+
+          <!-- III 89 -->
+          <l xml:id="III89" n="89">
+            <seg type="parallel" corresp="#iter-III87-93">
+              <w lemma="interdum">interdum</w>,
+              <w lemma="nihil">nihilo</w>
+              <w lemma="qui">quae</w>
+              <w lemma="sum">sunt</w>
+              <w lemma="metuo">metuenda</w>
+              <w lemma="magis">magis</w>
+              <w lemma="quam">quam</w>
+            </seg>
+          </l>
+
+          <!-- III 90 -->
+          <l xml:id="III90" n="90">
+            <seg type="parallel" corresp="#iter-III87-93">
+              <w lemma="qui">quae</w>
+              <w lemma="puer">pueri</w>
+              <w lemma="in">in</w>
+              <term ref="#tenebrae"><w lemma="tenebrae">tenebris</w></term>
+              <w lemma="pauito">pauitant</w>
+              <app type="critical">
+                <lem wit="#O"><w lemma="fingo">fingunt</w><w lemma="que" join="left">que</w></lem>
+                <rdg wit="#Gamma"><w lemma="tingo">tingunt</w><w lemma="que" join="left">que</w></rdg>
+              </app>
+              <w lemma="futurus">futura</w>.
+            </seg>
+          </l>
+
+          <!-- III 91 -->
+          <l xml:id="III91" n="91">
+            <anchor xml:id="r91_start"/>
+            <seg type="parallel" corresp="#iter-III87-93 #iter-III91-93">
+              <app type="critical">
+                <lem wit="#O"><w lemma="hic">hunc</w></lem>
+                <rdg wit="#Gamma"><w lemma="nunc">nunc</w></rdg>
+              </app>
+              <w lemma="igitur">igitur</w>
+              <w lemma="terror">terrorem</w>
+              <w lemma="animus">animi</w>
+              <term ref="#tenebrae"><w lemma="tenebrae">tenebras</w></term><w lemma="que" join="left">que</w>
+              <w lemma="necesse">necessest</w>
+            </seg>
+          </l>
+
+          <!-- III 92 -->
+          <l xml:id="III92" n="92">
+            <anchor xml:id="r92_start"/>
+            <seg type="parallel" corresp="#iter-III87-93 #iter-III91-93 #iter-III92">
+              <w lemma="non">non</w>
+              <w lemma="radius">radii</w>
+              <w lemma="sol">solis</w>
+              <w lemma="neque">neque</w>
+              <w lemma="lucidus">lucida</w>
+              <w lemma="telum">tela</w>
+              <w lemma="dies">diei</w>
+            </seg>
+            <anchor xml:id="r92_end"/>
+          </l>
+
+          <!-- III 93 -->
+          <l xml:id="III93" n="93">
+            <seg type="parallel" corresp="#iter-III87-93 #iter-III91-93">
+              <w lemma="discutio">discutiant</w>,
+              <w lemma="sed">sed</w>
+              <term ref="#naturae-species"><w lemma="natura">naturae</w>
+                <w lemma="species">species</w></term>
+              <term ref="#ratio"><w lemma="ratio">ratio</w></term><w lemma="que" join="left">que</w>.
+            </seg>
+            <anchor xml:id="r93_end"/>
+          </l>
+
+        </lg>
+
+        <div type="apparatus-fontium">
+          <head>Apparatus fontium (III 1–93)</head>
+
+          <!-- @n: verse label shown in the Testimonia panel; <p>: descriptive text shown on the website -->
+          <note type="fontium" xml:id="test-lact-1" n="1"
+                target="#III1 #f1_lumen" source="#Lact">
+            Cf. <bibl corresp="#Lact"><author>Lactantius</author>
+              <title>inst.</title> 6, 2, 6</bibl>:
+            <quote>lumen …, ut ait poeta, ‘liquidum’ atque ‘clarum’</quote>.
+            <p>In <title>Divinae institutiones</title> (6, 2, 6), Lactantius writes: <quote>«Aliud vero ille a nobis exigit lumen, et quidem non fumidum, sed (ut ait poeta) liquidum atque clarum»</quote>, explicitly quoting the noun <mentioned>lumen</mentioned> and the adjective <mentioned>clarum</mentioned>, while also pairing them with <mentioned>liquidum</mentioned>.</p>
+          </note>
+          <note type="fontium" xml:id="test-non-7" n="7sq."
+                target="#III7 #f7_start #III8 #f7_end" source="#Non">
+            <quote>aut –</quote>
+            <bibl corresp="#Non"><author>Nonius Marcellus</author>
+              <title>comp.</title> p. 306, 9; p. 420, 38 Lindsay</bibl>.
+            <p>In <title>De compendiosa doctrina</title> (pp. 306, 9 &amp; 420, 38), Nonius Marcellus cites the passage that goes from <mentioned>aut</mentioned> in line 7 to the end of line 8.</p>
+          </note>
+          <note type="fontium" xml:id="test-non-17" n="17"
+                target="#III17 #f17_start #f17_end" source="#Non">
+            <quote>totum –</quote>
+            <bibl corresp="#Non"><author>Nonius Marcellus</author>
+              <title>comp.</title> p. 446, 5 Lindsay</bibl>.
+            <p>In <title>De compendiosa doctrina</title> (p. 446, 5), Nonius Marcellus cites the passage that goes from <mentioned>totum</mentioned> in line 17 to the end of the same line.</p>
+          </note>
+          <note type="fontium" xml:id="test-non-52" n="52"
+                target="#III52 #f52_start #f52_end" source="#Non">
+            <quote>et –</quote>
+            <bibl corresp="#Non"><author>Nonius Marcellus</author>
+              <title>comp.</title> p. 341, 30 Lindsay</bibl>.
+            <p>In <title>De compendiosa doctrina</title> (p. 341, 30), Nonius Marcellus cites the passage that goes from <mentioned>et</mentioned> in line 52 to the end of the same line.</p>
+          </note>
+          <note type="fontium" xml:id="test-macr-70-72" n="72"
+                target="#III70 #f70_start #III72 #f72_end" source="#Macrobius">
+            <quote>sanguine – fratris</quote>
+            <bibl corresp="#Macrobius"><author>Macrobius</author>
+              <title>Sat.</title> 6, 2, 15</bibl>.
+            <p>In <title>Saturnalia</title> (6, 2, 15), Macrobius cites the passage that goes from line 70 to the end of line 72.</p>
+          </note>
+        </div>
+
+        <div type="versus-iterati">
+          <head>Apparatus versuum iteratorum</head>
+
+          <!-- v. 7 -->
+          <note type="iterati" xml:id="iter-III7" n="7"
+                target="#III7 #r7_start #r7_end" corresp="#II367" subtype="similar">
+            <seg type="parallel-phrase">tremulis facere artubus haedi</seg>
+            (<ref target="#III7">III.7</ref>) echoes a similar internal parallel at
+            <ref target="#II367">II.367</ref>
+            (<quote>tremulis cum uocibus haedi</quote>), where the image of newborn
+            goats is likewise characterized by trembling.
+          </note>
+          <!-- v. 31-34 -->
+          <note type="iterati" xml:id="iter-III31-34" n="31-34"
+                target="#III31 #III32 #III33 #III34"
+                corresp="#IV45-48" subtype="identical">
+            <seg type="parallel-phrase">Et quoniam docui cunctarum exordia rerum / qualia sint et quam uariis distantia formis / sponte sua uolitent aeterno percita motu / quoue modo possint res ex his quaeque creari</seg>
+            (<ref target="#III31">III.31–34</ref>) is repeated verbatim at
+            <ref target="#IV45">IV.45–48</ref>, serving as a formulaic didactic recapitulation of the atomic principles established in the first two books.
+          </note>
+
+          <!-- v. 31 -->
+          <note type="iterati" xml:id="iter-III31" n="31"
+                target="#III31 #r31_start #r31_end" corresp="#VI43 #I951 #II478 #II522 #IV45" subtype="varied">
+            <seg type="parallel-phrase">Et quoniam docui</seg>
+            (<ref target="#III31">III.31</ref>) recurs identically at
+            <ref target="#VI43">VI.43</ref> and with slight structural variations at
+            <ref target="#I951">I.951</ref>,
+            <ref target="#II478">II.478</ref>, <ref target="#II522">II.522</ref> and <ref target="#IV45">IV.45</ref>, operating as one of Lucretius' standard transitions to link a completed argument to a new topic.
+          </note>
+
+          <!-- v. 32 -->
+          <note type="iterati" xml:id="iter-III32" n="32"
+                target="#III32 #r32_start #r32_end" corresp="#II334" subtype="similar">
+            <seg type="parallel-phrase">qualia sint et quam uariis distantia formis</seg>
+            (<ref target="#III32">III.32</ref>) closely mirrors
+            <ref target="#II334">II.334</ref> (<quote>qualia sint et quam longe distantia formis</quote>) to reintroduce the treatment of atomic shapes.
+          </note>
+
+          <!-- v. 33 -->
+          <note type="iterati" xml:id="iter-III33" n="33"
+                target="#III33 #r33_start #r33_end" corresp="#II1055" subtype="identical">
+            <seg type="parallel-phrase">uolitent aeterno percita motu</seg>
+            (<ref target="#III33">III.33</ref>) repeats verbatim the clausula at
+            <ref target="#II1055">II.1055</ref>, deploying the same fixed formula to describe the incessant, unguided trajectory of atoms through the void.
+          </note>
+
+          <!-- v. 45 -->
+          <note type="iterati" xml:id="iter-III45" n="45"
+                target="#III45 #r45_start #r45_end" corresp="#III181" subtype="identical">
+            <seg type="parallel-phrase">sed magis in primis animum</seg>
+            (<ref target="#III45">III.45</ref>) repeats the verse opening verbatim at
+            <ref target="#III181">III.181</ref>, deploying the same emphatic transitional formula to direct the reader's immediate attention to the nature of the mind (<quote>animus</quote>).
+          </note>
+
+          <!-- vv. 62-63 -->
+          <note type="iterati" xml:id="iter-III62-63" n="62-63"
+                target="#III62 #r62_start #III63 #r63_end"
+                corresp="#II12-13" subtype="identical">
+            <seg type="parallel-phrase">noctes atque dies niti praestante labore / ad summas emergere opes</seg>
+            (<ref target="#III62">III.62–63</ref>) repeats verbatim the programmatic distich at
+            <ref target="#II12">II.12–13</ref>, deploying the same formulaic critique of blind human ambition and the exhausting struggle for political and material supremacy.
+          </note>
+
+          <!-- vv. 87-88 -->
+          <note type="iterati" xml:id="iter-III87-88" n="87sq."
+                target="#III87 #r87_start #III88 #r88_end"
+                corresp="#II55-56 #VI35-36" subtype="reference">
+            <seg type="parallel-phrase">nam ueluti pueri trepidant atque omnia caecis / in tenebris metuunt, sic nos in luce timemus</seg>
+            (<ref target="#III87">III.87–88</ref>): cf. ad <ref target="#II55">II.55–56</ref> (see also <ref target="#VI35">VI.35–36</ref>).
+            The simile of the children frightened in the dark recurs verbatim from Book II; the indirect tradition (<bibl corresp="#Sen"><author>Seneca</author>, <title>Epist.</title> 110, 6</bibl>, reading <mentioned>ita</mentioned> for <mentioned>sic</mentioned>) is recorded there.
+          </note>
+
+          <!-- vv. 87-93 -->
+          <note type="iterati" xml:id="iter-III87-93" n="87-93"
+                target="#III87 #r87_start #III93 #r93_end"
+                corresp="#II55-61 #VI35-41" subtype="identical">
+            <seg type="parallel-phrase">nam ueluti pueri trepidant … sed naturae species ratioque</seg>
+            (<ref target="#III87">III.87–93</ref>) is repeated verbatim at
+            <ref target="#II55">II.55–61</ref> and <ref target="#VI35">VI.35–41</ref>: a seven-line formulaic block sealing the proems of Books II, III and VI, stating that only reason, not wealth, power or sunlight, dispels human fears.
+          </note>
+
+          <!-- vv. 91-93 -->
+          <note type="iterati" xml:id="iter-III91-93" n="91-93"
+                target="#III91 #r91_start #III93 #r93_end"
+                corresp="#I146-148" subtype="identical">
+            <seg type="parallel-phrase">hunc igitur terrorem animi tenebrasque necessest / non radii solis neque lucida tela diei / discutiant, sed naturae species ratioque</seg>
+            (<ref target="#III91">III.91–93</ref>) repeats verbatim <ref target="#I146">I.146–148</ref>, where the tercet first states the programme of the poem: only the observation of nature and reason (<mentioned>naturae species ratioque</mentioned>) free the mind from terror.
+          </note>
+
+          <!-- v. 92 -->
+          <note type="iterati" xml:id="iter-III92" n="92"
+                target="#III92 #r92_start #r92_end"
+                corresp="#I147 #II60 #VI40" subtype="reference">
+            <seg type="parallel-phrase">non radii solis neque lucida tela diei</seg>
+            (<ref target="#III92">III.92</ref>): cf. ad <ref target="#I147">I.147</ref> (see also <ref target="#II60">II.60</ref> and <ref target="#VI40">VI.40</ref>), where the image of the sun's rays as shining darts first appears and its parallels are recorded.
+          </note>
+        </div>
+
+        <div type="translation" xml:lang="en">
+          <head>Translation by David R. Slavitt (III 1–93)</head>
+          <lg type="translation">
+            <l n="1" corresp="#III1">In the murk of our darkness, you, Epicurus, raised your blazing lantern</l>
+            <l n="2" corresp="#III2">to show us the blessings of life.</l>
+            <l n="3" corresp="#III3">And I follow you,</l>
+            <l n="4" corresp="#III4">walking with confident footsteps the trails that you have blazed,</l>
+            <l n="5" corresp="#III5">not to be your rival, but in admiration and love,</l>
+            <l n="6" corresp="#III6">and happy to have your example to guide me. How could I think of competing with you? A swallow might as well vie</l>
+            <l n="7" corresp="#III7">with swans, or a young kid on its wobbly legs presume to race</l>
+            <l n="8" corresp="#III8">alongside a strong horse.</l>
+            <l n="9" corresp="#III9">You are our father, our leader, our pioneer, discovering truths that you share with us.</l>
+            <l n="10" corresp="#III10">You are our guide, and from your writings,</l>
+            <l n="11" corresp="#III11">You are like one of those bees that goes out to find the flowers and then brings back word to the hive of where the sweet nectar is for them all.</l>
+            <l n="12" corresp="#III12">So do we feed on your words</l>
+            <l n="13" corresp="#III13">of perdurable gold that are worthy of everlasting life.</l>
+            <l n="14" corresp="#III14">We begin to follow your thoughts, your arguments, and your reasons,</l>
+            <l n="15" corresp="#III15">about the nature of things, sprung from a divine mind,</l>
+            <l n="16" corresp="#III16">and our mind’s terrors abate, while the opaque walls of the world</l>
+            <l n="17" corresp="#III17">open wide to exhibit the intricate actions and movements that go on all the time throughout the limitless void.</l>
+            <l n="18" corresp="#III18">Through you, I see the gods in their tranquil dwelling places,</l>
+            <l n="19" corresp="#III19">where no harsh winds ever blow, where no dark clouds approach with the threat of violent storms,</l>
+            <l n="20" corresp="#III20">and it never snows or freezes,</l>
+            <l n="21" corresp="#III21">but a gentle air surrounds them attendant on their pleasures,</l>
+            <l n="22" corresp="#III22">and smiles in an expanse of bounteous light.</l>
+            <l n="23" corresp="#III23">nature never obtrudes on their lofty peace of mind</l>
+            <l n="24" corresp="#III24">but amplifies their delight.</l>
+            <l n="25" corresp="#III25">To them, Acheron’s gloomy regions are an unlikely story.</l>
+            <l n="26" corresp="#III26">They look down on the earth beneath</l>
+            <l n="27" corresp="#III27">and watch with the same keen understanding as you, Epicurus, have taught to us,</l>
+            <l n="28" corresp="#III28">the intricateness of nature’s inner workings</l>
+            <l n="29" corresp="#III29">that I contemplate with awe and an all but divine delight</l>
+            <l n="30" corresp="#III30">in what you expound and explain.</l>
+            <l n="31" corresp="#III31">I have already described the atoms, the seeds of things,</l>
+            <l n="32" corresp="#III32">their different shapes</l>
+            <l n="33" corresp="#III33">and motions as they fly about on their own,</l>
+            <l n="34" corresp="#III34">and how all things in the world are derived from their combinations.</l>
+            <l n="35" corresp="#III35">The next subject to which we turn our attention is the mind, the animus,</l>
+            <l n="36" corresp="#III36">and the spirit, the anima,</l>
+            <l n="37" corresp="#III37">and the way to get rid of the fear of death that troubles us all,</l>
+            <l n="38" corresp="#III38">tainting all our delights</l>
+            <l n="39" corresp="#III39">and shadowing every moment with Acheron’s gloom.</l>
+            <l n="40" corresp="#III40">[leaving no joy pure and unalloyed.]</l>
+            <l n="41" corresp="#III41">More than they fear the pains of disease</l>
+            <l n="42" corresp="#III42">or guilt and shame, men dread the bottomless chasm of death.</l>
+            <l n="43" corresp="#III43">Some there are who claim that the soul, which is in the blood,</l>
+            <l n="44" corresp="#III46">or perhaps in the air we breathe, survives and never dies,</l>
+            <l n="45" corresp="#III44">and they have no use for logic and reason.</l>
+            <l n="46" corresp="#III45">But I shall explain</l>
+            <l n="47" corresp="#III47">their ideas are fantastic and their hopes not based upon fact.</l>
+            <l n="48" corresp="#III48">Take some poor fellow,</l>
+            <l n="49" corresp="#III49">banished for his disgraceful crime,</l>
+            <l n="50" corresp="#III50">living beyond the edge of nowhere, but still alive.</l>
+            <l n="51" corresp="#III51">What does he do but continue his sacrifices</l>
+            <l n="52" corresp="#III52">of cattle and prayers to his forebears’ ghosts,</l>
+            <l n="53" corresp="#III53">and, in his misery,</l>
+            <l n="54" corresp="#III54">hope for a less wretched life than this in another and better world?</l>
+            <l n="55" corresp="#III55">It is always in such adversity that we learn what a man is made of,</l>
+            <l n="56" corresp="#III56">what truth or what superstition informs his thoughts and actions,</l>
+            <l n="57" corresp="#III57">and what resources he brings with which to confront his troubles.</l>
+            <l n="58" corresp="#III58">The mask is torn away, and you look at his real face.</l>
+            <l n="59" corresp="#III59">Bizarrely enough it is that fear of death that ruins the life of a man</l>
+            <l n="60" corresp="#III60">as he strives for wealth and power, scheming and plotting,</l>
+            <l n="61" corresp="#III61">forcing miserable mortals to transgress all bounds of law</l>
+            <l n="62" corresp="#III62">day and night to climb the greasy pole by fair means or foul,</l>
+            <l n="63" corresp="#III63">striving to emerge into the heights of sovereign power.</l>
+            <l n="64" corresp="#III64">These wounds of life are nourished in no small part by the dread of death.</l>
+            <l n="65" corresp="#III65">Even though he’s afraid of men’s scorn and grinding poverty,</l>
+            <l n="66" corresp="#III66">his real worry is that he may wake up one day far removed from a sweet and stable life,</l>
+            <l n="67" corresp="#III67">lingering already, as it were, before the very gates of death;</l>
+            <l n="68" corresp="#III68">and from this, driven by baseless panic, he strives to escape,</l>
+            <l n="69" corresp="#III69">wishing to banish the specter far, far away from himself.</l>
+            <l n="70" corresp="#III70">The sweetness of life and its simple pleasures he overlooks,</l>
+            <l n="71" corresp="#III71">as he vies with other men, amassing wealth, greedy, adding slaughter to slaughter,</l>
+            <l n="72" corresp="#III72">ruthless even to doing murder, rejoicing in the death of a brother,</l>
+            <l n="73" corresp="#III73">and fearing and loathing the banquet tables of his own kinsmen.</l>
+            <l n="74" corresp="#III74">For like reason he never ventures to dine without terror,</l>
+            <l n="75" corresp="#III75">fearing his wine goblet may be poisoned as well.</l>
+            <l n="76" corresp="#III76">In the same way he is consumed with bitter envy</l>
+            <l n="77" corresp="#III77">of someone with pomp and power who parades through the town in glory,</l>
+            <l n="78" corresp="#III78">while he himself wallows in obscurity’s murky shadows.</l>
+            <l n="79" corresp="#III79">Men wear themselves out and perish for the sake of statues</l>
+            <l n="80" corresp="#III80">and an enduring name proclaimed on the marble plinth.</l>
+            <l n="81" corresp="#III81">The fear of death corrupts the love of life and the light,</l>
+            <l n="82" corresp="#III82">breeding self-hatred and driving men to suicide,</l>
+            <l n="83" corresp="#III83">forgetting that this very terror is the fountain of all their cares,</l>
+            <l n="84" corresp="#III84">the poison that shatters modesty and breaks the bonds of friendship,</l>
+            <l n="85" corresp="#III85">overturning piety from its deepest foundations.</l>
+            <l n="86" corresp="#III86">For their fear of death some men dishonor themselves and betray</l>
+            <l n="87" corresp="#III87">their friends, even their dear parents and fatherland,</l>
+            <l n="88" corresp="#III88">all in the desperate hope of postponing that journey to Acheron’s bleak kingdom.</l>
+            <l n="89" corresp="#III89">Just as children in blind darkness tremble and imagine terrible monsters,</l>
+            <l n="90" corresp="#III90">so do we, in the light of day, fear things that are no more frightful</l>
+            <l n="91" corresp="#III91">than what children dread in the night, imagining ghastly horrors of decease.</l>
+            <l n="92" corresp="#III92">This dread in the mind’s dark recess neither the rays of the sun</l>
+            <l n="93" corresp="#III93">nor daylight can dispel, but only reason and the contemplation of nature’s laws.</l>
+          </lg>
+        </div>
+      </div>
+    </body>
+    <back>
+      <div type="glossary" xml:id="proem-keywords">
+        <head>Index of Philosophical Keywords (lines 1–93)</head>
+        <p>Key concepts of Epicurean doctrine and Lucretian poetic imagery appearing in the proem to Book III.</p>
+
+        <entry xml:id="lumen">
+          <form><orth>lumen</orth></form>
+          <sense>
+            <def>Light of Epicurean truth and scientific enlightenment. It opens the proem (line 1) in stark contrast to the darkness of human ignorance, and concludes the Olympian vision of the gods (line 22) radiant in an expanse of bounteous brightness.</def>
+            <cit type="verse"><ref target="#III1">line 1</ref></cit>
+            <cit type="verse"><ref target="#III22">line 22</ref></cit>
+          </sense>
+        </entry>
+
+        <entry xml:id="ratio">
+          <form><orth>ratio</orth></form>
+          <sense>
+            <def>Rational explanation and philosophical system of Epicurus. It loudly proclaims (<foreign xml:lang="la">vociferari</foreign>) the physical nature of things, dispelling unfounded superstitious terrors through logical inquiry.</def>
+            <cit type="verse"><ref target="#III14">line 14</ref></cit>
+          </sense>
+        </entry>
+
+        <entry xml:id="inane">
+          <form><orth>inane</orth></form>
+          <sense>
+            <def>The void: one of the two foundational principles of Epicurean atomism alongside solid bodies. An intangible, infinite space through which matter moves, combines, and dissolves unceasingly.</def>
+            <cit type="verse"><ref target="#III17">line 17</ref></cit>
+            <cit type="verse"><ref target="#III27">line 27</ref></cit>
+          </sense>
+        </entry>
+
+        <entry xml:id="moenia-mundi">
+          <form><orth>moenia mundi</orth></form>
+          <sense>
+            <def>The walls of the world: the visible boundaries of the cosmic sphere. Upon the revelation of Epicurean physics, these restrictive ramparts withdraw and fall away, opening the mind to infinite space.</def>
+            <cit type="verse"><ref target="#III16">line 16</ref></cit>
+          </sense>
+        </entry>
+
+        <entry xml:id="tenebrae">
+          <form><orth>tenebrae</orth></form>
+          <sense>
+            <def>Darkness, the counter-image of the Epicurean lumen: the social obscurity of the envious (line 77), the dark in which children fear imaginary dangers (lines 88, 90), and finally the darkness of the mind (tenebras animi) that only reason can dispel (line 91).</def>
+            <cit type="verse"><ref target="#III77">line 77</ref></cit>
+            <cit type="verse"><ref target="#III88">line 88</ref></cit>
+            <cit type="verse"><ref target="#III90">line 90</ref></cit>
+            <cit type="verse"><ref target="#III91">line 91</ref></cit>
+          </sense>
+        </entry>
+
+        <entry xml:id="pietas">
+          <form><orth>pietas</orth></form>
+          <sense>
+            <def>Dutiful devotion towards gods, family and fatherland, the core of Roman morality. The fear of death overturns it from its foundations (line 84), driving men to betray their country and their parents (lines 85–86).</def>
+            <cit type="verse"><ref target="#III84">line 84</ref></cit>
+          </sense>
+        </entry>
+
+        <entry xml:id="naturae-species">
+          <form><orth>naturae species</orth></form>
+          <sense>
+            <def>The outward aspect and rational observation of nature. Joined with ratio in the programmatic formula naturae species ratioque (line 93 = I 148), it is the only remedy that can dispel the terrors and darkness of the mind.</def>
+            <cit type="verse"><ref target="#III93">line 93</ref></cit>
+          </sense>
+        </entry>
+
+        <entry xml:id="acherusia-templa">
+          <form><orth>acherusia templa</orth></form>
+          <sense>
+            <def>The gloomy regions of the underworld, named after the river Acheron. They vanish once the structure of the universe is understood (line 25), yet the fear of them drives men to betray fatherland and parents (line 86).</def>
+            <cit type="verse"><ref target="#III25">line 25</ref></cit>
+            <cit type="verse"><ref target="#III86">line 86</ref></cit>
+          </sense>
+        </entry>
+
+        <entry xml:id="uoluptas">
+          <form><orth>uoluptas</orth></form>
+          <sense>
+            <def>Pleasure, the supreme ethical good of Epicurean doctrine: the divine delight of contemplating nature (line 28), which the fear of death prevents from remaining pure and unalloyed (line 40).</def>
+            <cit type="verse"><ref target="#III28">line 28</ref></cit>
+            <cit type="verse"><ref target="#III40">line 40</ref></cit>
+          </sense>
+        </entry>
+
+        <entry xml:id="metus-acheruntis">
+          <form><orth>metus Acheruntis</orth></form>
+          <sense>
+            <def>The fear of death and of punishment after death, root of human anxiety and moral degradation, which must be driven out by physical doctrine (line 37); it returns as mortis formido (lines 64, 79).</def>
+            <cit type="verse"><ref target="#III37">line 37</ref></cit>
+            <cit type="verse"><ref target="#III64">line 64</ref></cit>
+            <cit type="verse"><ref target="#III79">line 79</ref></cit>
+          </sense>
+        </entry>
+
+        <entry xml:id="animus-and-anima">
+          <form><orth>animus</orth><orth>anima</orth></form>
+          <sense>
+            <def>The two components of the soul in Epicurean psychology: the rational mind (animus), seated in the breast, and the vital spirit (anima), spread through the whole body; both are corporeal and mortal.</def>
+            <cit type="verse"><ref target="#III35">line 35</ref></cit>
+            <cit type="verse"><ref target="#III36">line 36</ref></cit>
+          </sense>
+        </entry>
+
+        <entry xml:id="religio">
+          <form><orth>religio</orth></form>
+          <sense>
+            <def>Superstitious fear and ritual obsession born of ignorance of natural causes; adversity reveals its hold on those who boast of philosophical self-sufficiency (line 54).</def>
+            <cit type="verse"><ref target="#III54">line 54</ref></cit>
+          </sense>
+        </entry>
+
+      </div>
+    </back>
+  </text>
+</TEI>
