@@ -1,0 +1,283 @@
+/* =========================================================
+   De Rerum Natura — Digital Edition
+   Page styles (tokens in theme.css)
+   ========================================================= */
+:root {
+    /* Palette and fonts come from theme.css; these are local aliases */
+    --terracotta: var(--red);
+    --terracotta-dark: var(--burgundy-hover);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--parchment);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    line-height: 1.65;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+a {
+    color: var(--terracotta);
+}
+a:hover {
+    color: var(--terracotta-dark);
+}
+
+/* ---------------- Navigation ---------------- */
+.navbar {
+    background-color: var(--ink) !important;
+    border-bottom: 1px solid var(--gold);
+}
+
+/* Rimuove i margini interni della navbar che tengono il logo lontano dall'angolo */
+#navbar.navbar {
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+/* Reset dei margini del brand */
+.navbar-brand {
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Ingrandisce il logo mantenendo le proporzioni corrette */
+.brand-mark {
+  height: 48px; /* Regola tra 44px e 56px in base a quanto lo desideri grande */
+  width: auto;
+  display: block;
+}
+
+.navbar-nav .nav-link {
+    color: var(--parchment) !important;
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    margin: 0 0.35rem;
+}
+.navbar-nav .nav-link:hover {
+    color: var(--gold) !important;
+}
+
+.navbar.scrolled {
+    background-color: #211b17 !important;
+}
+
+.dropdown-menu {
+    background-color: var(--ink);
+    border: 1px solid var(--gold);
+    border-radius: 0;
+}
+.dropdown-item {
+    color: var(--parchment);
+    font-family: var(--font-body);
+}
+.dropdown-item:hover, .dropdown-item:focus {
+    background-color: var(--terracotta-dark);
+    color: var(--parchment);
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------------- Hero ---------------- */
+.hero {
+    position: relative;
+    width: 100%;
+    /* 100vh a schermo intero (con fallback a 100dvh per browser moderni/mobile) */
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(43,36,32,0.55) 0%, rgba(43,36,32,0.85) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--parchment);
+    padding: 0 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Assicura che le righe Bootstrap non rompano il viewport orizzontale */
+.subsection-row {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 1.5rem;
+}
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.15rem; /* Aggiunta proprietà fontsize aumentata */
+  color: #FDFDD0;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+.hero-content h1 {
+    color: var(--parchment);
+    font-size: 4.2rem;
+    margin-bottom: 0.5rem;
+}
+.hero-content h3 {
+    color: var(--parchment-dim);
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+.hero-btn {
+    border: 1px solid var(--burgundy);
+    background-color: var(--burgundy);
+    color: #f8efd9;
+    border-radius: 6px;
+    padding: 0.6rem 2.2rem;
+    margin-top: 2.5rem; /* Valore aumentato per abbassarlo ulteriormente */
+    display: inline-block;
+    transition: all 0.25s ease;
+}
+
+.hero-btn:hover {
+    background-color: var(--terracotta-dark);
+    border-color: var(--terracotta-dark);
+    color: #ffffff;
+}
+
+/* ---------------- Sections ---------------- */
+.page-body {
+    background-color: var(--parchment);
+}
+
+.page-section {
+    padding: 4.5rem 1.5rem;
+}
+
+.narrow {
+    max-width: 46rem;
+    margin: 0 auto;
+}
+
+.page-section h1 {
+    font-size: 2.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.lead-text {
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin-bottom: 1.75rem;
+}
+
+.divider {
+    width: 40%;
+    margin: 0 auto;
+    border: none;
+    border-top: 1px solid var(--gold);
+}
+
+/* ---------------- Buttons ---------------- */
+.btn-secondary {
+    background-color: var(--burgundy) !important;
+    border-color: var(--burgundy) !important;
+    border-radius: 0;
+    font-family: var(--font-body);
+    padding: 0.5rem 1.5rem;
+}
+.btn-secondary:hover {
+    background-color: var(--terracotta-dark) !important;
+    border-color: var(--terracotta-dark) !important;
+}
+
+/* ---------------- Subsection cards (Author / Context / Witnesses, etc.) ---------------- */
+.subsection-row {
+    margin-top: 1.5rem;
+}
+.subsection-card {
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+    border-top: 1px solid var(--gold);
+}
+.subsection-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+.subsection-card p {
+    color: var(--stone);
+    margin-bottom: 1.25rem;
+    font-size: 1.02rem;
+}
+
+/* ---------------- Digital edition preview frame ---------------- */
+.edition-frame {
+    margin-bottom: 2rem;
+}
+.edition-frame img {
+    max-width: 100%;
+    border: 1px solid var(--gold);
+    margin-bottom: 1.25rem;
+}
+
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 767px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .hero-content h3 {
+        font-size: 1.15rem;
+    }
+    .page-section h1 {
+        font-size: 2.1rem;
+    }
+    .subsection-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* ---------------- Accessibility ---------------- */
+a:focus-visible, button:focus-visible, .btn:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}

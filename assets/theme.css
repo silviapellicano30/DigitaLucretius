@@ -1,0 +1,208 @@
+/* =========================================================
+   Digital Lucretius — shared design tokens
+   Loaded by every page before its own stylesheet, so that
+   fonts and colours are defined in one place only.
+   ========================================================= */
+:root {
+  /* Typography: Cinzel for titles and labels, EB Garamond for text */
+  --font-display: "Cinzel", Georgia, serif;
+  --font-body: "EB Garamond", Georgia, serif;
+
+  /* Dark tones (navigation, dark pages, apparatus) */
+  --ink: #2B2420;
+  --ink-deep: #26211d;
+
+  /* Light tones (parchment pages and text on dark backgrounds) */
+  --parchment: #f3e6c3;
+  --parchment-dim: #E9E0CC;
+  --stone: #6E655A;
+
+  /* Accents */
+  --gold: #B8974E;          /* headings, labels, borders on dark backgrounds */
+  --gold-light: #e8c980;    /* highlights: active tab, apparatus numbers */
+  --burgundy: #5a3232;      /* buttons and titles on parchment */
+  --burgundy-hover: #863838;
+  --red: #8b1f2d;           /* links on parchment, apparatus markers */
+}
+
+/* =========================================================
+   Site navigation (edition, keywords, scholars, witnesses).
+   Same look as the Bootstrap navbar of index/documentation,
+   without loading Bootstrap on the edition pages.
+   ========================================================= */
+.site-nav,
+.site-nav * {
+  box-sizing: border-box;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: var(--ink);
+  border-bottom: 1px solid var(--gold);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+/* In the edition the apparatus already fills the bottom of the screen:
+   the bar scrolls away with the page instead of staying on top */
+.site-nav--static {
+  position: relative;
+}
+
+.site-nav__brand img {
+  display: block;
+  height: 48px;
+  width: auto;
+}
+
+.site-nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav__menu > li {
+  position: relative;
+}
+
+.site-nav__menu a,
+.site-nav__dropdown > button {
+  display: block;
+  padding: 0.5rem 0.7rem;
+  color: var(--parchment);
+  background: none;
+  border: 0;
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.site-nav__menu a:hover,
+.site-nav__menu a:focus-visible,
+.site-nav__dropdown > button:hover,
+.site-nav__dropdown > button:focus-visible,
+.site-nav__menu a[aria-current="page"],
+.site-nav__dropdown.is-current > button {
+  color: var(--gold);
+}
+
+.site-nav__dropdown > button::after {
+  content: "";
+  display: inline-block;
+  margin-left: 0.4em;
+  vertical-align: 0.2em;
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-left: 0.3em solid transparent;
+}
+
+.site-nav__dropdown ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  min-width: 13rem;
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+  background-color: var(--ink);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+}
+
+.site-nav__dropdown ul.show {
+  display: block;
+}
+
+.site-nav__dropdown ul a {
+  padding: 0.4rem 1.25rem;
+  white-space: nowrap;
+}
+
+.site-nav__dropdown ul a:hover,
+.site-nav__dropdown ul a:focus-visible {
+  color: var(--parchment);
+  background-color: var(--burgundy-hover);
+}
+
+.site-nav a:focus-visible,
+.site-nav button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Hamburger button, shown on small screens only */
+.site-nav__toggle {
+  display: none;
+  width: 2.8rem;
+  height: 2.3rem;
+  padding: 0;
+  background: none;
+  border: 1px solid rgba(243, 230, 195, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.site-nav__toggle span,
+.site-nav__toggle span::before,
+.site-nav__toggle span::after {
+  display: block;
+  width: 1.4rem;
+  height: 2px;
+  margin: 0 auto;
+  background-color: var(--parchment);
+  content: "";
+}
+
+.site-nav__toggle span {
+  position: relative;
+}
+
+.site-nav__toggle span::before,
+.site-nav__toggle span::after {
+  position: absolute;
+  left: 0;
+}
+
+.site-nav__toggle span::before { top: -7px; }
+.site-nav__toggle span::after { top: 7px; }
+
+@media (max-width: 767px) {
+  .site-nav__toggle {
+    display: block;
+  }
+
+  .site-nav__menu {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+
+  .site-nav__menu.show {
+    display: flex;
+  }
+
+  .site-nav__dropdown ul {
+    position: static;
+    margin-left: 0.7rem;
+    border: 0;
+    border-left: 2px solid var(--gold);
+    border-radius: 0;
+  }
+}

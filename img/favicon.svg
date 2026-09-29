@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#26211d"/>
+
+  <!-- Ombreggiatura pergamena srotolata -->
+  <path d="M19 18 C25 21 39 15 45 18 L45 46 C39 43 25 49 19 46 Z" 
+        fill="#f7ecd5"/>
+
+  <!-- Cilindro sinistro (arrotolato) -->
+  <rect x="14" y="14" width="6" height="36" rx="3" fill="#e8c980"/>
+  <!-- Cilindro destro (arrotolato) -->
+  <rect x="44" y="14" width="6" height="36" rx="3" fill="#d8ad49"/>
+
+  <!-- Linee incise di testo poetico sul papiro -->
+  <line x1="24" y1="25" x2="40" y2="23" stroke="#26211d" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.6"/>
+  <line x1="24" y1="32" x2="38" y2="30" stroke="#26211d" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.6"/>
+  <line x1="24" y1="39" x2="36" y2="37" stroke="#8b1f2d" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

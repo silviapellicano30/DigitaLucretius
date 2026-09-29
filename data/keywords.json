@@ -1,0 +1,182 @@
+{
+  "page": {
+    "title": "Philosophical Keywords",
+    "subtitle": "Core Epicurean concepts and imagery in the proem of Book III of De rerum natura"
+  },
+  "sections": [
+    {
+      "title": "Doctrinal & Poetic Keywords (vv. 1–93)",
+      "keywords": [
+        {
+          "name": "lumen",
+          "tags": [
+            "Physics",
+            "Epistemology",
+            "Poetic Metaphor"
+          ],
+          "paragraphs": [
+            "<strong>Occurrences:</strong> lines 1, 22.",
+            "Metaphor of intellectual illumination central to Lucretius’ representation of Epicurus. The <i>lumen</i> symbolizes the clarity of scientific truth that dispels the darkness of superstition (<foreign>tenebris tantis</foreign>).",
+            "In line 22 (<foreign>large diffuso lumine ridet</foreign>), the radiant light evokes the serene condition of the gods, whose tranquility becomes a model for the Epicurean sage.",
+            "Across the poem, <i>lumen</i> functions as a recurring epistemological topos (cf. I 62; II 7), marking the transition from ignorance to rational understanding."
+          ]
+        },
+        {
+          "name": "ratio",
+          "tags": [
+            "Philosophy",
+            "Method",
+            "Rationalism"
+          ],
+          "paragraphs": [
+            "<strong>Occurrences:</strong> lines 14, 44, 93.",
+            "The rational method and doctrinal system established by Epicurus, described as arising from a ‘divine mind’ (<foreign>divina mente coorta</foreign>).",
+            "In Book III, <i>ratio</i> introduces the investigation of the soul’s nature, grounding the argument against the fear of death.",
+            "At line 44 (<foreign>nostrae rationis</foreign>), Lucretius unmasks the boastful claims of those who pretend to have no need of natural philosophy, demonstrating that without rational inquiry true mental serenity remains unattainable.",
+            "At line 93 (<foreign>naturae species ratioque</foreign>) <i>ratio</i> closes the proem as the only force able to dispel the terrors and darkness of the mind, joined with the observation of nature (see <i>naturae species</i>)."
+          ]
+        },
+        {
+          "name": "moenia mundi",
+          "tags": [
+            "Cosmology",
+            "Physics"
+          ],
+          "paragraphs": [
+            "<strong>Occurrences:</strong> line 16.",
+            "The metaphorical ‘walls of the world’, representing the limits of traditional cosmological understanding.",
+            "Upon the revelation of Epicurean doctrine, these boundaries ‘fall apart’ (<foreign>discedunt</foreign>), allowing the philosopher to contemplate the infinite universe.",
+            "The image recalls heroic and military metaphors: Epicurus as a conqueror who breaks through the fortifications of ignorance."
+          ]
+        },
+        {
+          "name": "inane",
+          "tags": [
+            "Ontology",
+            "Physics",
+            "Atomism"
+          ],
+          "paragraphs": [
+            "<strong>Occurrences:</strong> lines 17, 27.",
+            "The void, one of the two fundamental principles of Epicurean physics alongside atoms (<foreign>corpora</foreign>).",
+            "Described as infinite, intangible, and without resistance, it enables all motion and atomic interaction (<foreign>totum video per inane geri res</foreign>).",
+            "Lucretius repeatedly emphasizes the necessity of the void to explain phenomena such as movement, growth, and natural change, confirming that the universe extends unbound beneath the observer's feet."
+          ]
+        },
+        {
+          "name": "acherusia templa",
+          "tags": [
+            "Mythology",
+            "Eschatology",
+            "Superstition"
+          ],
+          "paragraphs": [
+            "<strong>Occurrences:</strong> lines 25, 86.",
+            "The mythical realms and gloomy quarters of the underworld, named after the river Acheron (<foreign>Acherusia templa</foreign>).",
+            "Lucretius asserts that upon grasping the physical structure of the universe, these subterranean courts vanish entirely (<foreign>nusquam apparent</foreign>), since nature contains no punitive underworld for departed souls.",
+            "The archaic poetic phrasing underscores the traditional, mythological dread that Epicurean physics dismantles by demonstrating that nothing exists beneath the earth except boundless void and atomic motion.",
+            "At line 86 the phrase returns in a darker key: to escape the <i>Acherusia templa</i> (<foreign>uitare Acherusia templa petentes</foreign>), men betray their fatherland and their dear parents."
+          ]
+        },
+        {
+          "name": "uoluptas",
+          "tags": [
+            "Ethics",
+            "Telos",
+            "Epicurean Hedonism"
+          ],
+          "paragraphs": [
+            "<strong>Occurrences:</strong> lines 28, 40.",
+            "Pleasure understood as the supreme ethical good (<foreign>telos</foreign>) and the absence of mental and bodily pain in Epicurean doctrine.",
+            "At line 28, the sublime contemplation of cosmic laws generates a profound intellectual delight (<foreign>divina voluptas</foreign>) accompanied by reverent awe (<foreign>horror</foreign>).",
+            "Conversely, at line 40, the fear of death is exposed as a poison that contaminates human life from the bottom up, preventing any joy from remaining pure, clear, and unalloyed (<foreign>liquidam puramque</foreign>)."
+          ]
+        },
+        {
+          "name": "metus acheruntis",
+          "tags": [
+            "Psychology",
+            "Ethics",
+            "Fear of Death"
+          ],
+          "paragraphs": [
+            "<strong>Occurrences:</strong> lines 37, 64, 79.",
+            "The dread of death and post-mortem punishment personified by the underworld river Acheron (<foreign>metus ille... Acheruntis</foreign>).",
+            "Identified as the root cause of human anxiety and ethical degradation, it must be cast out headlong (<foreign>foras praeceps agendus</foreign>) through physical doctrine.",
+            "Lucretius reveals that this irrational terror undermines every aspect of mortal existence, driving individuals toward greed, political ambition, and moral crimes.",
+            "The same fear returns as <foreign>mortis formido</foreign> (lines 64, 79): it nourishes the wounds of life and can breed such hatred of life and light that men take their own lives (lines 79–82)."
+          ]
+        },
+        {
+          "name": "animus and anima",
+          "tags": [
+            "Psychology",
+            "Atomism",
+            "Materialism"
+          ],
+          "paragraphs": [
+            "<strong>Occurrences:</strong> lines 35, 36, 43, 54.",
+            "The dual components of the human soul in Epicurean psychology: the rational mind (<foreign>animus</foreign>), situated in the breast and responsible for thought and emotion, and the vital spirit (<foreign>anima</foreign>), dispersed throughout the whole body to transmit sensation.",
+            "Lucretius sets out to prove that both are corporeal compounds formed of extremely fine, smooth atoms, and consequently mortal and perishable.",
+            "Refuting rival beliefs that identify the mind with blood (<foreign>sanguis</foreign>) or wind (<foreign>ventus</foreign>), he demonstrates that both faculties dissolve completely when the bodily vessel breaks."
+          ]
+        },
+        {
+          "name": "religio",
+          "tags": [
+            "Religion",
+            "Superstition",
+            "Social Pathology"
+          ],
+          "paragraphs": [
+            "<strong>Occurrences:</strong> line 54.",
+            "Superstitious terror and ritual obsession born from ignorance of natural causality, compelling mortals to propitiate imaginary gods and restless shades.",
+            "In lines 50–54, Lucretius shows that exiles and criminals who boast of philosophical self-sufficiency invariably relapse into superstitious rites (<foreign>parentant</foreign>, <foreign>inferias mittunt</foreign>) when adversity strikes.",
+            "The passage illustrates how adversity strips away hypocritical vanity, laying bare the deeply entrenched hold of <foreign>religio</foreign> on an unphilosophical mind."
+          ]
+        },
+        {
+          "name": "tenebrae",
+          "tags": [
+            "Poetic Metaphor",
+            "Epistemology",
+            "Psychology"
+          ],
+          "paragraphs": [
+            "<strong>Occurrences:</strong> lines 77, 88, 90, 91.",
+            "Darkness is the counter-image of the Epicurean <i>lumen</i>. At line 77 the envious complain that they wallow in darkness and mire (<foreign>in tenebris uolui caenoque</foreign>), excluded from the splendour of public honours.",
+            "In the simile of lines 87–90, children tremble at everything in the blind darkness (<foreign>caecis in tenebris</foreign>), just as adults fear empty phantoms in broad daylight.",
+            "At line 91 the image becomes wholly inward: the <foreign>tenebras animi</foreign> are dispelled not by the rays of the sun, but only by the observation of nature and reason."
+          ]
+        },
+        {
+          "name": "pietas",
+          "tags": [
+            "Ethics",
+            "Roman Values",
+            "Social Pathology"
+          ],
+          "paragraphs": [
+            "<strong>Occurrences:</strong> line 84.",
+            "Dutiful devotion towards gods, family and fatherland, the cornerstone of traditional Roman morality.",
+            "Lucretius shows that the fear of death disturbs shame (<foreign>pudor</foreign>), breaks the bonds of friendship and overturns <i>pietas</i> from its foundations (<foreign>in summa pietatem euertere fundo</foreign>), so that men even betray their fatherland and parents (lines 85–86).",
+            "The passage reverses the traditional charge against Epicureanism: it is not philosophy but the fear of death that destroys piety."
+          ]
+        },
+        {
+          "name": "naturae species",
+          "tags": [
+            "Epistemology",
+            "Method",
+            "Programmatic Formula"
+          ],
+          "paragraphs": [
+            "<strong>Occurrences:</strong> line 93.",
+            "The outward aspect and attentive observation of nature, which together with <i>ratio</i> forms the closing formula of the proem (<foreign>naturae species ratioque</foreign>).",
+            "The tercet of lines 91–93 repeats verbatim I 146–148 (and returns at II 59–61 and VI 39–41): only the understanding of nature, not the physical light of the sun, can dispel the terror and darkness of the mind (see <i>tenebrae</i>)."
+          ]
+        }
+      ]
+    }
+  ]
+}
